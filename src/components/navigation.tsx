@@ -1,15 +1,14 @@
 import { navLinks } from '@/lib/data'
 import { NavigationItem } from '@/components/navigation-item'
 
-
 export const Navigation = () => {
   return (
     <ul className="flex flex-row gap-10">
-    {navLinks.map((route) => (
-      <li key={route.href}>
-        <NavigationItem name={route.name} href={route.href} />
-      </li>
-    ))}
-  </ul>
+      {navLinks.map((route) => (
+        <li key={route.href}>
+          <NavigationItem name={route.name} href={route.href} />
+        </li>
+      ))}
+    </ul>
   )
 }

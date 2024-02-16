@@ -1,4 +1,4 @@
-import { Header } from "@/components/header"
+import { Header } from '@/components/header'
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -6,9 +6,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="h-16 fixed w-full z-100">
         <Header />
       </div>
-      <main className="pt-16 h-full">
-        {children}
-      </main>
+      <main className="pt-16 h-full">{children}</main>
     </div>
   )
 }
