@@ -17,4 +17,4 @@ export const navLinks = [
   },
 ] as const
 
-export const period = ['2023-1', '2023-2', '2024-1']
+export const period = ['2023-1', '2023-2', '2024-1', '2024-2']
