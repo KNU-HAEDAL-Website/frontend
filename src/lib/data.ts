@@ -16,3 +16,5 @@ export const navLinks = [
     href: '/notice',
   },
 ] as const
+
+export const years = ['2023-1', '2023-2', '2024-1']
