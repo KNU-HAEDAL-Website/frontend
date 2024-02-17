@@ -1,15 +1,16 @@
-import { years } from "@/lib/data"
+'use client'
+
+import { period } from "@/lib/data"
 import {
   Pagination,
   PaginationContent,
   PaginationItem,
-  PaginationLink,
   PaginationNext,
   PaginationPrevious
 } from '@/components/ui/pagination'
-import { PagingYearsItems } from "./paging-years-item"
+import { PagingSemesterItems } from "@/components/paging-semester-items"
 
-export const SelectYears = () => {
+export const PagingSemester = () => {
   return (
     <Pagination>
       <PaginationContent>
@@ -17,8 +18,8 @@ export const SelectYears = () => {
           <PaginationPrevious href="" />
         </PaginationItem>
         <PaginationItem>
-          {years.map((year) => (
-            <PagingYearsItems year={year} />
+          {period.map((p) => (
+            <PagingSemesterItems key={`${p.year}-${p.num}`} period={p}/>
           ))}
         </PaginationItem>
         <PaginationItem>
@@ -28,4 +29,3 @@ export const SelectYears = () => {
     </Pagination>
   )
 }
-

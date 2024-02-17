@@ -1,9 +1,9 @@
-import { SelectYears } from "@/components/paging-years"
+import { PagingSemester } from "@/components/paging-semester"
 
 const ActivityPage = () => {
   return (
     <div>
-      <SelectYears/>
+      <PagingSemester/>
     </div>
   )
 }
