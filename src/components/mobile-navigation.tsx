@@ -1,20 +1,20 @@
 'use client'
+
 import Link from 'next/link'
+import { useEffect, useRef } from 'react'
 import { FaBars } from 'react-icons/fa'
 
+import { useMenuStore } from '@/store/menu'
 import { navLinks } from '@/lib/data'
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { useEffect, useRef, useState } from 'react'
 
 export const MobileNavigation = () => {
-  const [open, setOpen] = useState(false)
+  const { setOpen } = useMenuStore()
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -29,10 +29,10 @@ export const MobileNavigation = () => {
     return () => {
       document.addEventListener('mousedown', closeMenu)
     }
-  }, [ref])
+  }, [setOpen])
 
   return (
-    <DropdownMenu open={open}>
+    <DropdownMenu>
       <DropdownMenuTrigger>
         <FaBars onClick={() => setOpen(!open)} size="24" />
       </DropdownMenuTrigger>
