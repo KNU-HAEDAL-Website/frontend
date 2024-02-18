@@ -1,10 +1,10 @@
 import { CategoryList } from '@/components/category-list'
-import { PagingSemester } from '@/components/paging-semester'
+import { SemesterList } from '@/components/semester-list'
 
 const ActivityPage = () => {
   return (
     <div>
-      <PagingSemester />
+      <SemesterList />
       <CategoryList />
     </div>
   )

@@ -10,9 +10,9 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination'
-import { PagingSemesterItems } from '@/components/paging-semester-items'
+import { SemesterListItem } from '@/components/semester-list-item'
 
-export const PagingSemester = () => {
+export const SemesterList = () => {
   const {
     semester,
     currentIndex,
@@ -35,7 +35,7 @@ export const PagingSemester = () => {
         </PaginationItem>
         <PaginationItem>
           {getIndexList(currentIndex, 1).map((p) => (
-            <PagingSemesterItems key={p} period={p} />
+            <SemesterListItem key={p} period={p} />
           ))}
         </PaginationItem>
         <PaginationItem>

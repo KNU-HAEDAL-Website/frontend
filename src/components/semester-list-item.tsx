@@ -5,7 +5,7 @@ import { forwardRef } from 'react'
 import { PaginationLink } from '@/components/ui/pagination'
 import { useSemesterStore } from '@/store/semester'
 
-export const PagingSemesterItems = forwardRef<
+const SemesterListItem = forwardRef<
   HTMLAnchorElement,
   { period: string }
 >(({ period }, ref) => {
@@ -23,4 +23,6 @@ export const PagingSemesterItems = forwardRef<
   )
 })
 
-PagingSemesterItems.displayName = 'PagingSemesterItems'
+SemesterListItem.displayName = 'SemesterListItem'
+
+export { SemesterListItem }
