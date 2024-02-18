@@ -1,3 +1,7 @@
 export default function Home() {
-  return <div>test</div>
+  return (
+    <div className="pt-16">
+      test
+    </div>
+  )
 }
