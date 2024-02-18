@@ -10,35 +10,35 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination'
-import { PagingSemesterItems } from '@/components/paging-semester-items'
+import { SemesterListItem } from '@/components/semester-list-item'
 
-export const PagingSemester = () => {
+export const SemesterList = () => {
   const {
-    semester,
-    currentIndex,
-    setCurrentIndex,
+    selectedSemester,
+    seletedIndex,
+    setSelectedIndex,
     setPreviousSemester,
     setNextSemester,
     getIndexList,
   } = useSemesterStore()
 
   useEffect(() => {
-    const index = useSemesterStore.getState().getSemesterIndex(semester)
-    setCurrentIndex(index)
-  }, [semester, setCurrentIndex])
+    const index = useSemesterStore.getState().getSemesterIndex(selectedSemester)
+    setSelectedIndex(index)
+  }, [selectedSemester, setSelectedIndex])
 
   return (
-    <Pagination>
+    <Pagination className='py-2'>
       <PaginationContent>
-        <PaginationItem>
+        <PaginationItem className='cursor-pointer'>
           <PaginationPrevious onClick={setPreviousSemester} />
         </PaginationItem>
         <PaginationItem>
-          {getIndexList(currentIndex, 1).map((p) => (
-            <PagingSemesterItems key={p} period={p} />
+          {getIndexList(seletedIndex, 1).map((p) => (
+            <SemesterListItem key={p} semesterItem={p} />
           ))}
         </PaginationItem>
-        <PaginationItem>
+        <PaginationItem className='cursor-pointer'>
           <PaginationNext onClick={setNextSemester} />
         </PaginationItem>
       </PaginationContent>
