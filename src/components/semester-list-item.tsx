@@ -2,23 +2,24 @@
 
 import { forwardRef } from 'react'
 
-import { PaginationLink } from '@/components/ui/pagination'
 import { useSemesterStore } from '@/store/semester'
+import { PaginationLink } from '@/components/ui/pagination'
 
 const SemesterListItem = forwardRef<
   HTMLAnchorElement,
-  { period: string }
->(({ period }, ref) => {
-  const { semester, setSemester } = useSemesterStore()
-  const isActive = period === semester
+  { semesterItem: string }
+>(({ semesterItem }, ref) => {
+  const { selectedSemester, setSeletedSemester } = useSemesterStore()
+  const isActive = semesterItem === selectedSemester
 
   return (
     <PaginationLink
       ref={ref}
-      onClick={() => setSemester(period)}
+      onClick={() => setSeletedSemester(semesterItem)}
       isActive={isActive}
+      className='cursor-pointer'
     >
-      {period}
+      {semesterItem}
     </PaginationLink>
   )
 })
