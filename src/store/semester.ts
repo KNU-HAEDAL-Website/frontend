@@ -19,7 +19,7 @@ export const useSemesterStore = create<semesterProps>()(
     semester: period[1],
     currentIndex: 1,
     setSemester: (value) => set(() => ({ semester: value })),
-    setCurrentIndex: (index) => set(() => ({ currentIndex: index})),
+    setCurrentIndex: (index) => set(() => ({ currentIndex: index })),
     setPreviousSemester: () => {
       set((value) => {
         const index = value.getSemesterIndex(value.semester)
@@ -45,14 +45,14 @@ export const useSemesterStore = create<semesterProps>()(
         end = range * 2
       }
       if (index >= period.length - range) {
-        start = (period.length - 1) - range * 2
+        start = period.length - 1 - range * 2
       }
-      
+
       return period.slice(start, end + 1)
     },
     getSemesterIndex: (semester) => {
       const index = period.findIndex((p) => p === semester)
-      
+
       return index
     },
   })),

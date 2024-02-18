@@ -13,7 +13,14 @@ import {
 import { PagingSemesterItems } from '@/components/paging-semester-items'
 
 export const PagingSemester = () => {
-  const { semester, currentIndex, setCurrentIndex, setPreviousSemester, setNextSemester, getIndexList } = useSemesterStore()
+  const {
+    semester,
+    currentIndex,
+    setCurrentIndex,
+    setPreviousSemester,
+    setNextSemester,
+    getIndexList,
+  } = useSemesterStore()
 
   useEffect(() => {
     const index = useSemesterStore.getState().getSemesterIndex(semester)
@@ -28,7 +35,7 @@ export const PagingSemester = () => {
         </PaginationItem>
         <PaginationItem>
           {getIndexList(currentIndex, 1).map((p) => (
-            <PagingSemesterItems key={p} period={p}/>
+            <PagingSemesterItems key={p} period={p} />
           ))}
         </PaginationItem>
         <PaginationItem>
