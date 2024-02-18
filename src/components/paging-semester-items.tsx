@@ -23,4 +23,4 @@ export const PagingSemesterItems = forwardRef<
   )
 })
 
-PagingSemesterItems.displayName = "PagingSemesterItems"
+PagingSemesterItems.displayName = 'PagingSemesterItems'
