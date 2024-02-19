@@ -5,7 +5,7 @@ import { MobileNavigation } from './mobile-navigation'
 
 export const Header = () => {
   return (
-    <header className="h-full w-full px-10 md:px-24 flex items-center justify-between bg-primary text-white">
+    <header className="h-16 flex items-center justify-between gap-10">
       <Logo />
       {/* mobile mode */}
       <div className="flex items-center gap-4 md:hidden">
