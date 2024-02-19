@@ -12,6 +12,7 @@ const config = {
   theme: {
     screens: {
       'sm': '300px',
+      'md': '768px',
     },
     container: {
       center: true,
