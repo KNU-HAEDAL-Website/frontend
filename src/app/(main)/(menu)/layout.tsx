@@ -1,10 +1,9 @@
-import { SemesterList } from "@/components/semester-list"
-
+import { SemesterList } from '@/components/semester-list'
 
 const MenuLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
-      <SemesterList/>
+      <SemesterList />
       <main className="h-full">{children}</main>
     </div>
   )

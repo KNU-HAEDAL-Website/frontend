@@ -28,9 +28,9 @@ export const SemesterList = () => {
   }, [selectedSemester, setSelectedIndex])
 
   return (
-    <Pagination className='py-2'>
+    <Pagination className="py-2">
       <PaginationContent>
-        <PaginationItem className='cursor-pointer'>
+        <PaginationItem className="cursor-pointer">
           <PaginationPrevious onClick={setPreviousSemester} />
         </PaginationItem>
         <PaginationItem>
@@ -38,7 +38,7 @@ export const SemesterList = () => {
             <SemesterListItem key={p} semesterItem={p} />
           ))}
         </PaginationItem>
-        <PaginationItem className='cursor-pointer'>
+        <PaginationItem className="cursor-pointer">
           <PaginationNext onClick={setNextSemester} />
         </PaginationItem>
       </PaginationContent>

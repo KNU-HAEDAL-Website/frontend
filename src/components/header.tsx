@@ -5,7 +5,7 @@ import { MobileNavigation } from './mobile-navigation'
 
 export const Header = () => {
   return (
-    <div className='lg:mx-auto max-w-screen-xl'>
+    <div className="lg:mx-auto max-w-screen-xl">
       <header className="h-16 flex items-center justify-between gap-10">
         <Logo />
         {/* mobile mode */}

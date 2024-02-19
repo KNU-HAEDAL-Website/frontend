@@ -3,10 +3,10 @@ import { cn } from '@/lib/utils'
 
 type ActiveButtonProps = {
   isActive?: boolean
-} & Pick<ButtonProps, 'size'>
-& React.ComponentProps<'div'>
+} & Pick<ButtonProps, 'size'> &
+  React.ComponentProps<'div'>
 
-const ActiveButton = ({ 
+const ActiveButton = ({
   className,
   isActive,
   size,
@@ -16,7 +16,7 @@ const ActiveButton = ({
     className={cn(
       buttonVariants({
         variant: isActive ? 'default' : 'secondary',
-        size
+        size,
       }),
       className,
     )}
