@@ -6,9 +6,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="top-0 sticky w-full bg-primary text-white px-12 lg:px-24">
         <Header />
       </div>
-      <main className="h-full w-full overflow-auto">
-        {children}
-      </main>
+      <main className="h-full w-full overflow-auto">{children}</main>
     </div>
   )
 }
