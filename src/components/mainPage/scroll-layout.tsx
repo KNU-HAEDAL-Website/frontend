@@ -1,19 +1,11 @@
-// scroll-layout.tsx
 
-interface ScrollLayoutProps {
-  children: React.ReactNode;
-  pageIndex: number;
-  selectedPage: number;
-}
 
-const ScrollLayout: React.FC<ScrollLayoutProps> = ({ children, pageIndex, selectedPage }) => {
-  const isCurrentPage = pageIndex === selectedPage;
-
+const ScrollLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="h-screen" style={{ display: isCurrentPage ? 'block' : 'none' }}>
+    <div className="h-full">
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default ScrollLayout;
+export default ScrollLayout
