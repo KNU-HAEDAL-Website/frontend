@@ -17,7 +17,7 @@ export const navLinks = [
   },
 ] as const
 
-export const MainScrollPageDB = ['title', 'detail', 'activity', 'submit']
+export const ScrollPageDB = ['title', 'detail', 'activity', 'submit']
 
 export const semesterDB = ['2023-1', '2023-2', '2024-1', '2024-2']
 
