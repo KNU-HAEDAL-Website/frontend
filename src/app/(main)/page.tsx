@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <div className="h-full xl:mx-auto max-w-screen-xl">
       {scrollItemList.map((scrollItem) => (
-        <ScrollLayout key={scrollItem.key} pageItem={scrollItem.key}>
+        <ScrollLayout key={scrollItem.key}>
           {scrollItem.page}
         </ScrollLayout>
       ))}
