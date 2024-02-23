@@ -9,12 +9,12 @@ import { CategoryListItem } from '@/components/category-list-item'
 export const CategoryList = () => {
   return (
     <Pagination>
-      <PaginationContent className='gap-2'>
-          {categoryDB.map((categoryName) => (
-            <PaginationItem  key={categoryName}>
-              <CategoryListItem categoryItem={categoryName} />
-            </PaginationItem>
-          ))}
+      <PaginationContent className="gap-2">
+        {categoryDB.map((categoryName) => (
+          <PaginationItem key={categoryName}>
+            <CategoryListItem categoryItem={categoryName} />
+          </PaginationItem>
+        ))}
       </PaginationContent>
     </Pagination>
   )
