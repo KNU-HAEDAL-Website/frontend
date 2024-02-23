@@ -1,6 +1,6 @@
 import { Navigation } from '@/components/navigation'
 import { Logo } from '@/components/logo'
-import { Profile } from '@/components/profile'
+import { ProfileMenu } from '@/components/profile-menu'
 import { MobileNavigation } from './mobile-navigation'
 
 export const Header = () => {
@@ -10,13 +10,13 @@ export const Header = () => {
         <Logo />
         {/* mobile mode */}
         <div className="flex items-center gap-4 md:hidden">
-          <Profile />
+          <ProfileMenu />
           <MobileNavigation />
         </div>
         {/* desktop mode */}
         <div className="hidden md:flex items-center gap-8">
           <Navigation />
-          <Profile />
+          <ProfileMenu />
         </div>
       </header>
     </div>
