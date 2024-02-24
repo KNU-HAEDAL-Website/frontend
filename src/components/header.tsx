@@ -7,7 +7,9 @@ export const Header = () => {
   return (
     <div className="lg:mx-auto max-w-screen-xl">
       <header className="h-16 flex items-center justify-between gap-10">
-        <Logo />
+        <div className="h-7">
+          <Logo />
+        </div>
         {/* mobile mode */}
         <div className="flex items-center gap-4 md:hidden">
           <ProfileMenu />
