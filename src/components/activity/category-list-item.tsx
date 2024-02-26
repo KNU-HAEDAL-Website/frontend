@@ -1,7 +1,7 @@
 'use client'
 
 import { useCategoryStore } from '@/store/category'
-import { ActiveButton } from '@/components/active-button'
+import { ActiveButton } from '@/components/activity/active-button'
 
 export const CategoryListItem = ({
   categoryItem,

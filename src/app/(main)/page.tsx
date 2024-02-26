@@ -3,11 +3,11 @@ import { useEffect } from 'react'
 
 import { ScrollPageDB } from '@/lib/data'
 import { usePageStore } from '@/store/scroll-page'
-import ScrollLayout from '@/components/mainPage/scroll-layout'
-import TitlePage from '@/components/mainPage/title-page'
-import DetailPage from '@/components/mainPage/detail-page'
-import ActivityPage from '@/components/mainPage/activity-page'
-import SubmitPage from '@/components/mainPage/submit-page'
+import ScrollLayout from '@/components/main/scroll-layout'
+import TitlePage from '@/components/main/title-page'
+import DetailPage from '@/components/main/detail-page'
+import ActivityPage from '@/components/main/activity-page'
+import SubmitPage from '@/components/main/submit-page'
 
 const scrollItemList = [
   { page: <TitlePage />, key: ScrollPageDB[0] },
