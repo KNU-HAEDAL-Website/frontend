@@ -4,7 +4,7 @@ import {
   PaginationContent,
   PaginationItem,
 } from '@/components/ui/pagination'
-import { CategoryListItem } from '@/components/category-list-item'
+import { CategoryListItem } from '@/components/activity/category-list-item'
 
 export const CategoryList = () => {
   return (

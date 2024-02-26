@@ -4,7 +4,7 @@ import {
   // DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { ProfileAvatar } from '@/components/profile-avatar'
+import { ProfileAvatar } from '@/components/profile/profile-avatar'
 import Link from 'next/link'
 
 export const ProfileMenu = () => {

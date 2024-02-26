@@ -1,4 +1,4 @@
-import { CategoryList } from '@/components/category-list'
+import { CategoryList } from '@/components/activity/category-list'
 
 const ActivityPage = () => {
   return (
