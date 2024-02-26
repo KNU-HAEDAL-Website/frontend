@@ -2,7 +2,7 @@ import { FaUser } from 'react-icons/fa'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
-export const Profile = () => {
+export const ProfileAvatar = () => {
   return (
     <Avatar>
       <AvatarImage />
