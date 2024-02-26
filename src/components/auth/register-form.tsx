@@ -2,6 +2,7 @@
 
 import * as z from 'zod'
 import Link from 'next/link'
+import { startTransition, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -12,12 +13,19 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
+import { register } from '@/actions/register'
+import { FormError } from '@/components/form-error'
+import { FormSuccess } from '../form-success'
 
 export const RegisterForm = () => {
+  const [error, setError] = useState<string | undefined>('')
+  const [success, setSuccess] = useState<string | undefined>('')
+
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
@@ -28,7 +36,15 @@ export const RegisterForm = () => {
   })
 
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
-    console.log(values)
+    setError('')
+    setSuccess('')
+
+    startTransition(() => {
+      register(values).then((data) => {
+        setError(data.error)
+        setSuccess(data.success)
+      })
+    })
   }
 
   return (
@@ -43,6 +59,7 @@ export const RegisterForm = () => {
               <FormControl>
                 <Input placeholder="호반우" {...field} />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -55,6 +72,7 @@ export const RegisterForm = () => {
               <FormControl>
                 <Input placeholder="2024123456" type="number" {...field} />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -72,9 +90,12 @@ export const RegisterForm = () => {
                   <FormLabel>관리자의 승인 후 회원가입이 완료됩니다.</FormLabel>
                 </div>
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
+        <FormError message={error} />
+        <FormSuccess message={success} />
         <Button type="submit" className="w-full">
           회원가입
         </Button>
