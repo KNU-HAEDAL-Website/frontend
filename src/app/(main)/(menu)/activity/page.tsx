@@ -1,9 +1,9 @@
-import { CategoryList } from '@/components/activity/category-list'
+import { ActivityList } from '@/components/activity/activity-list'
 
 const ActivityPage = () => {
   return (
     <div>
-      <CategoryList />
+      <ActivityList />
     </div>
   )
 }
