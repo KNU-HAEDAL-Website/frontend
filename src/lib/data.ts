@@ -41,3 +41,41 @@ export const activityDB = [
     name: ['부트캠프', '트랙'],
   },
 ]
+
+export const boardDB = [
+  {
+    id: 0,
+    name: '웹 아장아장',
+    intro: '일단 테스트용',
+    image: '/imageDB/board-0.jpeg',
+    user: '주보경',
+  },
+  {
+    id: 1,
+    name: '리액트스토리',
+    intro: '아아 잘 들리시나요',
+    image: '/imageDB/board-1.jpeg',
+    user: '김강민',
+  },
+  {
+    id: 2,
+    name: '고래잡이배',
+    intro: '도커 공부',
+    image: '/imageDB/board-2.png',
+    user: '권다운',
+  },
+  {
+    id: 3,
+    name: '리액트스토리',
+    intro: '아아 잘 들리시나요',
+    image: '/imageDB/board-1.jpeg',
+    user: '김강민',
+  },
+  {
+    id: 4,
+    name: '고래잡이배',
+    intro: '도커 공부',
+    image: '/imageDB/board-2.png',
+    user: '권다운',
+  },
+]
