@@ -1,15 +1,16 @@
 'use client'
 
-import Link from 'next/link'
 import { FaBars } from 'react-icons/fa'
 
-import { navLinks } from '@/lib/data'
+import Link from 'next/link'
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { navLinks } from '@/lib/data'
 
 export const MobileNavigation = () => {
   return (

@@ -1,6 +1,7 @@
-import { CardHeader, CardContent } from '@/components/ui/card'
-import { cn } from '@/lib/utils'
 import React from 'react'
+
+import { CardContent, CardHeader } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 
 interface DetailCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
