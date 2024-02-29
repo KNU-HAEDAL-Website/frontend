@@ -2,8 +2,8 @@
 
 import { forwardRef } from 'react'
 
-import { useSemesterStore } from '@/store/semester'
 import { PaginationLink } from '@/components/ui/pagination'
+import { useSemesterStore } from '@/store/semester'
 
 const SemesterListItem = forwardRef<
   HTMLAnchorElement,

@@ -17,8 +17,8 @@
         "^~/actions/(.*)$",
         "^~/hook/(.*)$",
         "^~/lib/(.*)$",
-        "^~/components/(.*)$",
         "^~/components/ui/(.*)$",
+        "^~/components/(.*)$",
 
         "^[./]"
     ],

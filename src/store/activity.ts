@@ -1,7 +1,6 @@
+import { activityDB } from '@/lib/data'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-
-import { activityDB } from '@/lib/data'
 
 interface activityProps {
   selectedActivityList: string[]

@@ -1,7 +1,6 @@
+import { semesterDB } from '@/lib/data'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-
-import { semesterDB } from '@/lib/data'
 
 interface semesterProps {
   selectedSemester: string

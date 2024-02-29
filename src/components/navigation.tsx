@@ -1,5 +1,5 @@
-import { navLinks } from '@/lib/data'
 import { NavigationItem } from '@/components/navigation-item'
+import { navLinks } from '@/lib/data'
 
 export const Navigation = () => {
   return (

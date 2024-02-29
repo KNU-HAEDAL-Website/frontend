@@ -2,9 +2,7 @@
 
 import { useEffect } from 'react'
 
-import { activityDB } from '@/lib/data'
-import { useSemesterStore } from '@/store/semester'
-import { useActivityStore } from '@/store/activity'
+import { SemesterListItem } from '@/components/semester-list-item'
 import {
   Pagination,
   PaginationContent,
@@ -12,7 +10,9 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination'
-import { SemesterListItem } from '@/components/semester-list-item'
+import { activityDB } from '@/lib/data'
+import { useActivityStore } from '@/store/activity'
+import { useSemesterStore } from '@/store/semester'
 
 export const SemesterList = () => {
   const {

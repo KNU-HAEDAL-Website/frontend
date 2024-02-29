@@ -1,12 +1,15 @@
 'use client'
 
-import * as z from 'zod'
-import Link from 'next/link'
 import { startTransition, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 
-import { RegisterSchema } from '@/schema'
+import Link from 'next/link'
+
+import { register } from '@/actions/register'
+import { FormError } from '@/components/form-error'
+import { FormSuccess } from '@/components/form-success'
+import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
 import {
   Form,
   FormControl,
@@ -16,11 +19,9 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
-import { register } from '@/actions/register'
-import { FormError } from '@/components/form-error'
-import { FormSuccess } from '../form-success'
+import { RegisterSchema } from '@/schema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
 
 export const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>('')

@@ -1,7 +1,7 @@
-import { Navigation } from '@/components/navigation'
 import { Logo } from '@/components/logo'
+import { Navigation } from '@/components/navigation'
 import { ProfileMenu } from '@/components/profile/profile-menu'
-import { MobileNavigation } from './mobile-navigation'
+import { MobileNavigation } from '@/components/mobile-navigation'
 
 export const Header = () => {
   return (
