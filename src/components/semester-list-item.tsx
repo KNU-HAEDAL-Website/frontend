@@ -17,7 +17,7 @@ const SemesterListItem = forwardRef<
       ref={ref}
       onClick={() => setSeletedSemester(semesterItem)}
       isActive={isActive}
-      className="cursor-pointer w-full sm:w-auto"
+      className="w-full cursor-pointer sm:w-auto"
     >
       {semesterItem}
     </PaginationLink>

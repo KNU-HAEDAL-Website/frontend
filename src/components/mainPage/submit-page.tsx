@@ -1,6 +1,6 @@
 export default function SubmitPage() {
   return (
-    <div className="h-full flex justify-center items-center bg-red-500">
+    <div className="flex h-full items-center justify-center bg-red-500">
       SubmitPage
     </div>
   )

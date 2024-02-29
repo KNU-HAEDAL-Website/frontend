@@ -81,7 +81,7 @@ export const RegisterForm = () => {
           name="checked"
           render={({ field }) => (
             <FormItem>
-              <FormControl className="pt-4 flex items-center gap-2">
+              <FormControl className="flex items-center gap-2 pt-4">
                 <div>
                   <Checkbox
                     checked={field.value}

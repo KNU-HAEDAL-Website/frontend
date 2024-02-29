@@ -8,7 +8,7 @@ export const FormError = ({ message }: FormErrorProps) => {
   if (!message) return null
 
   return (
-    <Card className="p-3 flex items-center justify-center bg-destructive/15 text-destructive border-destructive/10 text-sm font-medium">
+    <Card className="flex items-center justify-center border-destructive/10 bg-destructive/15 p-3 text-sm font-medium text-destructive">
       <p>{message}</p>
     </Card>
   )

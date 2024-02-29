@@ -10,7 +10,7 @@ interface DetailCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export const DetailCard = React.forwardRef<HTMLDivElement, DetailCardProps>(
   ({ className, children, headerLabel, ...props }, ref) => {
     return (
-      <div ref={ref} className={cn('h-full pt-10 px-8', className)} {...props}>
+      <div ref={ref} className={cn('h-full px-8 pt-10', className)} {...props}>
         <CardHeader className="text-lg md:text-xl">{headerLabel}</CardHeader>
         <CardContent>{children}</CardContent>
       </div>

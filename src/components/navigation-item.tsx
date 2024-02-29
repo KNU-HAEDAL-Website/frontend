@@ -21,8 +21,8 @@ export const NavigationItem = ({ name, href }: NavigationItemProps) => {
     <Link
       href={href}
       className={cn(
-        'hover:text-slate-300 font-normal pb-1',
-        isActive && 'font-medium border-b',
+        'pb-1 font-normal hover:text-slate-300',
+        isActive && 'border-b font-medium',
       )}
     >
       {name}

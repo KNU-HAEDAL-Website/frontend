@@ -14,10 +14,10 @@ const ActivityPage = () => {
   const boardListData = getBoardListData()
 
   return (
-    <div className="xl:mx-auto max-w-screen-xl">
+    <div className="max-w-screen-xl xl:mx-auto">
       <ActivityList />
       <div className="mx-10 md:mx-20">
-        <Separator className="w-full my-8" />
+        <Separator className="my-8 w-full" />
       </div>
       <BoardList boardListData={boardListData} />
     </div>

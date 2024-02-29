@@ -10,7 +10,7 @@ export const Logo = () => {
         src="/logo.svg"
         alt="logo"
         sizes="100vw"
-        className="w-auto h-full"
+        className="h-full w-auto"
       />
     </Link>
   )

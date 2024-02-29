@@ -36,7 +36,7 @@ export default function Home() {
   }, [selectedPageIndex, setSelectedPage])
 
   return (
-    <div className="h-full xl:mx-auto max-w-screen-xl">
+    <div className="h-full max-w-screen-xl xl:mx-auto">
       {scrollItemList.map((scrollItem) => (
         <ScrollLayout key={scrollItem.key}>{scrollItem.page}</ScrollLayout>
       ))}

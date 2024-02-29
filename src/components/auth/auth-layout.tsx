@@ -7,7 +7,7 @@ interface CardWraperProps {
 
 export const AuthLayout = ({ children, headerTitle }: CardWraperProps) => {
   return (
-    <Card className="shadow-lg w-64 sm:w-80 md:w-96">
+    <Card className="w-64 shadow-lg sm:w-80 md:w-96">
       <CardHeader>
         <CardTitle className="flex justify-center">{headerTitle}</CardTitle>
       </CardHeader>

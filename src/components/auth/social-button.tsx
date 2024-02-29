@@ -6,7 +6,7 @@ export const SocialButton = () => {
   //     // 콜백 URL 추가
   // }
   return (
-    <div className="w-full flex justify-center gap-8">
+    <div className="flex w-full justify-center gap-8">
       <Button
         variant="link"
         size="login"
@@ -19,7 +19,7 @@ export const SocialButton = () => {
           width={0}
           height={0}
           sizes="100vw"
-          className="w-auto h-full"
+          className="h-full w-auto"
         />
       </Button>
     </div>
