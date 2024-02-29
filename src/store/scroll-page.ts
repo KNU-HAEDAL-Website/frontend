@@ -3,8 +3,8 @@ import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
 interface pageProps {
-  selectedPage: string,
-  selectedPageIndex: number,
+  selectedPage: string
+  selectedPageIndex: number
   setSelectedPage: (pageIndex: number) => void
 }
 
@@ -17,6 +17,6 @@ export const usePageStore = create<pageProps>()(
         selectedPage: ScrollPageDB[pageIndex],
         selectedPageIndex: pageIndex,
       }))
-    }
+    },
   })),
 )

@@ -3,12 +3,11 @@ import { useEffect } from 'react'
 
 import { ScrollPageDB } from '@/lib/data'
 import { usePageStore } from '@/store/scroll-page'
-import ScrollLayout from '@/components/mainPage/scroll-layout'
-import TitlePage from '@/components/mainPage/title-page'
-import DetailPage from '@/components/mainPage/detail-page'
-import ActivityPage from '@/components/mainPage/activity-page'
-import SubmitPage from '@/components/mainPage/submit-page'
-
+import ScrollLayout from '@/components/main/scroll-layout'
+import TitlePage from '@/components/main/title-page'
+import DetailPage from '@/components/main/detail-page'
+import ActivityPage from '@/components/main/activity-page'
+import SubmitPage from '@/components/main/submit-page'
 
 const scrollItemList = [
   { page: <TitlePage />, key: ScrollPageDB[0] },
@@ -19,9 +18,9 @@ const scrollItemList = [
 
 export default function Home() {
   const { selectedPageIndex, setSelectedPage } = usePageStore()
-  
+
   useEffect(() => {
-    const handleWheel = (e:WheelEvent) => {
+    const handleWheel = (e: WheelEvent) => {
       if (e.deltaY < 0 && selectedPageIndex > 0) {
         setSelectedPage(selectedPageIndex - 1)
       }
@@ -36,13 +35,10 @@ export default function Home() {
     }
   }, [selectedPageIndex, setSelectedPage])
 
-
   return (
     <div className="h-full xl:mx-auto max-w-screen-xl">
       {scrollItemList.map((scrollItem) => (
-        <ScrollLayout key={scrollItem.key}>
-          {scrollItem.page}
-        </ScrollLayout>
+        <ScrollLayout key={scrollItem.key}>{scrollItem.page}</ScrollLayout>
       ))}
     </div>
   )

@@ -2,7 +2,9 @@
 
 import { useEffect } from 'react'
 
+import { activityDB } from '@/lib/data'
 import { useSemesterStore } from '@/store/semester'
+import { useActivityStore } from '@/store/activity'
 import {
   Pagination,
   PaginationContent,
@@ -22,10 +24,20 @@ export const SemesterList = () => {
     getIndexList,
   } = useSemesterStore()
 
+  const { setSelectedActivityList, setSelectedActivity } = useActivityStore()
+
   useEffect(() => {
     const index = useSemesterStore.getState().getSemesterIndex(selectedSemester)
     setSelectedIndex(index)
-  }, [selectedSemester, setSelectedIndex])
+    // 학기 변경시 activity 초기화
+    setSelectedActivity(activityDB[index].name[0])
+    setSelectedActivityList(index)
+  }, [
+    selectedSemester,
+    setSelectedIndex,
+    setSelectedActivityList,
+    setSelectedActivity,
+  ])
 
   return (
     <Pagination className="py-2">
