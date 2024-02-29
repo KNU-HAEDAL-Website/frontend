@@ -3,5 +3,22 @@
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "all",
-    "plugins": ["prettier-plugin-tailwindcss"]
+    "plugins": ["prettier-plugin-tailwindcss"],
+    "importOrder": [
+        "^react",
+        "^next",
+        "<THIRD_PARTY_MODULES>",
+
+        "^~/store/(.*)$",
+        "^~/schema/(.*)$",
+        "^~/actions/(.*)$",
+        "^~/hook/(.*)$",
+        "^~/lib/(.*)$",
+        "^~/components/(.*)$",
+        "^~/components/ui/(.*)$",
+
+        "^[./]"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true
 }
