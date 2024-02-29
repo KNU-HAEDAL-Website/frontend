@@ -1,5 +1,5 @@
 import { Card, CardHeader } from '@/components/ui/card'
-import { DetailCard } from '@/components/mainPage/detail-card'
+import { DetailCard } from '@/components/main/detail-card'
 
 export default function DetailPage() {
   return (
