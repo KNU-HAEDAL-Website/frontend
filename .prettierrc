@@ -3,7 +3,10 @@
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "all",
-    "plugins": ["prettier-plugin-tailwindcss"],
+    "plugins": [
+        "prettier-plugin-tailwindcss",
+        "@trivago/prettier-plugin-sort-imports"
+    ],
     "importOrder": [
         "^react",
         "^next",
