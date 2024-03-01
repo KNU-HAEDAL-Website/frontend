@@ -1,4 +1,4 @@
-import { BoardListItem } from '@/components/activity/board-list-item'
+import { BoardListItem } from '@/components/board-list-item'
 
 export const BoardList = ({ boardListData }: { boardListData: Board[] }) => {
   return (
