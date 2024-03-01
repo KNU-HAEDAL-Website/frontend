@@ -1,5 +1,5 @@
 import { ActivityList } from '@/components/activity/activity-list'
-import { BoardList } from '@/components/activity/board-list'
+import { BoardList } from '@/components/board-list'
 import { Separator } from '@/components/ui/separator'
 import { boardDB } from '@/lib/data'
 
