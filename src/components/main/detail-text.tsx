@@ -18,7 +18,7 @@ export const DetailText = React.forwardRef<HTMLDivElement, DetailTextProps>(
             {children}
           </div>
         ) : (
-          // 들어갈 내용이 1개 이상일때
+          // 태그가 2줄 이상 필요로 할 때 (감싸는 태그 필요할때)
           <div ref={ref} className="justify-center items-center flex">
             <div className="text-slate-900 text-3xl font-bold font-['Sen'] leading-10">
               {children}
