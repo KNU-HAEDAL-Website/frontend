@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 
 import { BoardListItem } from '@/components/activity/board-list-item'
+import { CreateBoardButton } from '@/components/activity/create-board-button'
 import { PaginationButton } from '@/components/pagination-button'
 import { boardDB, boardPaging } from '@/lib/data'
 
@@ -37,11 +38,16 @@ export const BoardList = ({ viewPage }: { viewPage: number }) => {
           />
         </div>
       ))}
-      <PaginationButton
-        totalPageNum={totalPageNum}
-        currentPage={currentPage}
-        onPageChange={pageChange}
-      />
+      <div className="pb-4 mx-10 flex justify-end md:mx-20">
+        <CreateBoardButton />
+      </div>
+      <div className="pb-6">
+        <PaginationButton
+          totalPageNum={totalPageNum}
+          currentPage={currentPage}
+          onPageChange={pageChange}
+        />
+      </div>
     </div>
   )
 }
