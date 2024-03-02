@@ -1,9 +1,32 @@
-import { BoardListItem } from '@/components/activity/board-list-item'
+'use client'
 
-export const BoardList = ({ boardListData }: { boardListData: Board[] }) => {
+import { useEffect, useState } from 'react'
+
+import { BoardListItem } from '@/components/activity/board-list-item'
+import { PaginationButton } from '@/components/pagination-button'
+import { boardDB, boardPaging } from '@/lib/data'
+
+export const BoardList = ({ viewPage }: { viewPage: number }) => {
+  //DB 연결 전 메타 데이터 사용..
+  const [currentPage, setCurrentPage] = useState(1)
+  const [boards, setBoards] = useState(boardPaging[1])
+  const totalPageNum = Math.ceil(boardDB.length / viewPage)
+
+  const pageChange = async (page: number) => {
+    // const res = await fetch(`/api/semesters/${semesterId}/activities/${activityId}/boards/${pageNum}`)
+    // const newBoards = await res.json()
+    setBoards(boardPaging[page])
+    setCurrentPage(page)
+    console.log(page)
+  }
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [])
+
   return (
     <div>
-      {boardListData.map((board) => (
+      {boards.map((board) => (
         <div key={board.id}>
           <BoardListItem
             id={board.id}
@@ -14,6 +37,11 @@ export const BoardList = ({ boardListData }: { boardListData: Board[] }) => {
           />
         </div>
       ))}
+      <PaginationButton
+        totalPageNum={totalPageNum}
+        currentPage={currentPage}
+        onPageChange={pageChange}
+      />
     </div>
   )
 }
