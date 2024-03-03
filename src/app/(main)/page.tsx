@@ -12,8 +12,8 @@ import { usePageStore } from '@/store/scroll-page'
 
 const scrollItemList = [
   { page: <TitlePage />, key: ScrollPageDB[0] },
-  { page: <DetailPage />, key: ScrollPageDB[1] },
-  { page: <ActivityPage />, key: ScrollPageDB[2] },
+  { page: <ActivityPage />, key: ScrollPageDB[1] },
+  { page: <DetailPage />, key: ScrollPageDB[2] },
   { page: <SubmitPage />, key: ScrollPageDB[3] },
 ]
 
