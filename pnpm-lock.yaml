@@ -47,6 +47,9 @@ dependencies:
   embla-carousel-react:
     specifier: ^8.0.0
     version: 8.0.0(react@18.2.0)
+  lucide:
+    specifier: ^0.349.0
+    version: 0.349.0
   next:
     specifier: 14.1.0
     version: 14.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -3098,6 +3101,10 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /lucide@0.349.0:
+    resolution: {integrity: sha512-7XenV2A1XxChbbW7Bf06R0Al/op4SIvSu0t1MhnOM36AGLDJhAdDlQJ29JLodSZSHm3kD9sCVjEgvzXlAn0VUQ==}
+    dev: false
 
   /merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
