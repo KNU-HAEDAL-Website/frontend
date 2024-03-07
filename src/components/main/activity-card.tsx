@@ -9,7 +9,7 @@ export const ActivityCard = React.forwardRef<HTMLDivElement, ActivityCardProps>(
     return (
       <div
         ref={ref}
-        className="w-[280px] h-80 py-2.5 bg-zinc-900 rounded-[3px] flex-col justify-end items-center gap-2.5 inline-flex"
+        className="w-full h-80 py-2.5 bg-zinc-900 rounded-md flex-col justify-end items-center gap-2.5 inline-flex"
       >
         <div className="justify-center items-center inline-flex">
           <div className="text-center text-zinc-200 text-2xl font-semibold font-['Inter'] uppercase">
