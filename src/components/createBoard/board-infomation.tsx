@@ -17,7 +17,7 @@ export const BoardInfomation = () => {
   ]
 
   return (
-    <div className="flex flex-col items-center gap-2 justify-evenly py-6 md:flex-row md:gap-0">
+    <div className="flex flex-col items-center gap-2 justify-evenly pt-6 pb-4 md:flex-row md:gap-0">
       {infoList.map((info, index) => (
         <div key={index} className="flex items-center gap-4 w-fit">
           <Label className="text-md">{info.label}</Label>
