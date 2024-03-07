@@ -192,3 +192,30 @@ export const boardPaging = [
     },
   ],
 ]
+
+export const BoardMembers = [
+  {
+    name: '김아진',
+    studentId: 2021113989,
+  },
+  {
+    name: '권나예',
+    studentId: 2022110661,
+  },
+  {
+    name: '권다운',
+    studentId: 2021111604,
+  },
+  {
+    name: '김동환',
+    studentId: 2018115540,
+  },
+  {
+    name: '김은정',
+    studentId: 2020112393,
+  },
+  {
+    name: '윤재용',
+    studentId: 2019115578,
+  },
+] satisfies BoardMember[]

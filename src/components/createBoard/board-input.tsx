@@ -1,21 +1,24 @@
 'use client'
 
-import { Label } from "@/components/ui/label"
-import { BoardSchema } from "@/schema"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { 
-  Form, 
-  FormControl, 
-  FormField, 
-  FormItem, 
-  FormMessage
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Separator } from "@/components/ui/separator"
-import { Button } from "@/components/ui/button"
+import { useForm } from 'react-hook-form'
+
+import { Button } from '@/components/ui/button'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Separator } from '@/components/ui/separator'
+import { Textarea } from '@/components/ui/textarea'
+import { BoardSchema } from '@/schema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+
+import { BoardMember } from './board-member'
 
 export const BoardInput = () => {
   const form = useForm<z.infer<typeof BoardSchema>>({
@@ -24,7 +27,7 @@ export const BoardInput = () => {
       title: '',
       intro: '',
       image: new File([], ''),
-    }
+    },
   })
 
   const onSubmit = (values: z.infer<typeof BoardSchema>) => {
@@ -45,10 +48,7 @@ export const BoardInput = () => {
             <FormItem className="flex flex-col md:flex-row md:items-center">
               <Label className="text-md w-40">게시판 제목</Label>
               <FormControl>
-                <Input
-                  placeholder="게시판 제목을 입력해주세요."
-                  {...field}
-                />
+                <Input placeholder="게시판 제목을 입력해주세요." {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -71,7 +71,7 @@ export const BoardInput = () => {
           )}
         />
         <Separator className="my-2 h-[1.5px] bg-secondary w-full" />
-         <FormField
+        <FormField
           control={form.control}
           name="image"
           render={({ field }) => (
@@ -88,22 +88,20 @@ export const BoardInput = () => {
                 />
               </FormControl>
               <FormMessage />
-            </FormItem>            
+            </FormItem>
           )}
         />
         <Separator className="my-2 h-[1.5px] bg-secondary w-full" />
+        <div>
+          {/* form item으로 변경하기 */}
+          <Label className="text-md w-40">게시판 이용자 설정하기</Label>
+          <BoardMember />
+        </div>
         <div className="flex justify-center gap-4">
-          <Button
-            variant='secondary'
-          >
-            취소하기
-          </Button>
-          <Button>
-            저장하기
-          </Button>
+          <Button variant="secondary">취소하기</Button>
+          <Button>저장하기</Button>
         </div>
       </form>
     </Form>
   )
 }
-
