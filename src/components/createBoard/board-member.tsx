@@ -7,7 +7,11 @@ import { useBoardMemberStore } from '@/store/board-member'
 import { Command as CommandPrimitive } from 'cmdk'
 import { X } from 'lucide-react'
 
-export const BoardMember = () => {
+interface boardMemberProps {
+  onChange: (value: BoardMember[]) => void
+}
+
+export const BoardMember = ({ onChange }: boardMemberProps) => {
   const {
     loadBoardCreatorInfo,
     selectedMembers,
@@ -26,6 +30,10 @@ export const BoardMember = () => {
     loadBoardCreatorInfo(2)
     setSelectAbles()
   }, [loadBoardCreatorInfo, setSelectAbles])
+
+  useEffect(() => {
+    onChange(selectedMembers)
+  }, [selectedMembers, onChange])
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLDivElement>) => {

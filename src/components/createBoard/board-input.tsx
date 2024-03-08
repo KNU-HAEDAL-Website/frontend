@@ -2,6 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 
+import { BoardMember } from '@/components/createBoard/board-member'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -18,8 +19,6 @@ import { BoardSchema } from '@/schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import { BoardMember } from './board-member'
-
 export const BoardInput = () => {
   const form = useForm<z.infer<typeof BoardSchema>>({
     resolver: zodResolver(BoardSchema),
@@ -27,6 +26,7 @@ export const BoardInput = () => {
       title: '',
       intro: '',
       image: new File([], ''),
+      member: [],
     },
   })
 
@@ -77,7 +77,7 @@ export const BoardInput = () => {
           render={({ field }) => (
             <FormItem className="flex flex-col md:flex-row md:items-center">
               <Label className="text-md w-40">게시판 대표 사진</Label>
-              <FormControl className="h-8">
+              <FormControl className="h-8 cursor-pointer">
                 <Input
                   accept=".png, .jpeg"
                   type="file"
@@ -92,12 +92,20 @@ export const BoardInput = () => {
           )}
         />
         <Separator className="my-2 h-[1.5px] bg-secondary w-full" />
-        <div>
-          {/* form item으로 변경하기 */}
-          <Label className="text-md w-40">게시판 이용자 설정하기</Label>
-          <BoardMember />
-        </div>
-        <div className="flex justify-center gap-4">
+        <FormField
+          control={form.control}
+          name="member"
+          render={({ field }) => (
+            <FormItem className="flex flex-col gap-2">
+              <Label className="text-md w-40">게시판 이용자 설정하기</Label>
+              <FormControl className="h-8 cursor-pointer">
+                <BoardMember onChange={field.onChange} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <div className="mt-10 flex justify-center gap-4">
           <Button variant="secondary">취소하기</Button>
           <Button>저장하기</Button>
         </div>
