@@ -37,9 +37,15 @@ export const useBoardMemberStore = create<boardMemberProps>()((set, get) => ({
   selectAbles: [],
   setSelectAbles: () => {
     set((value) => {
-      const selectAbleMembers = userDB.filter(
-        (member) => !value.selectedMembers.includes(member),
+      const selectedMemberIds = value.selectedMembers.map(
+        (member) => member.studentId,
       )
+      const selectAbleMembers: BoardMember[] = userDB
+        .filter((member) => !selectedMemberIds.includes(member.studentId))
+        .map((member) => ({
+          name: member.name,
+          studentId: member.studentId,
+        }))
 
       return { selectAbles: selectAbleMembers }
     })
