@@ -6,4 +6,15 @@ type Board = {
   user?: string
 }
 
-type BoardMember = Record<'name' | 'studentId', string | number>
+// type BoardMember = Record<'name' | 'studentId', string | number>
+
+type BoardMember = {
+  name: string
+  studentId: number
+}
+
+type User = {
+  studentId: number
+  name: string
+  gradeId: number
+}

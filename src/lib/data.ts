@@ -193,29 +193,45 @@ export const boardPaging = [
   ],
 ]
 
-export const BoardMembers = [
+export const userDB = [
   {
-    name: '김아진',
     studentId: 2021113989,
+    name: '김아진',
+    gradeId: 0,
   },
   {
-    name: '권나예',
     studentId: 2022110661,
+    name: '권나예',
+    gradeId: 0,
   },
   {
-    name: '권다운',
     studentId: 2021111604,
+    name: '권다운',
+    gradeId: 0,
   },
   {
-    name: '김동환',
     studentId: 2018115540,
+    name: '김동환',
+    gradeId: 0,
   },
   {
-    name: '김은정',
     studentId: 2020112393,
+    name: '김은정',
+    gradeId: 0,
   },
   {
-    name: '윤재용',
     studentId: 2019115578,
+    name: '윤재용',
+    gradeId: 0,
   },
-] satisfies BoardMember[]
+  {
+    studentId: 2021123456,
+    name: '주보경',
+    gradeId: 1,
+  },
+  {
+    studentId: 2018123456,
+    name: '김강민',
+    gradeId: 1,
+  },
+] satisfies User[]
