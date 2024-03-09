@@ -1,15 +1,15 @@
-import { FooterPage } from '@/components/footer-page'
+import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex h-screen flex-col">
-      <div className="sticky top-0 w-full bg-primary px-12 text-white lg:px-24">
+    <div className="h-screen flex flex-col">
+      <div className="fixed top-0 w-full bg-primary px-12 text-white z-100 lg:px-24">
         <Header />
       </div>
-      <main className="h-full w-full overflow-auto">{children}</main>
       <div>
-        <FooterPage />
+        <main className="overflow-x-hidden">{children}</main>
+        <Footer />
       </div>
     </div>
   )
