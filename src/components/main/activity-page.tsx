@@ -1,4 +1,3 @@
-import { ActivityCard } from '@/components/main/activity-card'
 import { ActivityNavBar } from '@/components/main/activity-nav-bar'
 import { ActivityViewer } from '@/components/main/activity-viewer'
 

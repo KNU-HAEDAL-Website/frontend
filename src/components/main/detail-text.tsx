@@ -9,7 +9,7 @@ export const DetailText = React.forwardRef<HTMLDivElement, DetailTextProps>(
   ({ children, line }, ref) => {
     return (
       <>
-      {/* 태그가 1줄만 필요할 때 */}
+        {/* 태그가 1줄만 필요할 때 */}
         {line === '1' ? (
           <div
             ref={ref}
