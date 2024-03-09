@@ -22,6 +22,8 @@ const buttonVariants = cva(
         secondLink: 'text-third underline-offset-4 hover:underline',
         /** Mainpage - 지원하기 button */
         apply: 'bg-amber-300 hover:bg-amber-400',
+        /** createBoardPage 멤버 삭제 button */
+        ring: 'ring-offset-background rounded-full outline-none',
       },
       size: {
         default: 'h-9 px-4 py-2',
@@ -33,6 +35,8 @@ const buttonVariants = cva(
         login: 'h-9',
         /** Mainpage - 지원하기 button */
         apply: 'h-14 px-12 py-4 rounded-none',
+        /** createBoardPage 멤버 삭제 button */
+        iconWithLabel: 'ml-1',
       },
     },
     defaultVariants: {

@@ -1,6 +1,5 @@
 import { semesterDB } from '@/lib/data'
 import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
 
 interface semesterProps {
   selectedSemester: string
@@ -13,46 +12,44 @@ interface semesterProps {
   getSemesterIndex: (semester: string) => number
 }
 
-export const useSemesterStore = create<semesterProps>()(
-  devtools((set) => ({
-    selectedSemester: semesterDB[1],
-    seletedIndex: 1,
-    setSeletedSemester: (value) => set(() => ({ selectedSemester: value })),
-    setSelectedIndex: (index) => set(() => ({ seletedIndex: index })),
-    setPreviousSemester: () => {
-      set((value) => {
-        const index = value.getSemesterIndex(value.selectedSemester)
-        const previousIndex = index > 0 ? index - 1 : 0
+export const useSemesterStore = create<semesterProps>()((set) => ({
+  selectedSemester: semesterDB[1],
+  seletedIndex: 1,
+  setSeletedSemester: (value) => set(() => ({ selectedSemester: value })),
+  setSelectedIndex: (index) => set(() => ({ seletedIndex: index })),
+  setPreviousSemester: () => {
+    set((value) => {
+      const index = value.getSemesterIndex(value.selectedSemester)
+      const previousIndex = index > 0 ? index - 1 : 0
 
-        return { selectedSemester: semesterDB[previousIndex] }
-      })
-    },
-    setNextSemester: () => {
-      set((value) => {
-        const index = value.getSemesterIndex(value.selectedSemester)
-        const n = semesterDB.length - 1
-        const nextIndex = index < n ? index + 1 : n
+      return { selectedSemester: semesterDB[previousIndex] }
+    })
+  },
+  setNextSemester: () => {
+    set((value) => {
+      const index = value.getSemesterIndex(value.selectedSemester)
+      const n = semesterDB.length - 1
+      const nextIndex = index < n ? index + 1 : n
 
-        return { selectedSemester: semesterDB[nextIndex] }
-      })
-    },
-    getIndexList: (index, range) => {
-      let start = Math.max(0, index - range)
-      let end = Math.min(semesterDB.length - 1, index + range)
+      return { selectedSemester: semesterDB[nextIndex] }
+    })
+  },
+  getIndexList: (index, range) => {
+    let start = Math.max(0, index - range)
+    let end = Math.min(semesterDB.length - 1, index + range)
 
-      if (index < range) {
-        end = range * 2
-      }
-      if (index >= semesterDB.length - range) {
-        start = semesterDB.length - 1 - range * 2
-      }
+    if (index < range) {
+      end = range * 2
+    }
+    if (index >= semesterDB.length - range) {
+      start = semesterDB.length - 1 - range * 2
+    }
 
-      return semesterDB.slice(start, end + 1)
-    },
-    getSemesterIndex: (semester) => {
-      const index = semesterDB.findIndex((p) => p === semester)
+    return semesterDB.slice(start, end + 1)
+  },
+  getSemesterIndex: (semester) => {
+    const index = semesterDB.findIndex((p) => p === semester)
 
-      return index
-    },
-  })),
-)
+    return index
+  },
+}))
