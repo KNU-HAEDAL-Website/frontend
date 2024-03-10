@@ -21,15 +21,20 @@ import {
 } from '@/components/ui/table'
 import { postlistDB } from '@/lib/data'
 import { cn } from '@/lib/utils'
+import { CaretSortIcon } from '@radix-ui/react-icons'
 import {
   ColumnDef,
   ColumnFiltersState,
+  SortingState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
+
+import { Button } from '../ui/button'
 
 const data = postlistDB
 const columns: ColumnDef<Post>[] = [
@@ -47,7 +52,18 @@ const columns: ColumnDef<Post>[] = [
   },
   {
     accessorKey: 'createdAt',
-    header: '작성일',
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+          className="text-xs md:text-sm"
+        >
+          작성일
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
     cell: ({ row }) => {
       const date: Date = row.getValue('createdAt')
 
@@ -56,7 +72,18 @@ const columns: ColumnDef<Post>[] = [
   },
   {
     accessorKey: 'activitedAt',
-    header: '활동일',
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+          className="text-xs md:text-sm"
+        >
+          활동일
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
     cell: ({ row }) => {
       const date: Date = row.getValue('activitedAt')
 
@@ -65,7 +92,18 @@ const columns: ColumnDef<Post>[] = [
   },
   {
     accessorKey: 'view',
-    header: '조회수',
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+          className="text-xs md:text-sm"
+        >
+          조회수
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
     cell: ({ row }) => (
       <div className="text-center">{row.getValue('view')}</div>
     ),
@@ -73,6 +111,7 @@ const columns: ColumnDef<Post>[] = [
 ]
 
 export const PostBoard = () => {
+  const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [pagination, setPagination] = useState({
     pageIndex: 0,
@@ -83,12 +122,15 @@ export const PostBoard = () => {
     columns,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
     onPaginationChange: setPagination,
+    onSortingChange: setSorting,
     state: {
       columnFilters,
       pagination,
+      sorting,
     },
   })
 
