@@ -14,7 +14,17 @@ type BoardMember = {
 }
 
 type User = {
+  userId: number
   studentId: number
   name: string
   gradeId: number
+}
+
+type Post = {
+  id: number
+  title: string
+  user: string
+  activitedAt: Date
+  createdAt: Date
+  view: number
 }
