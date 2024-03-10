@@ -4,6 +4,14 @@ import { useState } from 'react'
 
 import { Input } from '@/components/ui/input'
 import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination'
+import {
   Table,
   TableBody,
   TableCell,
@@ -12,12 +20,14 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { postlistDB } from '@/lib/data'
+import { cn } from '@/lib/utils'
 import {
   ColumnDef,
   ColumnFiltersState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from '@tanstack/react-table'
 
@@ -64,16 +74,28 @@ const columns: ColumnDef<Post>[] = [
 
 export const PostBoard = () => {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 10,
+  })
   const table = useReactTable({
     data,
     columns,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    onPaginationChange: setPagination,
     state: {
       columnFilters,
+      pagination,
     },
   })
+
+  const pageNumList = Array.from(
+    { length: table.getPageCount() },
+    (_, i) => i + 1,
+  )
 
   return (
     <div>
@@ -118,6 +140,49 @@ export const PostBoard = () => {
             table.getColumn('user')?.setFilterValue(e.target.value)
           }
         />
+      </div>
+      <div>
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                onClick={() => table.previousPage()}
+                aria-disabled={!table.getCanPreviousPage()}
+                className={cn(
+                  !table.getCanPreviousPage()
+                    ? 'pointer-events-none opacity-50'
+                    : '',
+                )}
+              />
+            </PaginationItem>
+            {pageNumList.map((pageNum) => {
+              const isActive =
+                pageNum === table.getState().pagination.pageIndex + 1
+
+              return (
+                <PaginationItem key={pageNum}>
+                  <PaginationLink
+                    onClick={() => table.setPageIndex(pageNum - 1)}
+                    isActive={isActive}
+                  >
+                    {pageNum}
+                  </PaginationLink>
+                </PaginationItem>
+              )
+            })}
+            <PaginationItem>
+              <PaginationNext
+                onClick={() => table.nextPage()}
+                aria-disabled={!table.getCanNextPage()}
+                className={cn(
+                  !table.getCanNextPage()
+                    ? 'pointer-events-none opacity-50'
+                    : '',
+                )}
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
     </div>
   )
