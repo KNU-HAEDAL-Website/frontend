@@ -195,43 +195,94 @@ export const boardPaging = [
 
 export const userDB = [
   {
+    userId: 0,
     studentId: 2021113989,
     name: '김아진',
     gradeId: 0,
   },
   {
+    userId: 1,
     studentId: 2022110661,
     name: '권나예',
     gradeId: 0,
   },
   {
+    userId: 2,
     studentId: 2021111604,
     name: '권다운',
     gradeId: 0,
   },
   {
+    userId: 3,
     studentId: 2018115540,
     name: '김동환',
     gradeId: 0,
   },
   {
+    userId: 4,
     studentId: 2020112393,
     name: '김은정',
     gradeId: 0,
   },
   {
+    userId: 5,
     studentId: 2019115578,
     name: '윤재용',
     gradeId: 0,
   },
   {
+    userId: 6,
     studentId: 2021123456,
     name: '주보경',
     gradeId: 1,
   },
   {
+    userId: 7,
     studentId: 2018123456,
     name: '김강민',
     gradeId: 1,
   },
 ] satisfies User[]
+
+export const postlistDB = [
+  {
+    id: 0,
+    title: '첫번째 게시물 테스트',
+    user: '김아진',
+    activitedAt: new Date('2024-03-10'),
+    createdAt: new Date('2024-03-11'),
+    view: 1230,
+  },
+  {
+    id: 1,
+    title: '두번째 게시물 테스트',
+    user: '김아진',
+    activitedAt: new Date('2024-03-11'),
+    createdAt: new Date('2024-03-12'),
+    view: 120,
+  },
+  {
+    id: 2,
+    title: '세번째 게시물 테스트',
+    user: '권나예',
+    activitedAt: new Date('2024-03-11'),
+    createdAt: new Date('2024-03-11'),
+    view: 10,
+  },
+  {
+    id: 3,
+    title: '네번째 게시물 테스트',
+    user: '권나예',
+    activitedAt: new Date('2024-03-12'),
+    createdAt: new Date('2024-03-12'),
+    view: 12,
+  },
+  {
+    id: 4,
+    title: '다섯번째 게시물 테스트',
+    user: '김은정',
+    activitedAt: new Date('2024-03-13'),
+    createdAt: new Date('2024-03-13'),
+    view: 30,
+  },
+] satisfies Post[]
