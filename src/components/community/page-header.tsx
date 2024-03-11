@@ -6,7 +6,7 @@ import { navLinks } from '@/lib/data'
 interface pageHeaderProps {
   navName: string
   pageName: string
-  pageLink: string
+  pageLink?: string
   detail?: Board
 }
 
