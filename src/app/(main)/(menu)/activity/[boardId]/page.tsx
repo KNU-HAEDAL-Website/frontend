@@ -27,7 +27,7 @@ const ActivityBoardPage = ({ params }: { params: { boardId: string } }) => {
         detail={board}
       />
       {/* 임의로 상수 데이터 삽입 */}
-      <PostBoard data={postlistDB} />
+      <PostBoard data={postlistDB} boardId={board.id} />
     </div>
   )
 }

@@ -5,9 +5,10 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import { BoardListItem } from '@/components/activity/board-list-item'
-import { CreateBoardButton } from '@/components/activity/create-board-button'
 import { PaginationButton } from '@/components/pagination-button'
 import { boardDB, boardPaging } from '@/lib/data'
+
+import { CreateBoardButton } from './create-board-button'
 
 export const BoardList = ({ viewPage }: { viewPage: number }) => {
   //DB 연결 전 메타 데이터 사용..

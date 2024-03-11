@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 
+import { CreatePostButton } from '@/components/community/create-post-button'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -107,7 +108,12 @@ const columns: ColumnDef<Post>[] = [
   },
 ]
 
-export const PostBoard = ({ data }: { data: Post[] }) => {
+interface postBoardProps {
+  data: Post[]
+  boardId: number
+}
+
+export const PostBoard = ({ data, boardId }: postBoardProps) => {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [pagination, setPagination] = useState({
@@ -179,6 +185,9 @@ export const PostBoard = ({ data }: { data: Post[] }) => {
             table.getColumn('user')?.setFilterValue(e.target.value)
           }
         />
+      </div>
+      <div className="pt-4 flex justify-end ">
+        <CreatePostButton boardId={boardId} />
       </div>
       <div>
         <Pagination>
