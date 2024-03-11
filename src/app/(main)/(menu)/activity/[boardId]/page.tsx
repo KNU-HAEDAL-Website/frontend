@@ -1,3 +1,4 @@
+import { PageHeader } from '@/components/community/page-header'
 import { boardDB } from '@/lib/data'
 
 const getData = (boardId: string) => {
@@ -15,9 +16,17 @@ const getData = (boardId: string) => {
 }
 
 const ActivityBoardPage = ({ params }: { params: { boardId: string } }) => {
-  const post = getData(params.boardId)
+  const board: Board = getData(params.boardId)
 
-  return <div>{JSON.stringify(post)}</div>
+  return (
+    <div className="max-w-screen-xl xl:mx-auto">
+      <PageHeader
+        navName="Activity"
+        pageName={`${board.name} 게시판`}
+        detail={board}
+      />
+    </div>
+  )
 }
 
 export default ActivityBoardPage

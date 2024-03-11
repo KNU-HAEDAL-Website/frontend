@@ -4,6 +4,7 @@ type Board = {
   intro?: string
   image?: string
   user?: string
+  personnel?: BoardMember[]
 }
 
 // type BoardMember = Record<'name' | 'studentId', string | number>
