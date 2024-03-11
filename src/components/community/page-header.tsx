@@ -1,20 +1,15 @@
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb'
+import { PageHeaderBreadcrumb } from '@/components/community/page-header-breadcrumb'
+import { PageHeaderDetail } from '@/components/community/page-header-detail'
 import { Separator } from '@/components/ui/separator'
 import { navLinks } from '@/lib/data'
 
 interface pageHeaderProps {
   navName: string
   pageName: string
+  detail?: Board
 }
 
-export const PageHeader = ({ navName, pageName }: pageHeaderProps) => {
+export const PageHeader = ({ navName, pageName, detail }: pageHeaderProps) => {
   const navLink = navLinks.find((nav) => nav.name == navName)?.href
 
   if (!navLink) {
@@ -25,21 +20,14 @@ export const PageHeader = ({ navName, pageName }: pageHeaderProps) => {
   return (
     <div className="px-8 md:px-20">
       <Separator className="mt-8 w-full h-[1.5px]" />
-      <Breadcrumb className="my-5">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href={navLink}>{navName}</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>{pageName}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+      <div className="my-5">
+        <PageHeaderBreadcrumb
+          navName={navName}
+          navLink={navLink}
+          pageName={pageName}
+        />
+        {!!detail && <PageHeaderDetail detail={detail} />}
+      </div>
       <Separator className="w-full h-[1.5px]" />
     </div>
   )

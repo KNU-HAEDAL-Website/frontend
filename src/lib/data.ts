@@ -46,9 +46,24 @@ export const boardDB = [
   {
     id: 0,
     name: '웹 아장아장',
-    intro: '일단 테스트용',
+    intro:
+      'what ? 각자 공부한 것 자신의 페이지에 정리 or 인증하기 (본인의 노션에 적고 옮겨와도 됨!) 그냥 공부를 했구나 인증용으로만 미팅 인증 사진, 각자 모르는 것 질문 & 피드백',
     image: '/imageDB/board-0.jpeg',
     user: '주보경',
+    personnel: [
+      {
+        name: '주보경',
+        studentId: 2021123456,
+      },
+      {
+        name: '김아진',
+        studentId: 2021113989,
+      },
+      {
+        name: '조대성',
+        studentId: 2017110758,
+      },
+    ],
   },
   {
     id: 1,
@@ -113,7 +128,7 @@ export const boardDB = [
     image: '/imageDB/board-2.png',
     user: '권다운',
   },
-]
+] satisfies Board[]
 
 export const boardPaging = [
   [],
@@ -241,6 +256,12 @@ export const userDB = [
     studentId: 2018123456,
     name: '김강민',
     gradeId: 1,
+  },
+  {
+    userId: 8,
+    studentId: 2017110758,
+    name: '조대성',
+    gradeId: 0,
   },
 ] satisfies User[]
 

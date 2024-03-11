@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+import { CreatePostButton } from '@/components/community/create-post-button'
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
   Pagination,
@@ -19,7 +21,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { postlistDB } from '@/lib/data'
 import { cn } from '@/lib/utils'
 import { CaretSortIcon } from '@radix-ui/react-icons'
 import {
@@ -34,9 +35,6 @@ import {
   useReactTable,
 } from '@tanstack/react-table'
 
-import { Button } from '../ui/button'
-
-const data = postlistDB
 const columns: ColumnDef<Post>[] = [
   {
     accessorKey: 'title',
@@ -110,7 +108,12 @@ const columns: ColumnDef<Post>[] = [
   },
 ]
 
-export const PostBoard = () => {
+interface postBoardProps {
+  data: Post[]
+  boardId: number
+}
+
+export const PostBoard = ({ data, boardId }: postBoardProps) => {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [pagination, setPagination] = useState({
@@ -140,7 +143,7 @@ export const PostBoard = () => {
   )
 
   return (
-    <div>
+    <div className="py-10 px-8 md:px-20">
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -182,6 +185,9 @@ export const PostBoard = () => {
             table.getColumn('user')?.setFilterValue(e.target.value)
           }
         />
+      </div>
+      <div className="pt-4 flex justify-end ">
+        <CreatePostButton boardId={boardId} />
       </div>
       <div>
         <Pagination>

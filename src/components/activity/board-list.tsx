@@ -2,10 +2,13 @@
 
 import { useEffect, useState } from 'react'
 
+import Link from 'next/link'
+
 import { BoardListItem } from '@/components/activity/board-list-item'
-import { CreateBoardButton } from '@/components/activity/create-board-button'
 import { PaginationButton } from '@/components/pagination-button'
 import { boardDB, boardPaging } from '@/lib/data'
+
+import { CreateBoardButton } from './create-board-button'
 
 export const BoardList = ({ viewPage }: { viewPage: number }) => {
   //DB 연결 전 메타 데이터 사용..
@@ -28,7 +31,7 @@ export const BoardList = ({ viewPage }: { viewPage: number }) => {
   return (
     <div>
       {boards.map((board) => (
-        <div key={board.id}>
+        <Link key={board.id} href={`/activity/${board.id}`}>
           <BoardListItem
             id={board.id}
             name={board.name}
@@ -36,7 +39,7 @@ export const BoardList = ({ viewPage }: { viewPage: number }) => {
             image={board.image}
             user={board.user}
           />
-        </div>
+        </Link>
       ))}
       <div className="pb-4 mx-10 flex justify-end md:mx-20">
         <CreateBoardButton />
