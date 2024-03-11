@@ -1,5 +1,6 @@
 import { PageHeader } from '@/components/community/page-header'
-import { boardDB } from '@/lib/data'
+import { PostBoard } from '@/components/community/post-board'
+import { boardDB, postlistDB } from '@/lib/data'
 
 const getData = (boardId: string) => {
   // const res = await fetch(`/api/boards/{boardId}/posts`)
@@ -25,6 +26,8 @@ const ActivityBoardPage = ({ params }: { params: { boardId: string } }) => {
         pageName={`${board.name} 게시판`}
         detail={board}
       />
+      {/* 임의로 상수 데이터 삽입 */}
+      <PostBoard data={postlistDB} />
     </div>
   )
 }
