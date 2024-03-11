@@ -13,14 +13,14 @@ export const DetailText = React.forwardRef<HTMLDivElement, DetailTextProps>(
         {line === '1' ? (
           <div
             ref={ref}
-            className="text-slate-900 text-3xl font-bold font-['Sen'] leading-10"
+            className="text-slate-900 md:text-3xl text-2xl font-bold font-['Sen'] leading-10"
           >
             {children}
           </div>
         ) : (
           // 태그가 2줄 이상 필요로 할 때 (감싸는 태그 필요할때)
           <div ref={ref} className="justify-center items-center flex">
-            <div className="text-slate-900 text-3xl font-bold font-['Sen'] leading-10">
+            <div className="text-slate-900 md:text-3xl text-2xl font-bold font-['Sen'] leading-10">
               {children}
             </div>
           </div>
