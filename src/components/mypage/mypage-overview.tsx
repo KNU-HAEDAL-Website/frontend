@@ -20,7 +20,7 @@ export function MypageOverview() {
           </div>
         </button>
       </div>
-      <div className="self-stretch py-[30px] border-b border-stone-300 justify-center items-center md:gap-[70px] gap-[60px] inline-flex">
+      <div className="self-stretch py-[30px] border-b border-stone-300 justify-center items-center md:gap-[70px] gap-8 inline-flex">
         <div className="justify-start items-center gap-2.5 flex">
           <div className="text-slate-900 md:text-[32px] text-xl font-semibold font-['Inter']">
             소셜 정보
