@@ -1,4 +1,4 @@
-// import { Footer } from '@/components/footer'
+import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
@@ -9,7 +9,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
       <div>
         <main className="overflow-x-hidden">{children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </div>
   )
