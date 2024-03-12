@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export const FooterSocial = () => {
   return (
-    <div className="md:flex hidden justify-start items-start gap-5">
+    <div className="flex justify-start items-start gap-5">
       <div className="relative">
         {/* <Link href=" 주소"> */}
         <Image
