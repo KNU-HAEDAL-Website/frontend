@@ -36,4 +36,4 @@ yarn-error.log*
 next-env.d.ts
 
 # demos
-/src/components/community/data-table-demo.tsx
+/src/components/demo
