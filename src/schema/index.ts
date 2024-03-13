@@ -29,3 +29,15 @@ export const BoardSchema = z.object({
   }),
   member: z.array(BoardMemberShema),
 })
+
+export const PostSchema = z.object({
+  title: z.string(),
+  activityDate: z.object({
+    from: z.date(),
+    to: z.date(),
+  }),
+  content: z.string(),
+  image: z.instanceof(File).refine((f) => f.size < 5000000, {
+    message: '파일 크기는 5MB 이하만 가능합니다.',
+  }),
+})
