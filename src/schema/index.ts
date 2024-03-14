@@ -29,3 +29,24 @@ export const BoardSchema = z.object({
   }),
   member: z.array(BoardMemberShema),
 })
+
+export const PostSchema = z.object({
+  title: z.string().min(1, {
+    message: '게시판 제목이 비어있습니다.',
+  }),
+  activityDate: z
+    .object(
+      {
+        from: z.date().optional(),
+        to: z.date().optional(),
+      },
+      { required_error: '활동 날짜가 비어있습니다.' },
+    )
+    .refine((date) => {
+      return !!date.from
+    }, '활동 날짜가 비어있습니다.'),
+  content: z.string(),
+  image: z.instanceof(File).refine((f) => f.size < 5000000, {
+    message: '파일 크기는 5MB 이하만 가능합니다.',
+  }),
+})

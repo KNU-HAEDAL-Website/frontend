@@ -11,12 +11,14 @@ interface pageHeaderBreadcrumbProps {
   navName: string
   pageName: string
   navLink: string
+  pageLink?: string
 }
 
 export const PageHeaderBreadcrumb = ({
   navName,
   navLink,
   pageName,
+  pageLink,
 }: pageHeaderBreadcrumbProps) => {
   return (
     <Breadcrumb className="mb-5">
@@ -30,7 +32,13 @@ export const PageHeaderBreadcrumb = ({
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage>{pageName}</BreadcrumbPage>
+          {pageLink ? (
+            <BreadcrumbLink href={pageLink} className="text-primary">
+              {pageName}
+            </BreadcrumbLink>
+          ) : (
+            <BreadcrumbPage>{pageName}</BreadcrumbPage>
+          )}
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

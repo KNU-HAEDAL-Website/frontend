@@ -6,10 +6,16 @@ import { navLinks } from '@/lib/data'
 interface pageHeaderProps {
   navName: string
   pageName: string
+  pageLink?: string
   detail?: Board
 }
 
-export const PageHeader = ({ navName, pageName, detail }: pageHeaderProps) => {
+export const PageHeader = ({
+  navName,
+  pageName,
+  pageLink,
+  detail,
+}: pageHeaderProps) => {
   const navLink = navLinks.find((nav) => nav.name == navName)?.href
 
   if (!navLink) {
@@ -25,6 +31,7 @@ export const PageHeader = ({ navName, pageName, detail }: pageHeaderProps) => {
           navName={navName}
           navLink={navLink}
           pageName={pageName}
+          pageLink={pageLink}
         />
         {!!detail && <PageHeaderDetail detail={detail} />}
       </div>
