@@ -7,7 +7,6 @@ import { BlockNoteView } from '@blocknote/react'
 import '@blocknote/react/style.css'
 
 async function saveToStorage(jsonBlocks: Block[]) {
-  /** 나중에 DB에 저장하기 */
   localStorage.setItem('editorContent', JSON.stringify(jsonBlocks))
 }
 

@@ -34,7 +34,7 @@ export const PostSchema = z.object({
   title: z.string(),
   activityDate: z.object({
     from: z.date(),
-    to: z.date(),
+    to: z.date().optional(),
   }),
   content: z.string(),
   image: z.instanceof(File).refine((f) => f.size < 5000000, {
