@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useState } from 'react'
 
+import { usePathname } from 'next/navigation'
+
 import { Block, BlockNoteEditor, PartialBlock } from '@blocknote/core'
 import { BlockNoteView } from '@blocknote/react'
 import '@blocknote/react/style.css'
@@ -17,6 +19,7 @@ async function loadFromStorage() {
 }
 
 export const PostEditor = () => {
+  const pathname = usePathname()
   const [initialContent, setInitialContent] = useState<
     'loading' | PartialBlock[] | undefined
   >('loading')
@@ -26,6 +29,19 @@ export const PostEditor = () => {
       setInitialContent(content)
     })
   }, [])
+
+  useEffect(() => {
+    const lastPath = sessionStorage.getItem('lastPath')
+    sessionStorage.setItem('lastPath', pathname)
+
+    if (lastPath && lastPath !== pathname) {
+      const resetContent = () => {
+        localStorage.removeItem('editorContent')
+      }
+      resetContent()
+    }
+    console.log(lastPath, pathname)
+  }, [pathname])
 
   const editor = useMemo(() => {
     if (initialContent === 'loading') {
