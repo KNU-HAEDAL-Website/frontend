@@ -40,7 +40,6 @@ export const PostEditor = () => {
       }
       resetContent()
     }
-    console.log(lastPath, pathname)
   }, [pathname])
 
   const editor = useMemo(() => {

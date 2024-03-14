@@ -5,7 +5,13 @@ import { useForm } from 'react-hook-form'
 import { PostEditor } from '@/components/community/post-editor'
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
-import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import {
@@ -24,27 +30,33 @@ export const PostInput = () => {
     resolver: zodResolver(PostSchema),
     defaultValues: {
       title: '',
-      activityDate: {},
+      activityDate: {
+        from: undefined,
+        to: undefined,
+      },
       content: '',
       image: new File([], ''),
     },
   })
 
-  const onSubmit = (values: z.infer<typeof PostSchema>) => {
+  const onClick = () => {
+    console.log(form.formState.errors)
     form.register('content')
-
     const storedContent = localStorage.getItem('editorContent')
     if (storedContent) {
       form.setValue('content', storedContent)
     }
+    form.handleSubmit(onSubmit)()
+  }
 
+  const onSubmit = (values: z.infer<typeof PostSchema>) => {
     console.log(values)
   }
 
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={(e) => e.preventDefault()}
         className="flex flex-col px-8 gap-4 md:px-20"
       >
         <FormField
@@ -56,6 +68,7 @@ export const PostInput = () => {
               <FormControl>
                 <Input placeholder="게시글 제목을 입력해주세요." {...field} />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -90,12 +103,13 @@ export const PostInput = () => {
                   <PopoverContent>
                     <Calendar
                       mode="range"
-                      selected={field.value}
+                      selected={{ from: field.value.from!, to: field.value.to }}
                       onSelect={field.onChange}
                     />
                   </PopoverContent>
                 </Popover>
               </div>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -123,10 +137,11 @@ export const PostInput = () => {
                   }
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
-        <Button>저장하기</Button>
+        <Button onClick={onClick}>저장하기</Button>
       </form>
     </Form>
   )
