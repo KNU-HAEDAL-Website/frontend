@@ -1,6 +1,6 @@
-import { MypageInfo } from '@/components/mypage/mypage-info'
-import { MypageOverview } from '@/components/mypage/mypage-overview'
-import { MypageProfile } from '@/components/mypage/mypage-profile'
+import { MypageInfo } from './_components/mypage-info'
+import { MypageOverview } from './_components/mypage-overview'
+import { MypageProfile } from './_components/mypage-profile'
 
 const ProfilePage = () => {
   return (
