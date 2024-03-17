@@ -1,7 +1,8 @@
 'use client'
 
-import { ActiveButton } from '@/components/activity/active-button'
 import { useActivityStore } from '@/store/activity'
+
+import { ActiveButton } from './active-button'
 
 export const ActivityListItem = ({
   activityItems,

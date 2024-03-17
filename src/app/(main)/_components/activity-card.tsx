@@ -1,10 +1,10 @@
-import React from 'react'
+import { forwardRef } from "react"
 
 interface ActivityCardProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string
 }
 
-export const ActivityCard = React.forwardRef<HTMLDivElement, ActivityCardProps>(
+export const ActivityCard = forwardRef<HTMLDivElement, ActivityCardProps>(
   ({ title }, ref) => {
     return (
       <div

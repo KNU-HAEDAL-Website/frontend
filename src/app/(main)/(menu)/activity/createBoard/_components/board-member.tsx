@@ -1,11 +1,15 @@
 import { KeyboardEvent, useCallback, useEffect, useRef, useState } from 'react'
-
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Command, CommandGroup, CommandItem } from '@/components/ui/command'
-import { useBoardMemberStore } from '@/store/board-member'
 import { Command as CommandPrimitive } from 'cmdk'
 import { X } from 'lucide-react'
+
+import { useBoardMemberStore } from '@/store/board-member'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { 
+  Command, 
+  CommandGroup, 
+  CommandItem 
+} from '@/components/ui/command'
 
 interface boardMemberProps {
   onChange: (value: BoardMember[]) => void

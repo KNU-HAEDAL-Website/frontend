@@ -1,7 +1,7 @@
-import ActivityPage from '@/components/main/activity-page'
-import DetailPage from '@/components/main/detail-page'
-import SubmitPage from '@/components/main/submit-page'
-import TitlePage from '@/components/main/title-page'
+import ActivityPage from './_components/activity-page'
+import DetailPage from './_components/detail-page'
+import SubmitPage from './_components/submit-page'
+import TitlePage from './_components/title-page'
 
 export default function Home() {
   const mainItemList = [

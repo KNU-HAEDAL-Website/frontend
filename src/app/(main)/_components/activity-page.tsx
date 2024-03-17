@@ -1,5 +1,5 @@
-import { ActivityNavBar } from '@/components/main/activity-nav-bar'
-import { ActivityViewer } from '@/components/main/activity-viewer'
+import { ActivityNavBar } from './activity-nav-bar'
+import { ActivityViewer } from './activity-viewer'
 
 export default function ActivityPage() {
   return (

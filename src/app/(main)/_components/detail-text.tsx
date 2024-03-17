@@ -1,11 +1,11 @@
-import React from 'react'
+import { forwardRef } from "react"
 
 interface DetailTextProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
   line: string
 }
 
-export const DetailText = React.forwardRef<HTMLDivElement, DetailTextProps>(
+export const DetailText = forwardRef<HTMLDivElement, DetailTextProps>(
   ({ children, line }, ref) => {
     return (
       <>

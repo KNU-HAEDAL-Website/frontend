@@ -1,14 +1,14 @@
-import React from 'react'
+import { forwardRef } from 'react'
 
-import { CardContent, CardHeader } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+import { CardContent, CardHeader } from '@/components/ui/card'
 
 interface DetailCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
   headerLabel: string
 }
 
-export const DetailCard = React.forwardRef<HTMLDivElement, DetailCardProps>(
+export const DetailCard = forwardRef<HTMLDivElement, DetailCardProps>(
   ({ className, children, headerLabel, ...props }, ref) => {
     return (
       <div

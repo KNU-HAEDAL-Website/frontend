@@ -1,10 +1,10 @@
 'use client'
 
-import { NameTag } from '@/components/name-tag'
-import { Label } from '@/components/ui/label'
 import { boardDB } from '@/lib/data'
 import { useActivityStore } from '@/store/activity'
 import { useSemesterStore } from '@/store/semester'
+import { Label } from '@/components/ui/label'
+import { NameTag } from '@/components/name-tag'
 
 export const BoardInfomation = () => {
   const { selectedSemester } = useSemesterStore()

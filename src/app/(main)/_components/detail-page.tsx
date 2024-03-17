@@ -1,6 +1,6 @@
-import { DetailCard } from '@/components/main/detail-card'
 import { Card, CardHeader } from '@/components/ui/card'
 
+import { DetailCard } from './detail-card'
 import { DetailText } from './detail-text'
 
 export default function DetailPage() {

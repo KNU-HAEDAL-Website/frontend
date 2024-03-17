@@ -1,13 +1,12 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-
 import Link from 'next/link'
 
-import { BoardListItem } from '@/components/activity/board-list-item'
-import { PaginationButton } from '@/components/pagination-button'
 import { boardDB, boardPaging } from '@/lib/data'
+import { PaginationButton } from '@/components/pagination-button'
 
+import { BoardListItem } from './board-list-item'
 import { CreateBoardButton } from './create-board-button'
 
 export const BoardList = ({ viewPage }: { viewPage: number }) => {
