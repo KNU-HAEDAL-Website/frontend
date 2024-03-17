@@ -1,6 +1,7 @@
 import { PageHeader } from '@/components/community/page-header'
-import { BoardInfomation } from '@/components/createBoard/board-infomation'
-import { BoardInput } from '@/components/createBoard/board-input'
+
+import { BoardInfomation } from './_components/board-infomation'
+import { BoardInput } from './_components/board-input'
 
 const CreateBoardPage = () => {
   return (

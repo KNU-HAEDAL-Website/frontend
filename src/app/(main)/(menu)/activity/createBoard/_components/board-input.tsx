@@ -1,8 +1,10 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-import { BoardMember } from '@/components/createBoard/board-member'
+import { BoardSchema } from '@/schema'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -15,9 +17,8 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 import { Textarea } from '@/components/ui/textarea'
-import { BoardSchema } from '@/schema'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
+
+import { BoardMember } from './board-member'
 
 export const BoardInput = () => {
   const form = useForm<z.infer<typeof BoardSchema>>({
