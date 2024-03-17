@@ -1,7 +1,8 @@
-import { ActivityList } from '@/components/activity/activity-list'
-import { BoardList } from '@/components/activity/board-list'
-import { SemesterList } from '@/components/semester-list'
 import { Separator } from '@/components/ui/separator'
+import { SemesterList } from '@/components/semester-list'
+
+import { ActivityList } from './_components/activity-list'
+import { BoardList } from './_components/board-list'
 
 const ActivityPage = () => {
   return (

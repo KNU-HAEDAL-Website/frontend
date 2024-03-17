@@ -1,12 +1,13 @@
 'use client'
 
-import { ActivityListItem } from '@/components/activity/activity-list-item'
+import { useActivityStore } from '@/store/activity'
 import {
   Pagination,
   PaginationContent,
   PaginationItem,
 } from '@/components/ui/pagination'
-import { useActivityStore } from '@/store/activity'
+
+import { ActivityListItem } from './activity-list-item'
 
 export const ActivityList = () => {
   const { selectedActivityList } = useActivityStore()

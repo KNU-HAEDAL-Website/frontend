@@ -1,7 +1,11 @@
 import Image from 'next/image'
 
+import { 
+  Card,
+  CardContent,
+  CardTitle
+} from '@/components/ui/card'
 import { NameTag } from '@/components/name-tag'
-import { Card, CardContent, CardTitle } from '@/components/ui/card'
 
 export const BoardListItem = ({ id, name, intro, image, user }: Board) => {
   return (
