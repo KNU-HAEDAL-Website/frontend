@@ -1,6 +1,11 @@
+'use client'
+
+import { useEffect } from 'react'
+
+import { boardDB, postDB } from '@/lib/data'
+import { useBoardStore } from '@/store/board'
 import { PageHeader } from '@/components/community/page-header'
 import { PostBoard } from '@/components/community/post-board'
-import { boardDB, postlistDB } from '@/lib/data'
 
 const getData = (boardId: string) => {
   // const res = await fetch(`/api/boards/{boardId}/posts`)
@@ -18,6 +23,11 @@ const getData = (boardId: string) => {
 
 const ActivityBoardPage = ({ params }: { params: { boardId: string } }) => {
   const board: Board = getData(params.boardId)
+  const { setSelectedBoard } = useBoardStore()
+
+  useEffect(() => {
+    setSelectedBoard(Number(params.boardId))
+  }, [setSelectedBoard, params.boardId])
 
   return (
     <div className="max-w-screen-xl xl:mx-auto">
@@ -27,7 +37,7 @@ const ActivityBoardPage = ({ params }: { params: { boardId: string } }) => {
         detail={board}
       />
       {/* 임의로 상수 데이터 삽입 */}
-      <PostBoard data={postlistDB} boardId={board.id} />
+      <PostBoard data={postDB} boardId={board.id} />
     </div>
   )
 }
