@@ -30,3 +30,12 @@ type Post = {
   view: number
   content: string
 }
+
+type CommentType = {
+  id: number
+  content: string
+  createdAt: Date
+  user: string
+  postId: number
+  parentId?: number
+}

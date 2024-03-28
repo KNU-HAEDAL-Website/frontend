@@ -376,3 +376,48 @@ export const postDB = [
     content: '',
   },
 ] satisfies Post[]
+
+export const commentDB = [
+  {
+    id: 0,
+    content: '첫번째 댓글',
+    createdAt: new Date('2024-03-28'),
+    user: '김아진',
+    postId: 0,
+  },
+  {
+    id: 1,
+    content: '2빠 ---',
+    createdAt: new Date('2024-03-28'),
+    user: '조대성',
+    postId: 0,
+  },
+  {
+    id: 3,
+    content: '아아 잘 들리나요',
+    createdAt: new Date('2024-03-28'),
+    user: '김아진',
+    postId: 0,
+  },
+  {
+    id: 4,
+    content: '댓글 테스트4',
+    createdAt: new Date('2024-03-28'),
+    user: '김아진',
+    postId: 0,
+  },
+  {
+    id: 5,
+    content: '안녕하세요',
+    createdAt: new Date('2024-03-28'),
+    user: '조대성',
+    postId: 1,
+  },
+  {
+    id: 6,
+    content: '좋아요 누르고 갑니다~',
+    createdAt: new Date('2024-03-28'),
+    user: '김아진',
+    postId: 1,
+  }
+] satisfies CommentType[]
