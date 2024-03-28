@@ -265,7 +265,7 @@ export const userDB = [
   },
 ] satisfies User[]
 
-export const postlistDB = [
+export const postDB = [
   {
     id: 0,
     title: '첫번째 게시물 테스트',
@@ -273,6 +273,7 @@ export const postlistDB = [
     activitedAt: new Date('2024-03-10'),
     createdAt: new Date('2024-03-11'),
     view: 1230,
+    content: '',
   },
   {
     id: 1,
@@ -281,6 +282,8 @@ export const postlistDB = [
     activitedAt: new Date('2024-03-11'),
     createdAt: new Date('2024-03-12'),
     view: 120,
+    content:
+      '[{"id":"60ef5176-a1c4-4624-84bb-ea25ad2fbdd0","type":"heading","props":{"textColor":"default","backgroundColor":"default","textAlignment":"left","level":1},"content":[{"type":"text","text":"test","styles":{}}],"children":[]},{"id":"47f0765c-54fa-4d35-adf8-1d5c3add6296","type":"heading","props":{"textColor":"default","backgroundColor":"default","textAlignment":"left","level":2},"content":[{"type":"text","text":"테스트","styles":{}}],"children":[]},{"id":"aad88019-e966-4e77-9b1a-b116cf45b82c","type":"numberedListItem","props":{"textColor":"default","backgroundColor":"default","textAlignment":"left"},"content":[{"type":"text","text":"테스트","styles":{}}],"children":[]},{"id":"c7b97871-b597-412f-9f4c-8774835d24ec","type":"numberedListItem","props":{"textColor":"default","backgroundColor":"default","textAlignment":"left"},"content":[{"type":"text","text":"ㅇㅇ","styles":{}}],"children":[]},{"id":"e8f3f708-9877-4dc5-862f-cf04e8e3527a","type":"paragraph","props":{"textColor":"default","backgroundColor":"default","textAlignment":"left"},"content":[],"children":[]}]',
   },
   {
     id: 2,
@@ -289,6 +292,7 @@ export const postlistDB = [
     activitedAt: new Date('2024-03-11'),
     createdAt: new Date('2024-03-11'),
     view: 10,
+    content: '',
   },
   {
     id: 3,
@@ -297,6 +301,7 @@ export const postlistDB = [
     activitedAt: new Date('2024-03-12'),
     createdAt: new Date('2024-03-12'),
     view: 12,
+    content: '',
   },
   {
     id: 4,
@@ -305,6 +310,7 @@ export const postlistDB = [
     activitedAt: new Date('2024-03-13'),
     createdAt: new Date('2024-03-13'),
     view: 30,
+    content: '',
   },
   {
     id: 6,
@@ -313,6 +319,7 @@ export const postlistDB = [
     activitedAt: new Date('2024-03-11'),
     createdAt: new Date('2024-03-12'),
     view: 120,
+    content: '',
   },
   {
     id: 7,
@@ -321,6 +328,7 @@ export const postlistDB = [
     activitedAt: new Date('2024-03-11'),
     createdAt: new Date('2024-03-11'),
     view: 10,
+    content: '',
   },
   {
     id: 8,
@@ -329,6 +337,7 @@ export const postlistDB = [
     activitedAt: new Date('2024-03-12'),
     createdAt: new Date('2024-03-12'),
     view: 12,
+    content: '',
   },
   {
     id: 9,
@@ -337,6 +346,7 @@ export const postlistDB = [
     activitedAt: new Date('2024-03-13'),
     createdAt: new Date('2024-03-13'),
     view: 30,
+    content: '',
   },
   {
     id: 10,
@@ -345,6 +355,7 @@ export const postlistDB = [
     activitedAt: new Date('2024-03-12'),
     createdAt: new Date('2024-03-12'),
     view: 12,
+    content: '',
   },
   {
     id: 11,
@@ -353,6 +364,7 @@ export const postlistDB = [
     activitedAt: new Date('2024-03-13'),
     createdAt: new Date('2024-03-13'),
     view: 30,
+    content: '',
   },
   {
     id: 12,
@@ -361,5 +373,6 @@ export const postlistDB = [
     activitedAt: new Date('2024-03-13'),
     createdAt: new Date('2024-03-13'),
     view: 30,
+    content: '',
   },
 ] satisfies Post[]

@@ -1,7 +1,22 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
+import { CaretSortIcon } from '@radix-ui/react-icons'
+import {
+  ColumnDef,
+  ColumnFiltersState,
+  SortingState,
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from '@tanstack/react-table'
+
+import { cn } from '@/lib/utils'
 import { CreatePostButton } from '@/components/community/create-post-button'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -21,25 +36,15 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { cn } from '@/lib/utils'
-import { CaretSortIcon } from '@radix-ui/react-icons'
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from '@tanstack/react-table'
 
 const columns: ColumnDef<Post>[] = [
   {
     accessorKey: 'title',
     header: '제목',
-    cell: ({ row }) => <div>{row.getValue('title')}</div>,
+    // 임의로 게시판 고정
+    cell: ({ row }) => (
+      <Link href={`/activity/0/${row.id}`}>{row.getValue('title')}</Link>
+    ),
   },
   {
     accessorKey: 'user',

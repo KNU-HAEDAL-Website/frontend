@@ -28,4 +28,5 @@ type Post = {
   activitedAt: Date
   createdAt: Date
   view: number
+  content: string
 }
