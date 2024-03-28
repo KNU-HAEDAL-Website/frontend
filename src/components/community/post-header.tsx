@@ -11,7 +11,7 @@ interface postHeaderProps {
 
 export const PostHeader = ({ pageName, pageLink, detail }: postHeaderProps) => {
   return (
-    <div className="px-8 md:px-20">
+    <div>
       <Separator className="my-8 w-full h-[1.5px]" />
       <PostHeaderBreadCrumb pageName={pageName} pageLink={pageLink} />
       <Separator className="my-8 w-full h-[1.5px]" />

@@ -14,11 +14,5 @@ export const PostContent = ({ content }: postContentProps) => {
     : undefined
   const editor = BlockNoteEditor.create({ initialContent })
 
-  return (
-    <BlockNoteView
-      editor={editor}
-      editable={false}
-      className="px-8 md:px-20"
-    ></BlockNoteView>
-  )
+  return <BlockNoteView editor={editor} editable={false}></BlockNoteView>
 }
