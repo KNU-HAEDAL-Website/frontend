@@ -1,6 +1,6 @@
 import { format } from 'date-fns'
 
-import { ProfileAvatar } from '@/components/profile/profile-avatar'
+import { ProfileAvatar } from '@/components/profile-avatar'
 
 export const PostHeaderDetail = ({ detail }: { detail: Post }) => {
   return (
