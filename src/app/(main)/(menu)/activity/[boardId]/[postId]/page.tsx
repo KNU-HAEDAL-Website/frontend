@@ -29,7 +29,7 @@ const ActivityPostPage = ({ params }: { params: { postId: string } }) => {
     '게시판을 찾을 수 없습니다.'
 
   return (
-    <div className="px-8 md:px-20 max-w-screen-xl h-screen xl:mx-auto">
+    <div className="px-8 md:px-20 max-w-screen-xl xl:mx-auto">
       {/* activity 제외 고정 게시판 경우 추가하기 */}
       <PostHeader
         pageName={boardName}

@@ -4,8 +4,7 @@ import { Label } from '@/components/ui/label'
 import { commentDB } from '@/lib/data'
 
 import { CommentList } from './comment-list'
-import { Textarea } from '../ui/textarea'
-import { Button } from '../ui/button'
+import { CommentInput } from './comment-input'
 
 interface commentFormProps {
   postId: number
@@ -37,10 +36,7 @@ export const CommentForm = ({ postId }: commentFormProps) => {
   return (
     <div className="flex flex-col gap-2 py-16">
       <Label>{commentsNum}개의 댓글</Label>
-      <Textarea placeholder="댓글을 작성하세요." />
-      <div className="w-full flex justify-end">
-        <Button size="md">작성하기</Button>
-      </div>
+      <CommentInput/>
       <div>
         <CommentList data={comments} />
       </div>

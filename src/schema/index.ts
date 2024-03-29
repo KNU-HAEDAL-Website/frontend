@@ -50,3 +50,11 @@ export const PostSchema = z.object({
     message: '파일 크기는 5MB 이하만 가능합니다.',
   }),
 })
+
+export const CommentSchema = z.object({
+  content: z.string().min(1, {
+    message: '내용을 입력해주세요.',
+  }),
+  createAt: z.date(),
+  user: z.number(),
+})
