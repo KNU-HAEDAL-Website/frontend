@@ -37,9 +37,7 @@ export const CommentForm = ({ postId }: commentFormProps) => {
     <div className="flex flex-col gap-2 py-16">
       <Label>{commentsNum}개의 댓글</Label>
       <CommentInput/>
-      <div>
-        <CommentList data={comments} />
-      </div>
+      <CommentList data={comments} />
     </div>
   )
 }

@@ -3,10 +3,10 @@
 import { usePathname } from 'next/navigation'
 
 import { boardDB, postDB } from '@/lib/data'
+import { Separator } from '@/components/ui/separator'
 import { PostContent } from '@/components/community/post-content'
 import { PostHeader } from '@/components/community/post-header'
 import { PostPagination } from '@/components/community/post-pagination'
-import { Separator } from '@/components/ui/separator'
 import { CommentForm } from '@/components/community/comment-form'
 
 const getData = (postId: string) => {
