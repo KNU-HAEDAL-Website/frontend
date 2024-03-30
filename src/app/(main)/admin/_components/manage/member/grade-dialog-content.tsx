@@ -4,6 +4,8 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 
+import { GradeRadioBox } from './grade-radio-box'
+
 interface GradeDialogContentProps {
   user: ManageUserGrade
 }
@@ -19,7 +21,7 @@ export const GradeDialogContent = ({ user }: GradeDialogContentProps) => {
           <span>권한 설정</span>
         </DialogTitle>
       </DialogHeader>
-      <div>등급 선택 체크 박스</div>
+      <GradeRadioBox user={user}/>
     </DialogContent>
   )
 }

@@ -427,7 +427,7 @@ export const ManageUserGrageDB = [
     userId: 0,
     studentId: 2021113989,
     name: '김아진',
-    grade: '관리자',
+    grade: '멤버',
   },
   {
     userId: 1,
@@ -475,6 +475,22 @@ export const ManageUserGrageDB = [
     userId: 8,
     studentId: 2017110758,
     name: '조대성',
-    grade: '관리자',
+    grade: '멤버',
   },
 ] satisfies ManageUserGrade[]
+
+export const gradeListDB = [
+  {
+    id: 0,
+    name: '해구르르'
+  },
+  {
+    id: 1,
+    name: '팀장'
+  },
+  {
+    id: 2,
+    name: '멤버'
+  },
+  
+] as const

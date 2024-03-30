@@ -13,7 +13,7 @@ export const GradeDialog = ({ user }: GradeDialogProps) => {
       <DialogTrigger asChild>
         <Button 
           variant="secondary" 
-          size="sm" 
+          size="ssm" 
           className='hover:bg-border'
         >
           {user.grade}
