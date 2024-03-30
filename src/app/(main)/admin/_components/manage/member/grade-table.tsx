@@ -1,14 +1,6 @@
 'use client'
 
 import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from '@tanstack/react-table'
-
-import { ManageUserGrageDB } from '@/lib/data'
-import {
   Table,
   TableBody,
   TableCell,
@@ -16,6 +8,15 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { ManageUserGrageDB } from '@/lib/data'
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from '@tanstack/react-table'
+
+import { GradeDialog } from './grade-dialog'
 
 const columns: ColumnDef<ManageUserGrade>[] = [
   {
@@ -44,9 +45,14 @@ const columns: ColumnDef<ManageUserGrade>[] = [
   {
     accessorKey: 'grade',
     header: '등급',
-    cell: ({ row }) => (
-      <div className="text-center">{row.getValue('grade')}</div>
-    ),
+    cell: ({ row }) => {
+      const user = row.original
+      return (
+        <div className="flex justify-center">
+          <GradeDialog user={user} />
+        </div>
+      )
+    },
   },
 ]
 
