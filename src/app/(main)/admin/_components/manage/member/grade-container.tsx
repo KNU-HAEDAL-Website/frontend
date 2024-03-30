@@ -1,3 +1,9 @@
+import { GradeTable } from './grade-table'
+
 export const GradeContainer = () => {
-  return <div>권한 설정</div>
+  return (
+    <div className="w-full">
+      <GradeTable />
+    </div>
+  )
 }

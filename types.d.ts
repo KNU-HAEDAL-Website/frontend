@@ -39,3 +39,10 @@ type CommentType = {
   postId: number
   parentId?: number
 }
+
+type ManageUserGrade = {
+  userId: number
+  studentId: number
+  name: string
+  grade: '관리자' | '해구르르' | '팀장' | '멤버'
+}
