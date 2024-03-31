@@ -419,5 +419,78 @@ export const commentDB = [
     createdAt: new Date('2024-03-28'),
     user: '김아진',
     postId: 1,
-  }
+  },
 ] satisfies CommentType[]
+
+export const ManageUserGrageDB = [
+  {
+    userId: 0,
+    studentId: 2021113989,
+    name: '김아진',
+    grade: '멤버',
+  },
+  {
+    userId: 1,
+    studentId: 2022110661,
+    name: '권나예',
+    grade: '해구르르',
+  },
+  {
+    userId: 2,
+    studentId: 2021111604,
+    name: '권다운',
+    grade: '팀장',
+  },
+  {
+    userId: 3,
+    studentId: 2018115540,
+    name: '김동환',
+    grade: '팀장',
+  },
+  {
+    userId: 4,
+    studentId: 2020112393,
+    name: '김은정',
+    grade: '멤버',
+  },
+  {
+    userId: 5,
+    studentId: 2019115578,
+    name: '윤재용',
+    grade: '팀장',
+  },
+  {
+    userId: 6,
+    studentId: 2021123456,
+    name: '주보경',
+    grade: '팀장',
+  },
+  {
+    userId: 7,
+    studentId: 2018123456,
+    name: '김강민',
+    grade: '팀장',
+  },
+  {
+    userId: 8,
+    studentId: 2017110758,
+    name: '조대성',
+    grade: '멤버',
+  },
+] satisfies ManageUserGrade[]
+
+export const gradeListDB = [
+  {
+    id: 0,
+    name: '해구르르'
+  },
+  {
+    id: 1,
+    name: '팀장'
+  },
+  {
+    id: 2,
+    name: '멤버'
+  },
+  
+] as const
