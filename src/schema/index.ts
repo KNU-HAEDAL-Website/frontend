@@ -58,3 +58,8 @@ export const CommentSchema = z.object({
   createAt: z.date(),
   user: z.number(),
 })
+
+export const GradeMemberSchema = z.object({
+  studentId: z.number(),
+  grade: z.enum(['해구르르', '팀장', '멤버']),
+})
