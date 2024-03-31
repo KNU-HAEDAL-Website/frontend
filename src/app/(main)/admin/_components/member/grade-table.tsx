@@ -4,8 +4,10 @@ import { useState } from 'react'
 
 import {
   ColumnDef,
+  ColumnFiltersState,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
   useReactTable,
 } from '@tanstack/react-table'
@@ -20,6 +22,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
+import { TableFilter } from '../table-filter'
 import { TablePagination } from '../table-pagination'
 import { GradeDialog } from './grade-dialog'
 
@@ -65,6 +68,7 @@ export const GradeTable = () => {
   // DB 연결 전 더미 데이터 사용
   const data: ManageUserGrade[] = ManageUserGrageDB
 
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 5,
@@ -75,9 +79,12 @@ export const GradeTable = () => {
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
     onPaginationChange: setPagination,
+    onColumnFiltersChange: setColumnFilters,
     state: {
       pagination,
+      columnFilters,
     },
   })
 
@@ -88,6 +95,7 @@ export const GradeTable = () => {
 
   return (
     <div>
+      <TableFilter table={table} />
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
