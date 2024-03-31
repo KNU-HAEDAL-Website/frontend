@@ -32,7 +32,7 @@ const buttonVariants = cva(
         md: 'h-8 rounded-md px-3',
         lg: 'h-10 rounded-md px-8',
         xl: 'h-8 rounded-md px-2 mx-1',
-        icon: 'h-9 w-9',
+        icon: 'h-7 w-7',
         login: 'h-9',
         /** Mainpage - 지원하기 button */
         apply: 'h-14 px-12 py-4 rounded-none',
