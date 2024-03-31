@@ -46,16 +46,17 @@ type PaginationLinkProps = {
 const PaginationLink = ({
   className,
   isActive,
-  size = 'xl',
+  size = 'icon',
   ...props
 }: PaginationLinkProps) => (
   <a
     aria-current={isActive ? 'page' : undefined}
     className={cn(
       buttonVariants({
-        variant: isActive ? 'link' : 'secondLink',
+        variant: isActive ? 'default' : 'ghost',
         size,
       }),
+      'hover:cursor-pointer',
       className,
     )}
     {...props}
@@ -66,36 +67,34 @@ PaginationLink.displayName = 'PaginationLink'
 const PaginationPrevious = ({
   className,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink
+}: React.ComponentProps<'div'>) => (
+  <div
     aria-label="Go to previous page"
-    size="default"
     className={cn(
-      'gap-1 pl-2.5 hover:text-primary hover:cursor-pointer ',
+      'gap-1 pl-2.5 text-muted-foreground hover:text-primary hover:cursor-pointer',
       className,
     )}
     {...props}
   >
     <ChevronLeftIcon className="h-5 w-5" />
-  </PaginationLink>
+  </div>
 )
 PaginationPrevious.displayName = 'PaginationPrevious'
 
 const PaginationNext = ({
   className,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink
+}: React.ComponentProps<'div'>) => (
+  <div
     aria-label="Go to next page"
-    size="default"
     className={cn(
-      'gap-1 pr-2.5  hover:text-primary hover:cursor-pointer disabled:pointer-events-none',
+      'ap-1 pr-2.5 text-muted-foreground hover:text-primary hover:cursor-pointer',
       className,
     )}
     {...props}
   >
     <ChevronRightIcon className="h-5 w-5" />
-  </PaginationLink>
+  </div>
 )
 PaginationNext.displayName = 'PaginationNext'
 
