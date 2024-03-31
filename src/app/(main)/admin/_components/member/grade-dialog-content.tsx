@@ -21,7 +21,7 @@ export const GradeDialogContent = ({ user }: GradeDialogContentProps) => {
           <span>권한 설정</span>
         </DialogTitle>
       </DialogHeader>
-      <GradeRadioBox user={user}/>
+      <GradeRadioBox user={user} />
     </DialogContent>
   )
 }
