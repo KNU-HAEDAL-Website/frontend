@@ -46,10 +46,10 @@ const columns: ColumnDef<ManageUserGrade>[] = [
     accessorKey: 'grade',
     header: '등급',
     cell: ({ row }) => {
-      const user = row.original
+      const member = row.original
       return (
         <div className="flex justify-center">
-          <GradeDialog user={user} />
+          <GradeDialog member={member} />
         </div>
       )
     },
