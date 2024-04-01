@@ -11,11 +11,11 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-interface TableContentProps {
-  table: tanskTable<ManageUserGrade>
+interface TableContentProps<T> {
+  table: tanskTable<T>
 }
 
-export const TableContent = ({ table }: TableContentProps) => {
+export function TableContent<T>({ table }: TableContentProps<T>) {
   return (
     <Table>
       <TableHeader>

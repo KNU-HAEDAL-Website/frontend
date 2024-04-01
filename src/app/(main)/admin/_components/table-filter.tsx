@@ -5,11 +5,11 @@ import { Table } from '@tanstack/react-table'
 
 import { Input } from '@/components/ui/input'
 
-interface TableFilterProps {
-  table: Table<ManageUserGrade>
+interface TableFilterProps<T> {
+  table: Table<T>
 }
 
-export const TableFilter = ({ table }: TableFilterProps) => {
+export function TableFilter<T>({ table }: TableFilterProps<T>) {
   return (
     <div className="flex items-center justify-end space-x-2 py-1">
       <UserRoundSearch className="w-4 h-4 text-muted-foreground" />

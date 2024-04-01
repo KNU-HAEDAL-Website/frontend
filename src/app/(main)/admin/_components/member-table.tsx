@@ -15,14 +15,12 @@ import { TableContent } from './table-content'
 import { TableFilter } from './table-filter'
 import { TablePagination } from './table-pagination'
 
-interface MemberTableProps {
-  data: ManageUserGrade[]
-  columns: ColumnDef<ManageUserGrade>[]
+interface MemberTableProps<T> {
+  data: T[]
+  columns: ColumnDef<T>[]
 }
 
-export const MemberTable = ({ data, columns }: MemberTableProps) => {
-  // DB 연결 전 더미 데이터 사용
-
+export function MemberTable<T>({ data, columns }: MemberTableProps<T>) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [pagination, setPagination] = useState({
     pageIndex: 0,
@@ -43,7 +41,10 @@ export const MemberTable = ({ data, columns }: MemberTableProps) => {
     },
   })
 
-  const pageNumList = Array.from({ length: table.getPageCount() }, (_, i) => i + 1)
+  const pageNumList = Array.from(
+    { length: table.getPageCount() },
+    (_, i) => i + 1,
+  )
 
   return (
     <div>
