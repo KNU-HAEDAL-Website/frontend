@@ -12,16 +12,15 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination'
 
-// table type 다이나믹으로 변경하기
-interface TablePaginationProps {
+interface TablePaginationProps<T> {
   pageNumList: number[]
-  table: Table<ManageUserGrade>
+  table: Table<T>
 }
 
-export const TablePagination = ({
+export function TablePagination<T>({
   pageNumList,
   table,
-}: TablePaginationProps) => {
+}: TablePaginationProps<T>) {
   return (
     <Pagination>
       <PaginationContent>
