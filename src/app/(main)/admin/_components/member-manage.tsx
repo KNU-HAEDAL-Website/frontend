@@ -1,9 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { ItemLayout } from './item-layout'
-import { BanContainer } from './member/ban-container'
-import { GradeContainer } from './member/grade-container'
-import { UpgradeContainer } from './member/upgrade-container'
+import { GradeTable } from './member/grade-table'
 
 export const MemberManage = () => {
   return (
@@ -15,13 +13,13 @@ export const MemberManage = () => {
           <TabsTrigger value="ban">내보내기</TabsTrigger>
         </TabsList>
         <TabsContent value="grade">
-          <GradeContainer />
+          <GradeTable />
         </TabsContent>
         <TabsContent value="upgrade">
-          <UpgradeContainer />
+          멤버 승인
         </TabsContent>
         <TabsContent value="ban">
-          <BanContainer />
+          내보내기
         </TabsContent>
       </Tabs>
     </ItemLayout>
