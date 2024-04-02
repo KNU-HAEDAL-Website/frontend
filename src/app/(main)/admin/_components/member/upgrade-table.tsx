@@ -1,12 +1,11 @@
 'use client'
 
-import { format } from 'date-fns'
-import { ColumnDef } from '@tanstack/react-table'
-
-import { Button } from '@/components/ui/button'
 import { ManageUserUpgrageDB } from '@/lib/data'
+import { ColumnDef } from '@tanstack/react-table'
+import { format } from 'date-fns'
 
 import { MemberTable } from '../member-table'
+import { UpgradeForm } from './upgrade-form'
 
 const columns: ColumnDef<ManageUserUpgrade>[] = [
   {
@@ -44,10 +43,10 @@ const columns: ColumnDef<ManageUserUpgrade>[] = [
   {
     accessorKey: 'isAccepted',
     header: '',
-    cell: () => {
+    cell: ({ row }) => {
       return (
         <div className="flex justify-center">
-          <Button>수락</Button>
+          <UpgradeForm member={row.original} />
         </div>
       )
     },
