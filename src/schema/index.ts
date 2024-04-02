@@ -63,3 +63,8 @@ export const GradeMemberSchema = z.object({
   studentId: z.number(),
   grade: z.enum(['해구르르', '팀장', '멤버']),
 })
+
+export const UpgradeMemberSchema = z.object({
+  studentId: z.number(),
+  isAccepted: z.boolean(),
+})

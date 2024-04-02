@@ -46,3 +46,10 @@ type ManageUserGrade = {
   name: string
   grade: '관리자' | '해구르르' | '팀장' | '멤버'
 }
+
+type ManageUserUpgrade = {
+  userId: number
+  studentId: number
+  name: string
+  createdAt: Date
+}
