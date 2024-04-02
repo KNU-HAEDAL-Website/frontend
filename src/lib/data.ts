@@ -479,6 +479,64 @@ export const ManageUserGrageDB = [
   },
 ] satisfies ManageUserGrade[]
 
+
+export const ManageUserUpgrageDB = [
+  {
+    userId: 0,
+    studentId: 2021113989,
+    name: '김아진',
+    createdAt: new Date('2024-04-01')
+  },
+  {
+    userId: 1,
+    studentId: 2022110661,
+    name: '권나예',
+    createdAt: new Date('2024-04-02')
+  },
+  {
+    userId: 2,
+    studentId: 2021111604,
+    name: '권다운',
+    createdAt: new Date('2024-04-02')
+  },
+  {
+    userId: 3,
+    studentId: 2018115540,
+    name: '김동환',
+    createdAt: new Date('2024-04-02')
+  },
+  {
+    userId: 4,
+    studentId: 2020112393,
+    name: '김은정',
+    createdAt: new Date('2024-04-02')
+  },
+  {
+    userId: 5,
+    studentId: 2019115578,
+    name: '윤재용',
+    createdAt: new Date('2024-04-03')
+  },
+  {
+    userId: 6,
+    studentId: 2021123456,
+    name: '주보경',
+    createdAt: new Date('2024-04-03')
+  },
+  {
+    userId: 7,
+    studentId: 2018123456,
+    name: '김강민',
+    createdAt: new Date('2024-04-03')
+  },
+  {
+    userId: 8,
+    studentId: 2017110758,
+    name: '조대성',
+    createdAt: new Date('2024-04-04')
+  },
+] satisfies ManageUserUpgrade[]
+
 export const gradeListDB = [
   {
     id: 0,
