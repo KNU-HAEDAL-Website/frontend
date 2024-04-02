@@ -7,6 +7,7 @@ import { UpgradeMemberSchema } from '@/schema'
 import { Form } from '@/components/ui/form'
 
 import { UpgradeFormButton } from './upgrade-form-button'
+import { useToast } from "@/components/ui/use-toast"
 
 interface UpgradeButtonProps {
   member: ManageUserUpgrade
@@ -20,6 +21,8 @@ export const UpgradeForm = ({ member }: UpgradeButtonProps) => {
     },
   })
 
+  const { toast } = useToast()
+
   const onSubmit = (values: z.infer<typeof UpgradeMemberSchema>) => {
     console.log(values)
   }
@@ -29,6 +32,10 @@ export const UpgradeForm = ({ member }: UpgradeButtonProps) => {
     const isAccepted = type === '수락' ? true : false
     form.setValue('isAccepted', isAccepted)
     form.handleSubmit(onSubmit)()
+
+    toast({
+      title: `${member.name}님을 해달 회원으로 ${type}합니다.`,
+    })
   }
 
   return (
