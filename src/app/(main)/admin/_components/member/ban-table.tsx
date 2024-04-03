@@ -5,7 +5,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import { ManageUserGrageDB } from '@/lib/data'
 
 import { MemberTable } from '../member-table'
-import { BanForm } from './ban-form'
+import { BanDialog } from './ban-dialog'
 
 const columns: ColumnDef<ManageUserGrade>[] = [
   {
@@ -44,7 +44,7 @@ const columns: ColumnDef<ManageUserGrade>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex justify-center">
-          <BanForm member={row.original} />
+          <BanDialog member={row.original} />
         </div>
       )
     },
