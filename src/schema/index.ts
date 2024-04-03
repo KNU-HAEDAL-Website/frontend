@@ -68,3 +68,7 @@ export const UpgradeMemberSchema = z.object({
   studentId: z.number(),
   isAccepted: z.boolean(),
 })
+
+export const BanMemberSchema = z.object({
+  studentId: z.number(),
+})
