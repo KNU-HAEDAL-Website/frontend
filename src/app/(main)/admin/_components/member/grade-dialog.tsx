@@ -22,7 +22,6 @@ export const GradeDialog = ({ member }: GradeDialogProps) => {
           variant="secondary"
           size="ssm"
           onClick={() => setSelectedMember(member.studentId)}
-          className="hover:bg-border"
         >
           {member.grade}
         </Button>

@@ -16,6 +16,7 @@ export const UpgradeFormButton = ({ onClick, type }: UpgradeButtonProps) => {
           variant: type === '수락' ? 'default' : 'secondary',
           size: 'ssm',
         }),
+        'w-12'
       )}
     >
       {type}
