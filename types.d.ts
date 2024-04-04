@@ -7,18 +7,18 @@ type Board = {
   personnel?: BoardMember[]
 }
 
-// type BoardMember = Record<'name' | 'studentId', string | number>
-
-type BoardMember = {
-  name: string
-  studentId: number
-}
-
 type User = {
   userId: number
   studentId: number
   name: string
-  gradeId: number
+}
+
+type UserWithGrade = User & {
+  grade: '해구르르' | '팀장' | '멤버'
+}
+
+type UserUpgrade = User & {
+  createdAt: Date
 }
 
 type Post = {
@@ -38,18 +38,4 @@ type CommentType = {
   user: string
   postId: number
   parentId?: number
-}
-
-type ManageUserGrade = {
-  userId: number
-  studentId: number
-  name: string
-  grade: '관리자' | '해구르르' | '팀장' | '멤버'
-}
-
-type ManageUserUpgrade = {
-  userId: number
-  studentId: number
-  name: string
-  createdAt: Date
 }

@@ -15,7 +15,7 @@ import {
 import { Form } from '@/components/ui/form'
 
 interface BanDialogFormProps {
-  member: ManageUserGrade
+  member: UserWithGrade 
 }
 
 export const BanDialogForm = ({ member }: BanDialogFormProps) => {

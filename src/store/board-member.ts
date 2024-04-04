@@ -3,12 +3,12 @@ import { create } from 'zustand'
 
 interface boardMemberProps {
   loadBoardCreatorInfo: (boardId: number) => Promise<void>
-  selectedMembers: BoardMember[]
-  selectAbles: BoardMember[]
+  selectedMembers: UserWithGrade[]
+  selectAbles: UserWithGrade[]
   setSelectAbles: () => void
-  addSelectedMemeber: (cur: BoardMember) => void
+  addSelectedMemeber: (cur: UserWithGrade) => void
   removeSelectedMember: () => void
-  unSelectedMember: (cur: BoardMember) => void
+  unSelectedMember: (cur: UserWithGrade) => void
 }
 
 export const useBoardMemberStore = create<boardMemberProps>()((set, get) => ({
@@ -17,19 +17,14 @@ export const useBoardMemberStore = create<boardMemberProps>()((set, get) => ({
     // const response = await fetch(`/api/boards/${boardId}`)
     // const createUser = await response.json().user
     const createUserName = boardDB[boardId].user
-    const createUserId = userDB.find(
-      (user) => user.name === createUserName,
-    )?.studentId
-    if (!createUserId) {
+    const createUser = userDB.find(
+      (user) => user.name === createUserName
+    )
+    if (!createUser) {
       throw new Error(`${createUserName}을 찾을 수 없습니다.`)
     }
 
-    const initialBoardMembers = [
-      {
-        name: createUserName,
-        studentId: createUserId,
-      },
-    ]
+    const initialBoardMembers = [createUser]
 
     set({ selectedMembers: initialBoardMembers })
   },
@@ -40,12 +35,8 @@ export const useBoardMemberStore = create<boardMemberProps>()((set, get) => ({
       const selectedMemberIds = value.selectedMembers.map(
         (member) => member.studentId,
       )
-      const selectAbleMembers: BoardMember[] = userDB
+      const selectAbleMembers: UserWithGrade[] = userDB
         .filter((member) => !selectedMemberIds.includes(member.studentId))
-        .map((member) => ({
-          name: member.name,
-          studentId: member.studentId,
-        }))
 
       return { selectAbles: selectAbleMembers }
     })

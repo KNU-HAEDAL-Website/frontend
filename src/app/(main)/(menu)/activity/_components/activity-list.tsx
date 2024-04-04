@@ -1,6 +1,5 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
 import { useActivityStore } from '@/store/activity'
 
 import { ActivityListItem } from './activity-list-item'

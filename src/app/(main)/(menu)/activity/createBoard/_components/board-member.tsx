@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/command'
 
 interface boardMemberProps {
-  onChange: (value: BoardMember[]) => void
+  onChange: (value: UserWithGrade[]) => void
 }
 
 export const BoardMember = ({ onChange }: boardMemberProps) => {

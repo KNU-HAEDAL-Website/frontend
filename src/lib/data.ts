@@ -213,57 +213,57 @@ export const userDB = [
     userId: 0,
     studentId: 2021113989,
     name: '김아진',
-    gradeId: 0,
+    grade: '멤버',
   },
   {
     userId: 1,
     studentId: 2022110661,
     name: '권나예',
-    gradeId: 0,
+    grade: '해구르르',
   },
   {
     userId: 2,
     studentId: 2021111604,
     name: '권다운',
-    gradeId: 0,
+    grade: '팀장',
   },
   {
     userId: 3,
     studentId: 2018115540,
     name: '김동환',
-    gradeId: 0,
+    grade: '팀장',
   },
   {
     userId: 4,
     studentId: 2020112393,
     name: '김은정',
-    gradeId: 0,
+    grade: '멤버',
   },
   {
     userId: 5,
     studentId: 2019115578,
     name: '윤재용',
-    gradeId: 0,
+    grade: '팀장',
   },
   {
     userId: 6,
     studentId: 2021123456,
     name: '주보경',
-    gradeId: 1,
+    grade: '팀장',
   },
   {
     userId: 7,
     studentId: 2018123456,
     name: '김강민',
-    gradeId: 1,
+    grade: '팀장',
   },
   {
     userId: 8,
     studentId: 2017110758,
     name: '조대성',
-    gradeId: 0,
+    grade: '멤버',
   },
-] satisfies User[]
+] satisfies UserWithGrade[]
 
 export const postDB = [
   {
@@ -422,133 +422,60 @@ export const commentDB = [
   },
 ] satisfies CommentType[]
 
-export const ManageUserGrageDB = [
+
+export const UserUpgradeDB = [
   {
     userId: 0,
-    studentId: 2021113989,
-    name: '김아진',
-    grade: '멤버',
-  },
-  {
-    userId: 1,
-    studentId: 2022110661,
-    name: '권나예',
-    grade: '해구르르',
-  },
-  {
-    userId: 2,
-    studentId: 2021111604,
-    name: '권다운',
-    grade: '팀장',
-  },
-  {
-    userId: 3,
-    studentId: 2018115540,
-    name: '김동환',
-    grade: '팀장',
-  },
-  {
-    userId: 4,
-    studentId: 2020112393,
-    name: '김은정',
-    grade: '멤버',
-  },
-  {
-    userId: 5,
-    studentId: 2019115578,
-    name: '윤재용',
-    grade: '팀장',
-  },
-  {
-    userId: 6,
-    studentId: 2021123456,
-    name: '주보경',
-    grade: '팀장',
-  },
-  {
-    userId: 7,
-    studentId: 2018123456,
-    name: '김강민',
-    grade: '팀장',
-  },
-  {
-    userId: 8,
-    studentId: 2017110758,
-    name: '조대성',
-    grade: '멤버',
-  },
-] satisfies ManageUserGrade[]
-
-
-export const ManageUserUpgrageDB = [
-  {
-    userId: 0,
-    studentId: 2021113989,
-    name: '김아진',
+    studentId: 2024111111,
+    name: '고은샘',
     createdAt: new Date('2024-04-01')
   },
   {
     userId: 1,
-    studentId: 2022110661,
-    name: '권나예',
-    createdAt: new Date('2024-04-02')
+    studentId: 20224222222,
+    name: '박기현',
+    createdAt: new Date('2024-04-01')
   },
   {
     userId: 2,
-    studentId: 2021111604,
-    name: '권다운',
+    studentId: 2024333333,
+    name: '권용민',
     createdAt: new Date('2024-04-02')
   },
   {
     userId: 3,
-    studentId: 2018115540,
-    name: '김동환',
+    studentId: 2024444444,
+    name: '서지혜',
     createdAt: new Date('2024-04-02')
   },
   {
     userId: 4,
-    studentId: 2020112393,
-    name: '김은정',
+    studentId: 2024555555,
+    name: '이창석',
     createdAt: new Date('2024-04-02')
   },
   {
     userId: 5,
-    studentId: 2019115578,
-    name: '윤재용',
-    createdAt: new Date('2024-04-03')
+    studentId: 2024666666,
+    name: '천지윤',
+    createdAt: new Date('2024-04-02')
   },
   {
     userId: 6,
-    studentId: 2021123456,
-    name: '주보경',
+    studentId: 2024777777,
+    name: '고동수',
     createdAt: new Date('2024-04-03')
   },
   {
     userId: 7,
-    studentId: 2018123456,
-    name: '김강민',
+    studentId: 2024888888,
+    name: '박소현',
     createdAt: new Date('2024-04-03')
   },
   {
     userId: 8,
-    studentId: 2017110758,
-    name: '조대성',
-    createdAt: new Date('2024-04-04')
+    studentId: 2024999999,
+    name: '배정민',
+    createdAt: new Date('2024-04-03')
   },
-] satisfies ManageUserUpgrade[]
-
-export const gradeListDB = [
-  {
-    id: 0,
-    name: '해구르르'
-  },
-  {
-    id: 1,
-    name: '팀장'
-  },
-  {
-    id: 2,
-    name: '멤버'
-  },
-  
-] as const
+] satisfies UserUpgrade[]

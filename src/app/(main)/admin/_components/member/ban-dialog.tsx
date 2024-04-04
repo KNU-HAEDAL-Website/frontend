@@ -8,7 +8,7 @@ import {
 import { BanDialogForm } from './ban-dialog-form'
 
 interface BanDialogProps {
-  member: ManageUserGrade
+  member: UserWithGrade
 }
 
 export const BanDialog = ({ member }: BanDialogProps) => {
