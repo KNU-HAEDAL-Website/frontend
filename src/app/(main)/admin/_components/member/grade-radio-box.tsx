@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 
-import { userDB } from '@/lib/data'
+import { GradeDB } from '@/lib/data'
 import { useGradeMemberStore } from '@/store/grade-member'
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
@@ -15,7 +15,7 @@ export const GradeRadioBox = ({ onChange }: GradeRadioBoxProps) => {
 
   return (
     <RadioGroup onValueChange={onChange} className="flex flex-col gap-4">
-      {userDB.map((grade) => {
+      {GradeDB.map((grade) => {
         const disabledGrade = grade.name === selectedMember.grade
         return (
           <div key={grade.name}>
