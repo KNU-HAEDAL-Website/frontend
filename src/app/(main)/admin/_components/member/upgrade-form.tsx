@@ -5,12 +5,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { UpgradeMemberSchema } from '@/schema'
 import { Form } from '@/components/ui/form'
-
-import { UpgradeFormButton } from './upgrade-form-button'
 import { useToast } from "@/components/ui/use-toast"
 
+import { UpgradeFormButton } from './upgrade-form-button'
+
 interface UpgradeButtonProps {
-  member: ManageUserUpgrade
+  member: UserUpgrade
 }
 
 export const UpgradeForm = ({ member }: UpgradeButtonProps) => {

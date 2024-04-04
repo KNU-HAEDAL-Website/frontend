@@ -9,7 +9,7 @@ import {
 import { GradeDialogForm } from './grade-dialog-form'
 
 interface GradeDialogProps {
-  member: ManageUserGrade
+  member: UserWithGrade
 }
 
 export const GradeDialog = ({ member }: GradeDialogProps) => {

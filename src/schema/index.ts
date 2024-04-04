@@ -17,7 +17,7 @@ export const RegisterSchema = z.object({
 const BoardMemberShema = z.object({
   name: z.string(),
   studentId: z.number(),
-}) satisfies z.ZodType<BoardMember>
+})
 
 export const BoardSchema = z.object({
   title: z.string().max(30, {

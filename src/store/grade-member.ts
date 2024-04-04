@@ -1,20 +1,20 @@
 import { create } from 'zustand'
 
-import { ManageUserGrageDB } from '@/lib/data'
+import { userDB } from '@/lib/data'
 
 interface GradeMemberPorps {
-  selectedMember: ManageUserGrade
+  selectedMember: UserWithGrade
   selectedGrade: string
   setSelectedMember: (studentId: number) => void
   setSelectedGrade: (grade: string) => void
 }
 
 export const useGradeMemberStore = create<GradeMemberPorps>()((set) => ({
-  selectedMember: ManageUserGrageDB[0],
+  selectedMember: userDB[0],
   selectedGrade: '멤버',
   setSelectedMember: (studentId) =>
     set(() => {
-      const findMember = ManageUserGrageDB.find(
+      const findMember = userDB.find(
         (user) => user.studentId === studentId,
       )
 

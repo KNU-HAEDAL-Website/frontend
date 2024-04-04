@@ -1,13 +1,14 @@
 'use client'
 
-import { ManageUserUpgrageDB } from '@/lib/data'
-import { ColumnDef } from '@tanstack/react-table'
 import { format } from 'date-fns'
+import { ColumnDef } from '@tanstack/react-table'
+
+import { UserUpgradeDB } from '@/lib/data'
 
 import { MemberTable } from '../member-table'
 import { UpgradeForm } from './upgrade-form'
 
-const columns: ColumnDef<ManageUserUpgrade>[] = [
+const columns: ColumnDef<UserUpgrade>[] = [
   {
     header: '',
     id: 'id',
@@ -55,7 +56,7 @@ const columns: ColumnDef<ManageUserUpgrade>[] = [
 
 export const UpgradeTable = () => {
   // DB 연결 전 더미 데이터 사용
-  const data: ManageUserUpgrade[] = ManageUserUpgrageDB
+  const data: UserUpgrade[] = UserUpgradeDB
 
   return <MemberTable data={data} columns={columns} />
 }

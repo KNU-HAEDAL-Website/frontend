@@ -2,12 +2,12 @@
 
 import { ColumnDef } from '@tanstack/react-table'
 
-import { ManageUserGrageDB } from '@/lib/data'
+import { userDB } from '@/lib/data'
 
 import { MemberTable } from '../member-table'
 import { GradeDialog } from './grade-dialog'
 
-const columns: ColumnDef<ManageUserGrade>[] = [
+const columns: ColumnDef<UserWithGrade>[] = [
   {
     header: '',
     id: 'id',
@@ -47,7 +47,7 @@ const columns: ColumnDef<ManageUserGrade>[] = [
 
 export const GradeTable = () => {
   // DB 연결 전 더미 데이터 사용
-  const data: ManageUserGrade[] = ManageUserGrageDB
+  const data: UserWithGrade[] = userDB
 
   return <MemberTable data={data} columns={columns} />
 }
