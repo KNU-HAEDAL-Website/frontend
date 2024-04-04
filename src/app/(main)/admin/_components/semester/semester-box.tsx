@@ -3,7 +3,7 @@ import * as React from 'react'
 import { X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-export const ItemBox = React.forwardRef<
+export const SemesterBox = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, children, ...props }, ref) => {
@@ -24,4 +24,4 @@ export const ItemBox = React.forwardRef<
   )
 })
 
-ItemBox.displayName = 'FormItem'
+SemesterBox.displayName = 'FormItem'
