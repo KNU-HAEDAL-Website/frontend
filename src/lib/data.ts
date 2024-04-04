@@ -479,3 +479,18 @@ export const UserUpgradeDB = [
     createdAt: new Date('2024-04-03')
   },
 ] satisfies UserUpgrade[]
+
+export const GradeDB = [
+  {
+    id: 0,
+    name: '해구르르',
+  },
+  {
+    id: 1,
+    name: '팀장',
+  },
+  {
+    id: 2,
+    name: '멤버',
+  }
+]
