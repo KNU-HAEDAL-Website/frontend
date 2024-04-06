@@ -72,3 +72,12 @@ export const UpgradeMemberSchema = z.object({
 export const BanMemberSchema = z.object({
   studentId: z.number(),
 })
+
+export const AddSemesterSchema = z.object({
+  year: z.string().regex(/^20[0-9]{2}$/, {
+    message: '잘못된 연도 입력입니다.'
+  }),
+  term: z.enum(['1', '2'], {
+    errorMap: (issue, ctx) => ({ message: '1학기, 2학기 중에 하나를 입력해주세요.' })
+  })
+})

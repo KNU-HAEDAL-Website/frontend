@@ -1,6 +1,7 @@
 import { semesterDB } from '@/lib/data'
 
 import { ItemLayout } from './item-layout'
+import { AddDialog } from './semester/add-dialog'
 import { SemesterBox } from './semester/semester-box'
 
 export const SemesterManage = () => {
@@ -12,6 +13,7 @@ export const SemesterManage = () => {
             {semester}
           </SemesterBox>
         ))}
+        <AddDialog />
       </div>
     </ItemLayout>
   )
