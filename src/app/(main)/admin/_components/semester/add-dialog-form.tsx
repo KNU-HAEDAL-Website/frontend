@@ -14,12 +14,13 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
 } from '@/components/ui/input-otp'
+
+import { SelectTerm } from './select-term'
 
 export const AddDialogForm = () => {
   const form = useForm<z.infer<typeof AddSemesterSchema>>({
@@ -68,7 +69,7 @@ export const AddDialogForm = () => {
               <FormItem>
                 <FormLabel>학기를 선택해주세요.</FormLabel>
                 <FormControl>
-                  <Input className="w-32" {...field} />
+                  <SelectTerm onChange={field.onChange}/>
                 </FormControl>
                 <FormMessage />
               </FormItem>
