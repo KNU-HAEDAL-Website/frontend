@@ -21,6 +21,8 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 
+import { BackButton } from '../../_components/back-button'
+
 export const LoginForm = () => {
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | undefined>('')
@@ -85,6 +87,7 @@ export const LoginForm = () => {
         <Button type="submit" className="w-full" disabled={isPending}>
           로그인하기
         </Button>
+        <BackButton label='회원가입하러가기' backLink='/auth/register' />
       </form>
     </Form>
   )
