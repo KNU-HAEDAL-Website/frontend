@@ -1,10 +1,12 @@
 'use client'
 
-import { startTransition, useState } from 'react'
+import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 
-import Link from 'next/link'
+import * as z from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 
+import { RegisterSchema } from '@/schema'
 import { register } from '@/actions/register'
 import { FormError } from '@/components/form-error'
 import { FormSuccess } from '@/components/form-success'
@@ -19,11 +21,9 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { RegisterSchema } from '@/schema'
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
 
 export const RegisterForm = () => {
+  const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
 
@@ -58,7 +58,7 @@ export const RegisterForm = () => {
             <FormItem>
               <FormLabel>이름을 입력하세요</FormLabel>
               <FormControl>
-                <Input placeholder="호반우" {...field} />
+                <Input placeholder="호반우" disabled={isPending} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -71,7 +71,12 @@ export const RegisterForm = () => {
             <FormItem>
               <FormLabel>학번을 입력하세요</FormLabel>
               <FormControl>
-                <Input placeholder="2024123456" type="number" {...field} />
+                <Input
+                  placeholder="2024123456"
+                  type="number"
+                  disabled={isPending}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -97,11 +102,8 @@ export const RegisterForm = () => {
         />
         <FormError message={error} />
         <FormSuccess message={success} />
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full" disabled={isPending}>
           회원가입
-        </Button>
-        <Button size="sm" variant="link" className="w-full font-normal">
-          <Link href="/auth/login">로그인하기</Link>
         </Button>
       </form>
     </Form>
