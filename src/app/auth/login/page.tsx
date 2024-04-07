@@ -1,10 +1,10 @@
-import { AuthLayout } from '@/components/auth/auth-layout'
-import { SocialButton } from '@/components/auth/social-button'
+import { AuthLayout } from '../_components/auth-layout'
+import { LoginForm } from './_components/login-form'
 
 const LoginPage = () => {
   return (
     <AuthLayout headerTitle="Sign up to HAEDAL">
-      <SocialButton />
+      <LoginForm />
     </AuthLayout>
   )
 }
