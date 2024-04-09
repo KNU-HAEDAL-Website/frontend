@@ -6,8 +6,8 @@ import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { RegisterSchema } from '@/schema'
 import { register } from '@/actions/register'
+import { RegisterSchema } from '@/schema'
 import { FormError } from '@/components/form-error'
 import { FormSuccess } from '@/components/form-success'
 import { Button } from '@/components/ui/button'
@@ -32,8 +32,11 @@ export const RegisterForm = () => {
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
-      name: '',
-      studentId: '',
+      userId: '',
+      password: '',
+      confirmPassword: '',
+      studentNumber: '',
+      userName: '',
       checked: false,
     },
   })
@@ -41,7 +44,7 @@ export const RegisterForm = () => {
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     setError('')
     setSuccess('')
-
+    console.log(values)
     startTransition(() => {
       register(values).then((data) => {
         setError(data.error)
@@ -55,12 +58,12 @@ export const RegisterForm = () => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-2">
         <FormField
           control={form.control}
-          name="name"
+          name="userId"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>이름을 입력하세요</FormLabel>
+              <FormLabel>아이디를 입력하세요</FormLabel>
               <FormControl>
-                <Input placeholder="호반우" disabled={isPending} {...field} />
+                <Input placeholder="hobanu" disabled={isPending} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -68,17 +71,66 @@ export const RegisterForm = () => {
         />
         <FormField
           control={form.control}
-          name="studentId"
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>비밀번호를 입력하세요</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="********"
+                  type="password"
+                  disabled={isPending}
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="confirmPassword"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>비밀번호를 다시 입력하세요</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="********"
+                  type="password"
+                  disabled={isPending}
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="studentNumber"
           render={({ field }) => (
             <FormItem>
               <FormLabel>학번을 입력하세요</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="2024123456"
+                  placeholder="2000123456"
                   type="number"
                   disabled={isPending}
                   {...field}
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="userName"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>이름을 입력하세요</FormLabel>
+              <FormControl>
+                <Input placeholder="호반우" disabled={isPending} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -107,7 +159,7 @@ export const RegisterForm = () => {
         <Button type="submit" className="w-full" disabled={isPending}>
           회원가입
         </Button>
-        <BackButton label='로그인하러가기' backLink='/auth/login' />
+        <BackButton label="로그인하러가기" backLink="/auth/login" />
       </form>
     </Form>
   )
