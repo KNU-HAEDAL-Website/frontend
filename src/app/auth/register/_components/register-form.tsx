@@ -14,7 +14,7 @@ import { FormError } from '@/components/form-error'
 import { FormSuccess } from '@/components/form-success'
 
 import { RegisterFormCheckbox } from './register-form-checkbox'
-import { RegisterFormInput } from './register-form-input'
+import { FormInput } from '../../_components/form-input'
 
 export const RegisterForm = () => {
   const [isPending, startTransition] = useTransition()
@@ -52,7 +52,7 @@ export const RegisterForm = () => {
           control={form.control}
           name="userId"
           render={({ field }) => (
-            <RegisterFormInput
+            <FormInput
               inputLabel="아이디"
               placehoder="hobanu"
               isPending={isPending}
@@ -66,7 +66,7 @@ export const RegisterForm = () => {
             control={form.control}
             name="password"
             render={({ field }) => (
-              <RegisterFormInput
+              <FormInput
                 inputLabel="비밀번호"
                 placehoder="********"
                 isPending={isPending}
@@ -80,7 +80,7 @@ export const RegisterForm = () => {
             control={form.control}
             name="confirmPassword"
             render={({ field }) => (
-              <RegisterFormInput
+              <FormInput
                 placehoder="비밀번호 확인"
                 isPending={isPending}
                 type="password"
@@ -95,7 +95,7 @@ export const RegisterForm = () => {
             control={form.control}
             name="studentNumber"
             render={({ field }) => (
-              <RegisterFormInput
+              <FormInput
                 inputLabel="학번"
                 placehoder="2000123456"
                 isPending={isPending}
@@ -109,7 +109,7 @@ export const RegisterForm = () => {
             control={form.control}
             name="userName"
             render={({ field }) => (
-              <RegisterFormInput
+              <FormInput
                 inputLabel="이름"
                 placehoder="호반우"
                 isPending={isPending}
