@@ -61,7 +61,7 @@ export const RegisterForm = () => {
           name="userId"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>아이디를 입력하세요</FormLabel>
+              <FormLabel>아이디</FormLabel>
               <FormControl>
                 <Input placeholder="hobanu" disabled={isPending} {...field} />
               </FormControl>
@@ -74,7 +74,7 @@ export const RegisterForm = () => {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>비밀번호를 입력하세요</FormLabel>
+              <FormLabel>비밀번호</FormLabel>
               <FormControl>
                 <Input
                   placeholder="********"
@@ -92,7 +92,7 @@ export const RegisterForm = () => {
           name="confirmPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>비밀번호를 다시 입력하세요</FormLabel>
+              <FormLabel>비밀번호 확인</FormLabel>
               <FormControl>
                 <Input
                   placeholder="********"
@@ -110,7 +110,7 @@ export const RegisterForm = () => {
           name="studentNumber"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>학번을 입력하세요</FormLabel>
+              <FormLabel>학번</FormLabel>
               <FormControl>
                 <Input
                   placeholder="2000123456"
@@ -128,7 +128,7 @@ export const RegisterForm = () => {
           name="userName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>이름을 입력하세요</FormLabel>
+              <FormLabel>이름</FormLabel>
               <FormControl>
                 <Input placeholder="호반우" disabled={isPending} {...field} />
               </FormControl>
