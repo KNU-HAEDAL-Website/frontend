@@ -8,21 +8,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { register } from '@/actions/register'
 import { RegisterSchema } from '@/schema'
+import { Button } from '@/components/ui/button'
+import { Form, FormField } from '@/components/ui/form'
 import { FormError } from '@/components/form-error'
 import { FormSuccess } from '@/components/form-success'
-import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
 
-import { BackButton } from '../../_components/back-button'
+import { RegisterFormCheckbox } from './register-form-checkbox'
+import { RegisterFormInput } from './register-form-input'
 
 export const RegisterForm = () => {
   const [isPending, startTransition] = useTransition()
@@ -55,111 +47,94 @@ export const RegisterForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-2">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
         <FormField
           control={form.control}
           name="userId"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>아이디</FormLabel>
-              <FormControl>
-                <Input placeholder="hobanu" disabled={isPending} {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
+            <RegisterFormInput
+              inputLabel="아이디"
+              placehoder="hobanu"
+              isPending={isPending}
+              value={field.value}
+              onChange={field.onChange}
+            />
           )}
         />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>비밀번호</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="********"
-                  type="password"
-                  disabled={isPending}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="confirmPassword"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>비밀번호 확인</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="********"
-                  type="password"
-                  disabled={isPending}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="studentNumber"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>학번</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="2000123456"
-                  type="number"
-                  disabled={isPending}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="userName"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>이름</FormLabel>
-              <FormControl>
-                <Input placeholder="호반우" disabled={isPending} {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="checked"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl className="flex items-center gap-2 pt-4">
-                <div>
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                  <FormLabel>관리자의 승인 후 회원가입이 완료됩니다.</FormLabel>
-                </div>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div className="space-y-1">
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <RegisterFormInput
+                inputLabel="비밀번호"
+                placehoder="********"
+                isPending={isPending}
+                type="password"
+                value={field.value}
+                onChange={field.onChange}
+              />
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="confirmPassword"
+            render={({ field }) => (
+              <RegisterFormInput
+                placehoder="비밀번호 확인"
+                isPending={isPending}
+                type="password"
+                value={field.value}
+                onChange={field.onChange}
+              />
+            )}
+          />
+        </div>
+        <div className="space-y-2">
+          <FormField
+            control={form.control}
+            name="studentNumber"
+            render={({ field }) => (
+              <RegisterFormInput
+                inputLabel="학번"
+                placehoder="2000123456"
+                isPending={isPending}
+                type="number"
+                value={field.value}
+                onChange={field.onChange}
+              />
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="userName"
+            render={({ field }) => (
+              <RegisterFormInput
+                inputLabel="이름"
+                placehoder="호반우"
+                isPending={isPending}
+                value={field.value}
+                onChange={field.onChange}
+              />
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="checked"
+            render={({ field }) => (
+              <RegisterFormCheckbox
+                checkLabel="관리자의 승인 후 회원가입이 완료됩니다."
+                checked={field.value}
+                onChange={field.onChange}
+              />
+            )}
+          />
+        </div>
         <FormError message={error} />
         <FormSuccess message={success} />
         <Button type="submit" className="w-full" disabled={isPending}>
           회원가입
         </Button>
-        <BackButton label="로그인하러가기" backLink="/auth/login" />
       </form>
     </Form>
   )
