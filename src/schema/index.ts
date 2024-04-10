@@ -5,7 +5,7 @@ export const LoginSchema = z.object({
     message: '아이디는 최소 2글자 이상이어야 합니다.',
   }),
   password: z.string().min(6, {
-    message: '비밀번호는 최소 6글자 이상이어야 합니다.',
+    message: '비밀번호는 최소 8글자 이상이어야 합니다.',
   }),
 })
 
