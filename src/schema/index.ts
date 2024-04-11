@@ -108,7 +108,7 @@ export const AddSemesterSchema = z.object({
     message: '잘못된 연도 입력입니다.',
   }),
   term: z.enum(['1', '2'], {
-    errorMap: (issue, ctx) => ({
+    errorMap: () => ({
       message: '1학기, 2학기 중에 하나를 입력해주세요.',
     }),
   }),
