@@ -1,5 +1,5 @@
 import { Card } from '@/components/ui/card'
-import { AlertCircle, AlertTriangleIcon } from 'lucide-react'
+import { AlertTriangleIcon } from 'lucide-react'
 
 interface FormErrorProps {
   message?: string
