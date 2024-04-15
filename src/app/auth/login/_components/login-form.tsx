@@ -18,7 +18,7 @@ import { FormInput } from '../../_components/form-input'
 
 export const LoginForm = () => {
   const router = useRouter()
-  const { setSelectedUserId } = useUserStore()
+  const setUserId = useUserStore((state) => state.setUserId)
   const [isPending, startTransition] = useTransition()
   const [success, setSuccess] = useState<string | undefined>('')
   const [error, setError] = useState<string | undefined>('')
@@ -33,10 +33,10 @@ export const LoginForm = () => {
 
   useEffect(() => {
     if (success) {
-      setSelectedUserId(form.getValues('username'))
+      setUserId(form.getValues('username'))
       router.push('/')
     }
-  }, [success, router, form, setSelectedUserId])
+  }, [success, router, form, setUserId])
 
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {

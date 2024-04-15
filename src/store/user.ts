@@ -1,11 +1,11 @@
 import { create } from 'zustand'
 
 interface UserIdProps {
-  selectedUserId: string
-  setSelectedUserId: (value: string) => void
+  userId: string
+  setUserId: (value: string) => void
 }
 
 export const useUserStore = create<UserIdProps>()((set) => ({
-  selectedUserId: '',
-  setSelectedUserId: (value) => set(() => ({ selectedUserId: value })),
-}))
+  userId: '',
+  setUserId: (value) => set(() => ({ userId: value })),
+})) 
