@@ -10,6 +10,8 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 import { UserAvatar } from './user-avatar'
+import { LogoutButton } from '../logout-button'
+
 
 export const ProfileDropdownMenu = () => {
   return (
@@ -23,8 +25,7 @@ export const ProfileDropdownMenu = () => {
           <Link href="/mypage">마이페이지</Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          {/* 로그아웃 버튼 클릭시 로그아웃 api 호출 */}
-          <button>로그아웃</button>
+          <LogoutButton />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
