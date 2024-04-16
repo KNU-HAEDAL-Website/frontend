@@ -9,7 +9,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { LoginSchema } from '@/schema'
 import { login } from '@/services/login'
-import { useUserStore } from '@/store/user'
 import { FormError } from '@/components/form-error'
 import { Button } from '@/components/ui/button'
 import { Form, FormField } from '@/components/ui/form'
@@ -18,11 +17,10 @@ import { FormInput } from '../../_components/form-input'
 
 export const LoginForm = () => {
   const router = useRouter()
-  const setUserId = useUserStore((state) => state.setUserId)
   const [isPending, startTransition] = useTransition()
   const [success, setSuccess] = useState<string | undefined>('')
   const [error, setError] = useState<string | undefined>('')
-  
+
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -33,11 +31,9 @@ export const LoginForm = () => {
 
   useEffect(() => {
     if (success) {
-      setUserId(form.getValues('username'))
       router.push('/')
     }
-  }, [success, router, form, setUserId])
-
+  }, [success, router])
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setError('')
