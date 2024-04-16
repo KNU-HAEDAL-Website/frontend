@@ -1,12 +1,15 @@
 'use client'
 
-import { useState, useTransition } from 'react'
+import { useEffect, useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
 
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { login } from '@/actions/login'
+
 import { LoginSchema } from '@/schema'
+import { login } from '@/services/login'
+import { useUserStore } from '@/store/user'
 import { FormError } from '@/components/form-error'
 import { Button } from '@/components/ui/button'
 import { Form, FormField } from '@/components/ui/form'
@@ -14,9 +17,12 @@ import { Form, FormField } from '@/components/ui/form'
 import { FormInput } from '../../_components/form-input'
 
 export const LoginForm = () => {
+  const router = useRouter()
+  const setUserId = useUserStore((state) => state.setUserId)
   const [isPending, startTransition] = useTransition()
+  const [success, setSuccess] = useState<string | undefined>('')
   const [error, setError] = useState<string | undefined>('')
-
+  
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -25,12 +31,22 @@ export const LoginForm = () => {
     },
   })
 
+  useEffect(() => {
+    if (success) {
+      setUserId(form.getValues('username'))
+      router.push('/')
+    }
+  }, [success, router, form, setUserId])
+
+
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setError('')
+    setSuccess('')
 
     startTransition(() => {
       login(values).then((data) => {
-        setError(data.error)
+        setError(data?.error)
+        setSuccess(data?.success)
       })
     })
   }
@@ -59,6 +75,7 @@ export const LoginForm = () => {
               <FormInput
                 inputLabel="비밀번호"
                 placehoder="********"
+                type="password"
                 isPending={isPending}
                 value={field.value}
                 onChange={field.onChange}
