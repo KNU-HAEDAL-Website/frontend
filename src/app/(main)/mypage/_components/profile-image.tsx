@@ -3,13 +3,14 @@
 import { useRef } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+import { EditProfileImageSchema } from '@/schema'
+import { useUserStore } from '@/store/user'
 import { Button } from '@/components/ui/button'
 import { Form, FormField, FormItem } from '@/components/ui/form'
 import { UserAvatar } from '@/components/user/user-avatar'
-import { EditProfileImageSchema } from '@/schema'
-import { useUserStore } from '@/store/user'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 
 export const ProfileImage = () => {
   const { profileImage, setProfileImage } = useUserStore()
