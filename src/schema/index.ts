@@ -121,3 +121,10 @@ export const AddSemesterSchema = z.object({
     }),
   }),
 })
+
+export const EditProfileImageSchema = z.object({
+  studentId: z.number(),
+  image: z.instanceof(File).refine((f) => f.size < 5000000, {
+    message: '파일 크기는 5MB 이하만 가능합니다.',
+  }),
+})
