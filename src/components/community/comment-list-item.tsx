@@ -1,7 +1,7 @@
 import { format } from 'date-fns'
 import { Pencil, Trash2 } from 'lucide-react'
 
-import { ProfileAvatar } from '@/components/profile-avatar'
+import { UserAvatar } from '@/components/user/user-avatar'
 
 interface commentListItemProps {
   item: CommentType
@@ -12,7 +12,7 @@ export const CommentListItem = ({ item }: commentListItemProps) => {
     <div key={item.id}>
       <div className="flex justify-between">
         <div className="flex flex-row gap-3">
-          <ProfileAvatar />
+          <UserAvatar />
           <div className="flex flex-col pb-1">
             <div>{item.user}</div>
             <div className="text-xs">
