@@ -26,7 +26,7 @@ export const LoginForm = () => {
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
-      username: '',
+      userId: '',
       password: '',
     },
   })
@@ -56,7 +56,7 @@ export const LoginForm = () => {
         <div className="space-y-2">
           <FormField
             control={form.control}
-            name="username"
+            name="userId"
             render={({ field }) => (
               <FormInput
                 inputLabel="아이디"

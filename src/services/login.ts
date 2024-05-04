@@ -14,14 +14,9 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     return { error: '아이디와 비밀번호를 확인해주세요' }
   }
 
-  // json to data-form
-  const loginFormData = new FormData()
-  loginFormData.append('username', values.username)
-  loginFormData.append('password', values.password)
-
   // 로그인 정보 확인
   try {
-    const res = await backendApi.post('/login', loginFormData)
+    const res = await backendApi.post('/login', values)
     // access token 저장
     const accessToken = res.headers['authorization']
     localStorage.setItem('accessToken', accessToken)
