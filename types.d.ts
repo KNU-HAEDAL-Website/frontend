@@ -39,3 +39,8 @@ type CommentType = {
   postId: number
   parentId?: number
 }
+
+type CheckResponse = {
+  success: boolean
+  message: string | undefined
+}

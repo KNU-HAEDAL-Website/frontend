@@ -3,18 +3,17 @@
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 
-import * as z from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-
 import { register } from '@/actions/register'
-import { RegisterSchema } from '@/schema'
-import { Button } from '@/components/ui/button'
-import { Form, FormField } from '@/components/ui/form'
 import { FormError } from '@/components/form-error'
 import { FormSuccess } from '@/components/form-success'
+import { Button } from '@/components/ui/button'
+import { Form, FormField } from '@/components/ui/form'
+import { RegisterSchema } from '@/schema'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
 
-import { RegisterFormCheckbox } from './register-form-checkbox'
 import { FormInput } from '../../_components/form-input'
+import { RegisterFormCheckbox } from './register-form-checkbox'
 
 export const RegisterForm = () => {
   const [isPending, startTransition] = useTransition()
@@ -48,19 +47,22 @@ export const RegisterForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
-        <FormField
-          control={form.control}
-          name="userId"
-          render={({ field }) => (
-            <FormInput
-              inputLabel="아이디"
-              placehoder="hobanu"
-              isPending={isPending}
-              value={field.value}
-              onChange={field.onChange}
-            />
-          )}
-        />
+        <div>
+          <FormField
+            control={form.control}
+            name="userId"
+            render={({ field }) => (
+              <FormInput
+                inputLabel="아이디"
+                placehoder="hobanu"
+                isPending={isPending}
+                value={field.value}
+                onChange={field.onChange}
+                check="userId"
+              />
+            )}
+          />
+        </div>
         <div className="space-y-1">
           <FormField
             control={form.control}
