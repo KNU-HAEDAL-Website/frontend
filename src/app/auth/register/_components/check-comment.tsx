@@ -8,6 +8,8 @@ export const CheckComment = ({ success, message }: CheckCommentProps) => {
   if (!message) return null
 
   return (
-    <p className={cn(success ? '' : 'text-red-600', 'text-sm')}>{message}</p>
+    <p className={cn(success ? 'text-blue-600' : 'text-red-600', 'text-sm')}>
+      {message}
+    </p>
   )
 }

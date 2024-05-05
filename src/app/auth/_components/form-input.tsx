@@ -17,7 +17,7 @@ interface FormInputProps {
   isPending: boolean
   type?: string
   value: string
-  check?: 'userId' | 'studentId'
+  check?: 'userId' | 'studentNumber'
   onChange: () => void
 }
 

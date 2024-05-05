@@ -104,6 +104,7 @@ export const RegisterForm = () => {
                 type="number"
                 value={field.value}
                 onChange={field.onChange}
+                check="studentNumber"
               />
             )}
           />
