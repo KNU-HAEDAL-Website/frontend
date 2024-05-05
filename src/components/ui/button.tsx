@@ -33,7 +33,7 @@ const buttonVariants = cva(
         lg: 'h-10 rounded-md px-8',
         xl: 'h-8 rounded-md px-2 mx-1',
         icon: 'h-7 w-7',
-        login: 'h-9',
+        basic: 'h-9 px-3',
         /** Mainpage - 지원하기 button */
         apply: 'h-14 px-12 py-4 rounded-none',
         /** createBoardPage 멤버 삭제 button */

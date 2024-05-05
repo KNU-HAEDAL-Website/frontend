@@ -8,16 +8,18 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { register } from '@/actions/register'
 import { RegisterSchema } from '@/schema'
-import { Button } from '@/components/ui/button'
-import { Form, FormField } from '@/components/ui/form'
+import { useRegisterCheckStore } from '@/store/register-check'
 import { FormError } from '@/components/form-error'
 import { FormSuccess } from '@/components/form-success'
+import { Button } from '@/components/ui/button'
+import { Form, FormField } from '@/components/ui/form'
 
-import { RegisterFormCheckbox } from './register-form-checkbox'
 import { FormInput } from '../../_components/form-input'
+import { RegisterFormCheckbox } from './register-form-checkbox'
 
 export const RegisterForm = () => {
   const [isPending, startTransition] = useTransition()
+  const { successUserId, successStudentNumber } = useRegisterCheckStore()
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
 
@@ -33,9 +35,22 @@ export const RegisterForm = () => {
     },
   })
 
-  const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
+  const onClick = () => {
     setError('')
     setSuccess('')
+    console.log(successUserId, successStudentNumber)
+    if (!successUserId) {
+      setError('아이디 중복 확인을 진행해주세요.')
+      return
+    }
+    if (!successStudentNumber) {
+      setError('학번 중복 확인을 진행해주세요.')
+      return
+    }
+    form.handleSubmit(onSubmit)()
+  }
+
+  const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     console.log(values)
     startTransition(() => {
       register(values).then((data) => {
@@ -47,20 +62,23 @@ export const RegisterForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
-        <FormField
-          control={form.control}
-          name="userId"
-          render={({ field }) => (
-            <FormInput
-              inputLabel="아이디"
-              placehoder="hobanu"
-              isPending={isPending}
-              value={field.value}
-              onChange={field.onChange}
-            />
-          )}
-        />
+      <form onSubmit={(e) => e.preventDefault()} className="w-full space-y-4">
+        <div>
+          <FormField
+            control={form.control}
+            name="userId"
+            render={({ field }) => (
+              <FormInput
+                inputLabel="아이디"
+                placehoder="hobanu"
+                isPending={isPending}
+                value={field.value}
+                onChange={field.onChange}
+                check="userId"
+              />
+            )}
+          />
+        </div>
         <div className="space-y-1">
           <FormField
             control={form.control}
@@ -102,6 +120,7 @@ export const RegisterForm = () => {
                 type="number"
                 value={field.value}
                 onChange={field.onChange}
+                check="studentNumber"
               />
             )}
           />
@@ -132,7 +151,12 @@ export const RegisterForm = () => {
         </div>
         <FormError message={error} />
         <FormSuccess message={success} />
-        <Button type="submit" className="w-full" disabled={isPending}>
+        <Button
+          type="submit"
+          className="w-full"
+          disabled={isPending}
+          onClick={onClick}
+        >
           회원가입
         </Button>
       </form>
