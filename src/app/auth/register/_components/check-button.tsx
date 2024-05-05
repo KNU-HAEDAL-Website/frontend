@@ -1,9 +1,10 @@
 import { useState } from 'react'
 
-import { Button } from '@/components/ui/button'
 import { RegisterDoubleCheckSchema } from '@/schema'
 import { checkStudentNumber } from '@/services/checkStudentNumber'
 import { checkUserId } from '@/services/checkUserId'
+import { useRegisterCheckStore } from '@/store/register-check'
+import { Button } from '@/components/ui/button'
 
 interface CheckButtonProps {
   checkType: 'userId' | 'studentNumber'
@@ -16,16 +17,19 @@ export const CheckButton = ({
   value,
   setCheckMessage,
 }: CheckButtonProps) => {
+  const { setSuccessUserId, setSuccessStudentNumber } = useRegisterCheckStore()
   const [error, setError] = useState<string | undefined>()
 
   const onClick = () => {
-    console.log(checkType, typeof value)
     setCheckMessage({ success: false, message: '' })
     if (checkType == 'userId') {
       const result = RegisterDoubleCheckSchema.shape.userId.safeParse(value)
       if (result.success) {
         checkUserId(value).then((data) => {
           setCheckMessage({ success: data.success, message: data.message })
+          if (data.success) {
+            setSuccessUserId(true)
+          }
         })
         return
       }
@@ -38,6 +42,9 @@ export const CheckButton = ({
       if (result.success) {
         checkStudentNumber(Number(value)).then((data) => {
           setCheckMessage({ success: data.success, message: data.message })
+          if (data.success) {
+            setSuccessStudentNumber(true)
+          }
         })
         return
       }
