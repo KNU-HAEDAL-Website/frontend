@@ -4,7 +4,10 @@ import { RegisterForm } from './_components/register-form'
 
 const RegisterPage = () => {
   return (
-    <AuthContentLayout headerTitle="회원가입">
+    <AuthContentLayout
+      headerTitle="KNU HAEDAL 회원가입"
+      className="max-w-[420px]"
+    >
       <RegisterForm />
       <BackButton label="로그인하러가기" backLink="/auth/login" />
     </AuthContentLayout>

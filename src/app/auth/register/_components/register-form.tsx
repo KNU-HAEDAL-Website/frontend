@@ -75,6 +75,7 @@ export const RegisterForm = () => {
                 value={field.value}
                 onChange={field.onChange}
                 check="userId"
+                description="- ID는 영어와 숫자를 포함해 6~12자리로 입력해주세요."
               />
             )}
           />
@@ -104,6 +105,7 @@ export const RegisterForm = () => {
                 type="password"
                 value={field.value}
                 onChange={field.onChange}
+                description="- 비밀번호는 영문, 숫자, 특수문자를 포함해 8~20자로 입력해주세요."
               />
             )}
           />

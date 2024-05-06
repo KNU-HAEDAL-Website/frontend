@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import {
   FormControl,
+  FormDescription,
   FormItem,
   FormLabel,
   FormMessage,
@@ -18,6 +19,7 @@ interface FormInputProps {
   type?: string
   value: string
   check?: 'userId' | 'studentNumber'
+  description?: string
   onChange: () => void
 }
 
@@ -28,6 +30,7 @@ export const FormInput = ({
   type = 'text',
   value,
   check,
+  description,
   onChange,
 }: FormInputProps) => {
   const [checkMessage, setCheckMessage] = useState<CheckResponse>({
@@ -60,6 +63,7 @@ export const FormInput = ({
           )}
         </div>
       </FormControl>
+      <FormDescription className="pl-1 pt-1">{description}</FormDescription>
       <CheckComment
         success={checkMessage.success}
         message={checkMessage.message}
