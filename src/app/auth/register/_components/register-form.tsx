@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useTransition } from 'react'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 
 import * as z from 'zod'
@@ -18,6 +19,7 @@ import { FormInput } from '../../_components/form-input'
 import { RegisterFormCheckbox } from './register-form-checkbox'
 
 export const RegisterForm = () => {
+  const router = useRouter()
   const [isPending, startTransition] = useTransition()
   const { successUserId, successStudentNumber } = useRegisterCheckStore()
   const [error, setError] = useState<string | undefined>('')
@@ -34,6 +36,14 @@ export const RegisterForm = () => {
       checked: false,
     },
   })
+
+  useEffect(() => {
+    if (success) {
+      setTimeout(() => {
+        router.push('/')
+      }, 3000)
+    }
+  }, [success, router])
 
   const onClick = () => {
     setError('')

@@ -23,7 +23,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
   try {
     const res = await backendApi.post('/join', registerData)
     if (res.data) {
-      return { success: res.data.message }
+      return { success: `${res.data.message} 메인페이지로 이동합니다.`}
     }
   } catch (error) {
     if (error instanceof AxiosError) {
