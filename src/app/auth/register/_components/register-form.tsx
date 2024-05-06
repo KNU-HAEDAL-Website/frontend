@@ -1,13 +1,14 @@
 'use client'
 
-import { useState, useTransition } from 'react'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { register } from '@/actions/register'
 import { RegisterSchema } from '@/schema'
+import { register } from '@/services/register'
 import { useRegisterCheckStore } from '@/store/register-check'
 import { FormError } from '@/components/form-error'
 import { FormSuccess } from '@/components/form-success'
@@ -18,6 +19,7 @@ import { FormInput } from '../../_components/form-input'
 import { RegisterFormCheckbox } from './register-form-checkbox'
 
 export const RegisterForm = () => {
+  const router = useRouter()
   const [isPending, startTransition] = useTransition()
   const { successUserId, successStudentNumber } = useRegisterCheckStore()
   const [error, setError] = useState<string | undefined>('')
@@ -35,10 +37,18 @@ export const RegisterForm = () => {
     },
   })
 
+  useEffect(() => {
+    if (success) {
+      setTimeout(() => {
+        router.push('/')
+      }, 3000)
+    }
+  }, [success, router])
+
   const onClick = () => {
     setError('')
     setSuccess('')
-    console.log(successUserId, successStudentNumber)
+
     if (!successUserId) {
       setError('아이디 중복 확인을 진행해주세요.')
       return
@@ -54,8 +64,8 @@ export const RegisterForm = () => {
     console.log(values)
     startTransition(() => {
       register(values).then((data) => {
-        setError(data.error)
-        setSuccess(data.success)
+        setError(data?.error)
+        setSuccess(data?.success)
       })
     })
   }
@@ -75,6 +85,7 @@ export const RegisterForm = () => {
                 value={field.value}
                 onChange={field.onChange}
                 check="userId"
+                description="- ID는 영어와 숫자를 포함해 6~12자리로 입력해주세요."
               />
             )}
           />
@@ -104,6 +115,7 @@ export const RegisterForm = () => {
                 type="password"
                 value={field.value}
                 onChange={field.onChange}
+                description="- 비밀번호는 영문, 숫자, 특수문자를 포함해 8~20자로 입력해주세요."
               />
             )}
           />
