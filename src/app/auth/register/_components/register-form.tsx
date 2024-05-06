@@ -6,8 +6,8 @@ import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { register } from '@/actions/register'
 import { RegisterSchema } from '@/schema'
+import { register } from '@/services/register'
 import { useRegisterCheckStore } from '@/store/register-check'
 import { FormError } from '@/components/form-error'
 import { FormSuccess } from '@/components/form-success'
@@ -38,7 +38,7 @@ export const RegisterForm = () => {
   const onClick = () => {
     setError('')
     setSuccess('')
-    console.log(successUserId, successStudentNumber)
+
     if (!successUserId) {
       setError('아이디 중복 확인을 진행해주세요.')
       return
@@ -54,8 +54,8 @@ export const RegisterForm = () => {
     console.log(values)
     startTransition(() => {
       register(values).then((data) => {
-        setError(data.error)
-        setSuccess(data.success)
+        setError(data?.error)
+        setSuccess(data?.success)
       })
     })
   }
