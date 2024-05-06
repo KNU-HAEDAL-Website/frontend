@@ -4,7 +4,7 @@ import { LoginForm } from './_components/login-form'
 
 const LoginPage = () => {
   return (
-    <AuthContentLayout headerTitle="로그인" className="max-w-80">
+    <AuthContentLayout headerTitle="로그인">
       <LoginForm />
       <BackButton label="회원가입하기" backLink="/auth/register" />
     </AuthContentLayout>
