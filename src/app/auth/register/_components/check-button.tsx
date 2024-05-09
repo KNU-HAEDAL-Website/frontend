@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { RegisterDoubleCheckSchema } from '@/schema'
 import { checkStudentNumber } from '@/services/checkStudentNumber'
@@ -21,7 +21,6 @@ export const CheckButton = ({
   const [error, setError] = useState<string | undefined>()
 
   const onClick = () => {
-    setCheckMessage({ success: false, message: '' })
     if (checkType == 'userId') {
       const result = RegisterDoubleCheckSchema.shape.userId.safeParse(value)
       if (result.success) {
@@ -50,13 +49,14 @@ export const CheckButton = ({
       }
       setError(JSON.parse(result.error.message)[0].message)
     }
+  }
 
-    //error
+  useEffect(() => {
     if (error) {
       setCheckMessage({ success: false, message: error })
-      return
+      setError('')
     }
-  }
+  }, [setError, error, setCheckMessage])
 
   return (
     <Button type="button" size="basic" variant="outline" onClick={onClick}>
