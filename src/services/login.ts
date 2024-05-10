@@ -18,9 +18,9 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     }
   } catch (error) {
     if (error instanceof AxiosError) {
-      const errorType = error.response?.status
-      if (errorType === 400 || errorType === 401) {
-        const errorContent = error.response?.data
+      const status = error.response?.status
+      const errorContent = error.response?.data
+      if (status === 400 || status === 401) {
         return { error: errorContent.message }
       }
     }
