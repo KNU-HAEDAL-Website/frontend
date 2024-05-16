@@ -1,3 +1,4 @@
+'use client'
 import { useForm } from 'react-hook-form'
 
 import { z } from 'zod'
@@ -17,7 +18,7 @@ export const UpgradeForm = ({ member }: UpgradeButtonProps) => {
   const form = useForm<z.infer<typeof UpgradeMemberSchema>>({
     resolver: zodResolver(UpgradeMemberSchema),
     defaultValues: {
-      studentId: member.studentId,
+      studentNumber: member.studentNumber,
     },
   })
 
@@ -34,7 +35,7 @@ export const UpgradeForm = ({ member }: UpgradeButtonProps) => {
     form.handleSubmit(onSubmit)()
 
     toast({
-      title: `${member.name}님을 해달 회원으로 ${type}합니다.`,
+      title: `${member.userName}님을 해달 회원으로 ${type}합니다.`,
     })
   }
 

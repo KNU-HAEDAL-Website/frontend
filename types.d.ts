@@ -9,8 +9,8 @@ type Board = {
 
 type User = {
   userId: number
-  studentId: number
-  name: string
+  studentNumber: number
+  userName: string
 }
 
 type UserWithGrade = User & {
@@ -18,7 +18,7 @@ type UserWithGrade = User & {
 }
 
 type UserUpgrade = User & {
-  createdAt: Date
+  regDate: Date
 }
 
 type Post = {

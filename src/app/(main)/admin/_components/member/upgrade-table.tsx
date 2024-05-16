@@ -1,9 +1,9 @@
 'use client'
 
-import { format } from 'date-fns'
-import { ColumnDef } from '@tanstack/react-table'
+import { useEffect, useState } from 'react'
 
-import { UserUpgradeDB } from '@/lib/data'
+import { ColumnDef } from '@tanstack/react-table'
+import { format } from 'date-fns'
 
 import { MemberTable } from '../member-table'
 import { UpgradeForm } from './upgrade-form'
@@ -19,25 +19,25 @@ const columns: ColumnDef<UserUpgrade>[] = [
     ),
   },
   {
-    accessorKey: 'name',
+    accessorKey: 'userName',
     header: '이름',
     cell: ({ row }) => (
-      <div className="text-center">{row.getValue('name')}</div>
+      <div className="text-center">{row.getValue('userName')}</div>
     ),
   },
   {
-    accessorKey: 'studentId',
+    accessorKey: 'studentNumber',
     header: '학번',
     cell: ({ row }) => (
-      <div className="text-center">{row.getValue('studentId')}</div>
+      <div className="text-center">{row.getValue('studentNumber')}</div>
     ),
   },
   {
-    accessorKey: 'createdAt',
+    accessorKey: 'regDate',
     header: '가입일',
     cell: ({ row }) => (
       <div className="text-center">
-        {format(row.getValue('createdAt'), 'yyyy.LL.dd')}
+        {format(row.getValue('regDate'), 'yyyy.LL.dd')}
       </div>
     ),
   },
@@ -55,8 +55,28 @@ const columns: ColumnDef<UserUpgrade>[] = [
 ]
 
 export const UpgradeTable = () => {
-  // DB 연결 전 더미 데이터 사용
-  const data: UserUpgrade[] = UserUpgradeDB
+  const [data, setData] = useState(null)
 
-  return <MemberTable data={data} columns={columns} />
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users/inactive`,
+      )
+      if (!response.ok) {
+        throw new Error('서버에서 문제가 발생했습니다.')
+      }
+      const result = await response.json()
+      setData(result)
+    }
+
+    fetchData().catch((e) => {
+      console.log('데이터를 가져오는데에 실패했습니다.', e)
+    })
+  }, [])
+
+  return (
+    <div>
+      {data ? <MemberTable data={data} columns={columns} /> : 'loading..'}
+    </div>
+  )
 }
