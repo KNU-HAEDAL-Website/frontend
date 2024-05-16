@@ -7,6 +7,7 @@ import { format } from 'date-fns'
 
 import { MemberTable } from '../member-table'
 import { UpgradeForm } from './upgrade-form'
+import { SkeletonTable } from './skeleton-table'
 
 const columns: ColumnDef<UserUpgrade>[] = [
   {
@@ -76,7 +77,7 @@ export const UpgradeTable = () => {
 
   return (
     <div>
-      {data ? <MemberTable data={data} columns={columns} /> : 'loading..'}
+      {data ? <MemberTable data={data} columns={columns} /> : <SkeletonTable/>}
     </div>
   )
 }
