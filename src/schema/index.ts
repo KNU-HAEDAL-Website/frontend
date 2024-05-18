@@ -104,8 +104,7 @@ export const GradeMemberSchema = z.object({
 })
 
 export const UpgradeMemberSchema = z.object({
-  studentId: z.number(),
-  isAccepted: z.boolean(),
+  userId: z.string(),
 })
 
 export const BanMemberSchema = z.object({
