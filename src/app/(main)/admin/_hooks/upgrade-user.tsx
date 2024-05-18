@@ -1,28 +1,11 @@
-import {
-  getInActiveUsers,
-  rejectUser,
-  upgradeUser,
-} from '@/services/adminUsers'
+import { rejectUser, upgradeUser } from '@/services/adminUsers'
 import { useToast } from '@/components/ui/use-toast'
 
-export const useUserActions = () => {
+export const useUserUpgrade = () => {
   const { toast } = useToast()
   const token = localStorage.getItem('accessToken')
 
-  const fetchInActiveUsers = async () => {
-    if (!token) {
-      return
-    }
-
-    const data = await getInActiveUsers(token)
-    if (data.success) {
-      return { users: data.users }
-    } else {
-      return { error: data.message }
-    }
-  }
-
-  const onClickApproveUser = async (member: UserUpgrade) => {
+  const onClickApproveUser = async (member: UserInactive) => {
     if (!token) {
       toast({ title: '허용되지 않는 요청입니다.' })
       return { success: false }
@@ -38,7 +21,7 @@ export const useUserActions = () => {
     }
   }
 
-  const onClickExpelUser = async (member: UserUpgrade) => {
+  const onClickExpelUser = async (member: UserInactive) => {
     if (!token) {
       toast({ title: '허용되지 않는 요청입니다.' })
       return { success: false }
@@ -54,5 +37,5 @@ export const useUserActions = () => {
     }
   }
 
-  return { onClickApproveUser, onClickExpelUser, fetchInActiveUsers }
+  return { onClickApproveUser, onClickExpelUser }
 }

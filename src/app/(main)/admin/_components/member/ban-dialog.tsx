@@ -1,14 +1,10 @@
 import { Button } from '@/components/ui/button'
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogTrigger
-} from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 
 import { BanDialogForm } from './ban-dialog-form'
 
 interface BanDialogProps {
-  member: UserWithGrade
+  member: UserActive
 }
 
 export const BanDialog = ({ member }: BanDialogProps) => {

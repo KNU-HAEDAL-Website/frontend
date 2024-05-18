@@ -5,15 +5,15 @@ import { useCallback, useEffect, useState } from 'react'
 import { ColumnDef } from '@tanstack/react-table'
 import { format } from 'date-fns'
 
-import { useUserActions } from '../../_hooks/upgradeUser'
 import { MemberTable } from '../member-table'
 import { SkeletonTable } from './skeleton-table'
 import { UpgradeForm } from './upgrade-form'
+import { useUserFetch } from '../../_hooks/fetch-user'
 
 export const UpgradeTable = () => {
   const [data, setData] = useState<undefined | UserInactive[]>(undefined)
   const [error, setError] = useState<undefined | string>(undefined)
-  const { fetchInActiveUsers } = useUserActions()
+  const { fetchInActiveUsers } = useUserFetch()
 
   const columns: ColumnDef<UserInactive>[] = [
     {
@@ -63,7 +63,7 @@ export const UpgradeTable = () => {
 
   const loadInActiveUsers = useCallback(async () => {
     const res = await fetchInActiveUsers()
-
+  
     if (res?.users) {
       setData(res.users)
     }
