@@ -4,7 +4,7 @@ import { useUserActions } from '../../_hooks/upgradeUser'
 import { UpgradeFormButton } from './upgrade-form-button'
 
 interface UpgradeButtonProps {
-  member: UserUpgrade
+  member: UserInactive
   onSuccess: () => void
 }
 

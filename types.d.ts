@@ -13,11 +13,11 @@ type User = {
   userName: string
 }
 
-type UserWithGrade = User & {
-  grade: '해구르르' | '팀장' | '멤버'
+type UserActive = User & {
+  role: '해구르르' | '팀장' | '일반'
 }
 
-type UserUpgrade = User & {
+type UserInactive = User & {
   regDate: Date
 }
 

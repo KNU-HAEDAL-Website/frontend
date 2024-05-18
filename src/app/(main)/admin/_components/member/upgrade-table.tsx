@@ -11,11 +11,11 @@ import { SkeletonTable } from './skeleton-table'
 import { UpgradeForm } from './upgrade-form'
 
 export const UpgradeTable = () => {
-  const [data, setData] = useState<undefined | UserUpgrade[]>(undefined)
+  const [data, setData] = useState<undefined | UserInactive[]>(undefined)
   const [error, setError] = useState<undefined | string>(undefined)
   const { fetchInActiveUsers } = useUserActions()
 
-  const columns: ColumnDef<UserUpgrade>[] = [
+  const columns: ColumnDef<UserInactive>[] = [
     {
       header: '',
       id: 'id',
