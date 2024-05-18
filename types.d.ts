@@ -8,7 +8,7 @@ type Board = {
 }
 
 type User = {
-  userId: number
+  userId: string
   studentNumber: number
   userName: string
 }
