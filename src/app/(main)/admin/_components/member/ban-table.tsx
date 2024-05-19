@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 
 import { ColumnDef } from '@tanstack/react-table'
 
-import { useUserFetch } from '../../_hooks/fetch-user'
+import { useUserFetch } from '@/services/fetchUsers'
 import { MemberTable } from '../member-table'
 import { BanDialog } from './ban-dialog'
 import { SkeletonTable } from './skeleton-table'

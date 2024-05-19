@@ -8,7 +8,7 @@ import { format } from 'date-fns'
 import { MemberTable } from '../member-table'
 import { SkeletonTable } from './skeleton-table'
 import { UpgradeForm } from './upgrade-form'
-import { useUserFetch } from '../../_hooks/fetch-user'
+import { useUserFetch } from '@/services/fetchUsers'
 
 export const UpgradeTable = () => {
   const [data, setData] = useState<undefined | UserInactive[]>(undefined)
