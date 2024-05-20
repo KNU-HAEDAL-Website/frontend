@@ -1,17 +1,14 @@
 import { Button } from '@/components/ui/button'
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogTrigger
-} from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 
 import { BanDialogForm } from './ban-dialog-form'
 
 interface BanDialogProps {
-  member: UserWithGrade
+  member: UserActive
+  onSuccess: () => void
 }
 
-export const BanDialog = ({ member }: BanDialogProps) => {
+export const BanDialog = ({ member, onSuccess }: BanDialogProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -20,7 +17,7 @@ export const BanDialog = ({ member }: BanDialogProps) => {
         </Button>
       </DialogTrigger>
       <DialogContent>
-        <BanDialogForm member={member} />
+        <BanDialogForm member={member} onSuccess={onSuccess} />
       </DialogContent>
     </Dialog>
   )

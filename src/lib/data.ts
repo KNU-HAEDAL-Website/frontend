@@ -263,7 +263,7 @@ export const userDB = [
     name: '조대성',
     grade: '멤버',
   },
-] satisfies UserWithGrade[]
+]
 
 export const postDB = [
   {
@@ -421,64 +421,6 @@ export const commentDB = [
     postId: 1,
   },
 ] satisfies CommentType[]
-
-
-export const UserUpgradeDB = [
-  {
-    userId: 0,
-    studentId: 2024111111,
-    name: '고은샘',
-    createdAt: new Date('2024-04-01')
-  },
-  {
-    userId: 1,
-    studentId: 20224222222,
-    name: '박기현',
-    createdAt: new Date('2024-04-01')
-  },
-  {
-    userId: 2,
-    studentId: 2024333333,
-    name: '권용민',
-    createdAt: new Date('2024-04-02')
-  },
-  {
-    userId: 3,
-    studentId: 2024444444,
-    name: '서지혜',
-    createdAt: new Date('2024-04-02')
-  },
-  {
-    userId: 4,
-    studentId: 2024555555,
-    name: '이창석',
-    createdAt: new Date('2024-04-02')
-  },
-  {
-    userId: 5,
-    studentId: 2024666666,
-    name: '천지윤',
-    createdAt: new Date('2024-04-02')
-  },
-  {
-    userId: 6,
-    studentId: 2024777777,
-    name: '고동수',
-    createdAt: new Date('2024-04-03')
-  },
-  {
-    userId: 7,
-    studentId: 2024888888,
-    name: '박소현',
-    createdAt: new Date('2024-04-03')
-  },
-  {
-    userId: 8,
-    studentId: 2024999999,
-    name: '배정민',
-    createdAt: new Date('2024-04-03')
-  },
-] satisfies UserUpgrade[]
 
 export const GradeDB = [
   {

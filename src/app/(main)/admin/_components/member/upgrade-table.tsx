@@ -5,17 +5,17 @@ import { useCallback, useEffect, useState } from 'react'
 import { ColumnDef } from '@tanstack/react-table'
 import { format } from 'date-fns'
 
-import { useUserActions } from '../../_hooks/upgradeUser'
 import { MemberTable } from '../member-table'
 import { SkeletonTable } from './skeleton-table'
 import { UpgradeForm } from './upgrade-form'
+import { useUserFetch } from '@/services/fetchUsers'
 
 export const UpgradeTable = () => {
-  const [data, setData] = useState<undefined | UserUpgrade[]>(undefined)
+  const [data, setData] = useState<undefined | UserInactive[]>(undefined)
   const [error, setError] = useState<undefined | string>(undefined)
-  const { fetchInActiveUsers } = useUserActions()
+  const { fetchInActiveUsers } = useUserFetch()
 
-  const columns: ColumnDef<UserUpgrade>[] = [
+  const columns: ColumnDef<UserInactive>[] = [
     {
       header: '',
       id: 'id',
@@ -63,7 +63,7 @@ export const UpgradeTable = () => {
 
   const loadInActiveUsers = useCallback(async () => {
     const res = await fetchInActiveUsers()
-
+  
     if (res?.users) {
       setData(res.users)
     }
@@ -82,11 +82,8 @@ export const UpgradeTable = () => {
       {!error && (
         <>
           {data === undefined && <SkeletonTable />}
-          {data !== undefined && data?.length > 0 && (
+          {data !== undefined && (
             <MemberTable data={data} columns={columns} />
-          )}
-          {data !== undefined && data.length === 0 && (
-            <div>회원 승인 요청이 없습니다.</div>
           )}
         </>
       )}

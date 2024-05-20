@@ -1,59 +1,94 @@
 'use client'
 
+import { useCallback, useEffect, useState } from 'react'
+
 import { ColumnDef } from '@tanstack/react-table'
 
-import { userDB } from '@/lib/data'
+import { useUserFetch } from '@/services/fetchUsers'
 
 import { MemberTable } from '../member-table'
 import { BanDialog } from './ban-dialog'
-
-const columns: ColumnDef<UserWithGrade>[] = [
-  {
-    header: '',
-    id: 'id',
-    cell: ({ row, table }) => (
-      <div className="text-center">
-        {table?.getSortedRowModel()?.flatRows?.indexOf(row) + 1}
-      </div>
-    ),
-  },
-  {
-    accessorKey: 'name',
-    header: '이름',
-    cell: ({ row }) => (
-      <div className="text-center">{row.getValue('name')}</div>
-    ),
-  },
-  {
-    accessorKey: 'studentId',
-    header: '학번',
-    cell: ({ row }) => (
-      <div className="text-center">{row.getValue('studentId')}</div>
-    ),
-  },
-  {
-    accessorKey: 'grade',
-    header: '등급',
-    cell: ({ row }) => (
-      <div className="text-center">{row.getValue('grade')}</div>
-    ),
-  },
-  {
-    accessorKey: 'isBanned',
-    header: '',
-    cell: ({ row }) => {
-      return (
-        <div className="flex justify-center">
-          <BanDialog member={row.original} />
-        </div>
-      )
-    },
-  },
-]
+import { SkeletonTable } from './skeleton-table'
 
 export const BanTable = () => {
-  // DB 연결 전 더미 데이터 사용
-  const data: UserWithGrade[] = userDB
+  const [data, setData] = useState<undefined | UserActive[]>()
+  const [error, setError] = useState<undefined | string>()
+  const { fetchActiveUsers } = useUserFetch()
 
-  return <MemberTable data={data} columns={columns} />
+  const columns: ColumnDef<UserActive>[] = [
+    {
+      header: '',
+      id: 'id',
+      cell: ({ row, table }) => (
+        <div className="text-center">
+          {table?.getSortedRowModel()?.flatRows?.indexOf(row) + 1}
+        </div>
+      ),
+    },
+    {
+      accessorKey: 'userName',
+      header: '이름',
+      cell: ({ row }) => (
+        <div className="text-center">{row.getValue('userName')}</div>
+      ),
+    },
+    {
+      accessorKey: 'studentNumber',
+      header: '학번',
+      cell: ({ row }) => (
+        <div className="text-center">{row.getValue('studentNumber')}</div>
+      ),
+    },
+    {
+      accessorKey: 'role',
+      header: '등급',
+      cell: ({ row }) => (
+        <div className="text-center">{row.getValue('role')}</div>
+      ),
+    },
+    {
+      accessorKey: 'isBanned',
+      header: '',
+      cell: ({ row }) => {
+        return (
+          <div className="flex justify-center">
+            <BanDialog member={row.original} onSuccess={loadActiveUsers} />
+          </div>
+        )
+      },
+    },
+  ]
+
+  const loadActiveUsers = useCallback(async () => {
+    const res = await fetchActiveUsers()
+
+    if (res?.users) {
+      setData(res.users)
+    }
+    if (res?.error) {
+      setError(res.error)
+    }
+  }, [fetchActiveUsers])
+
+  useEffect(() => {
+    loadActiveUsers()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  return (
+    <div>
+      {!error && (
+        <>
+          {data === undefined && <SkeletonTable />}
+          {data !== undefined && data?.length > 0 && (
+            <MemberTable data={data} columns={columns} />
+          )}
+          {data !== undefined && data.length === 0 && (
+            <div>회원 승인 요청이 없습니다.</div>
+          )}
+        </>
+      )}
+      {error && <div>{error}</div>}
+    </div>
+  )
 }

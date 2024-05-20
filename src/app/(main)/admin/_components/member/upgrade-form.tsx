@@ -1,15 +1,15 @@
 'use client'
 
-import { useUserActions } from '../../_hooks/upgradeUser'
+import { useUserUpgrade } from '../../_hooks/upgrade-user'
 import { UpgradeFormButton } from './upgrade-form-button'
 
 interface UpgradeButtonProps {
-  member: UserUpgrade
+  member: UserInactive
   onSuccess: () => void
 }
 
 export const UpgradeForm = ({ member, onSuccess }: UpgradeButtonProps) => {
-  const { onClickApproveUser, onClickExpelUser } = useUserActions()
+  const { onClickApproveUser, onClickReject } = useUserUpgrade()
 
   const handleApprove = async () => {
     await onClickApproveUser(member).then((result) => {
@@ -20,7 +20,7 @@ export const UpgradeForm = ({ member, onSuccess }: UpgradeButtonProps) => {
   }
 
   const handleExpel = async () => {
-    await onClickExpelUser(member).then((result) => {
+    await onClickReject(member).then((result) => {
       if (result.success) {
         onSuccess()
       }
