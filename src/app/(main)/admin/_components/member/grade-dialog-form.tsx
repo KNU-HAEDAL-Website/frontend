@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { GradeMemberSchema } from '@/schema'
 import { Button } from '@/components/ui/button'
 import { DialogClose, DialogFooter } from '@/components/ui/dialog'
 import {
@@ -12,27 +13,35 @@ import {
   FormItem,
   FormLabel,
 } from '@/components/ui/form'
-import { GradeMemberSchema } from '@/schema'
-import { useGradeMemberStore } from '@/store/grade-member'
 
 import { GradeRadioBox } from './grade-radio-box'
+import { useUserGrade } from '../../_hooks/grade-user'
 
-export const GradeDialogForm = () => {
-  // api 연결 전 더미데이터 사용
-  const { selectedMember } = useGradeMemberStore()
+interface GradDialogFormProps {
+  user: UserActive
+  onSuccess: () => void
+}
 
-  const onSubmit = (data: z.infer<typeof GradeMemberSchema>) => {
-    console.log(data)
+export const GradeDialogForm = ({ user, onSuccess }: GradDialogFormProps) => {
+  const { onClickChagneUserRole } = useUserGrade()
+
+  const onSubmit = async (data: z.infer<typeof GradeMemberSchema>) => {
+    await onClickChagneUserRole(user, data.role).then((result) => {
+      if (result.success) {
+        onSuccess()
+      }
+    })
   }
 
   const onClick = () => {
-    form.register('studentId')
-    form.setValue('studentId', selectedMember.studentId)
     form.handleSubmit(onSubmit)()
   }
 
   const form = useForm<z.infer<typeof GradeMemberSchema>>({
     resolver: zodResolver(GradeMemberSchema),
+    defaultValues: {
+      role: user.role,
+    },
   })
 
   return (
@@ -43,17 +52,17 @@ export const GradeDialogForm = () => {
       >
         <FormField
           control={form.control}
-          name="grade"
+          name="role"
           render={({ field }) => (
             <FormItem className="flex flex-col gap-5">
               <FormLabel className="flex gap-2 text-md">
                 <span>
-                  {selectedMember.name}({selectedMember.studentId})
+                  {user.userName}({user.studentNumber})
                 </span>
                 <span>권한 설정</span>
               </FormLabel>
               <FormControl>
-                <GradeRadioBox onChange={field.onChange} />
+                <GradeRadioBox user={user} onChange={field.onChange} />
               </FormControl>
             </FormItem>
           )}

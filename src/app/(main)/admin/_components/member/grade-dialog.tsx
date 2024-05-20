@@ -1,33 +1,23 @@
-import { useGradeMemberStore } from '@/store/grade-member'
 import { Button } from '@/components/ui/button'
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 
 import { GradeDialogForm } from './grade-dialog-form'
 
 interface GradeDialogProps {
-  member: UserWithGrade
+  member: UserActive
+  onSuccess: () => void
 }
 
-export const GradeDialog = ({ member }: GradeDialogProps) => {
-  const { setSelectedMember } = useGradeMemberStore()
-
+export const GradeDialog = ({ member, onSuccess }: GradeDialogProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          variant="secondary"
-          size="ssm"
-          onClick={() => setSelectedMember(member.studentId)}
-        >
-          {member.grade}
+        <Button variant="secondary" size="ssm">
+          {member.role}
         </Button>
       </DialogTrigger>
       <DialogContent>
-        <GradeDialogForm />
+        <GradeDialogForm user={member} onSuccess={onSuccess} />
       </DialogContent>
     </Dialog>
   )

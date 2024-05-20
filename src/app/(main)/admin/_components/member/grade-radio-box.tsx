@@ -1,33 +1,25 @@
 import { cn } from '@/lib/utils'
-
-import { GradeDB } from '@/lib/data'
-import { useGradeMemberStore } from '@/store/grade-member'
+import { roleDB } from '@/lib/data'
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 
 interface GradeRadioBoxProps {
   onChange: (value: string) => void
+  user: UserActive
 }
 
-export const GradeRadioBox = ({ onChange }: GradeRadioBoxProps) => {
-  // api 연결 전 더미데이터 사용
-  const { selectedMember, setSelectedGrade } = useGradeMemberStore()
-
+export const GradeRadioBox = ({ onChange, user }: GradeRadioBoxProps) => {
   return (
     <RadioGroup onValueChange={onChange} className="flex flex-col gap-4">
-      {GradeDB.map((grade) => {
-        const disabledGrade = grade.name === selectedMember.grade
+      {roleDB.map((role) => {
+        const disabledRole = role.name === user.role
+        
         return (
-          <div key={grade.name}>
-            <div
-              onClick={() => setSelectedGrade(grade.name)}
-              className="flex items-center space-x-2"
-            >
-              <RadioGroupItem value={grade.name} disabled={disabledGrade} />
-              <Label className={cn(disabledGrade && 'text-primary/50')}>
-                {grade.name}
-              </Label>
-            </div>
+          <div key={role.name} className="flex items-center space-x-2">
+            <RadioGroupItem value={role.name} disabled={disabledRole} />
+            <Label className={cn(disabledRole && 'text-primary/50')}>
+              {role.name}
+            </Label>
           </div>
         )
       })}
