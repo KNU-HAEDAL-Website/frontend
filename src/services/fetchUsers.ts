@@ -1,7 +1,8 @@
+import LocalStorage from '@/constant/localStorage'
 import { getActivUsers, getInActiveUsers } from '@/services/adminUsers'
 
 export const useUserFetch = () => {
-  const token = localStorage.getItem('accessToken')
+  const token = LocalStorage.getItem('accessToken')
 
   const fetchInActiveUsers = async () => {
     if (!token) {
