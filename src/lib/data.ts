@@ -422,7 +422,8 @@ export const commentDB = [
   },
 ] satisfies CommentType[]
 
-export const GradeDB = [
+
+export const roleDB = [
   {
     id: 0,
     name: '해구르르',
@@ -433,6 +434,6 @@ export const GradeDB = [
   },
   {
     id: 2,
-    name: '멤버',
+    name: '일반',
   }
 ]

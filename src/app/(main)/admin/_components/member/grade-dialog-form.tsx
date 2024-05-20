@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { GradeMemberSchema } from '@/schema'
 import { Button } from '@/components/ui/button'
 import { DialogClose, DialogFooter } from '@/components/ui/dialog'
 import {
@@ -12,22 +13,21 @@ import {
   FormItem,
   FormLabel,
 } from '@/components/ui/form'
-import { GradeMemberSchema } from '@/schema'
-import { useGradeMemberStore } from '@/store/grade-member'
 
 import { GradeRadioBox } from './grade-radio-box'
 
-export const GradeDialogForm = () => {
-  // api 연결 전 더미데이터 사용
-  const { selectedMember } = useGradeMemberStore()
+interface GradDialogFormProps {
+  user: UserActive
+}
 
+export const GradeDialogForm = ({ user }: GradDialogFormProps) => {
   const onSubmit = (data: z.infer<typeof GradeMemberSchema>) => {
     console.log(data)
   }
 
   const onClick = () => {
-    form.register('studentId')
-    form.setValue('studentId', selectedMember.studentId)
+    form.register('userId')
+    form.setValue('userId', user.studentNumber)
     form.handleSubmit(onSubmit)()
   }
 
@@ -43,17 +43,17 @@ export const GradeDialogForm = () => {
       >
         <FormField
           control={form.control}
-          name="grade"
+          name="role"
           render={({ field }) => (
             <FormItem className="flex flex-col gap-5">
               <FormLabel className="flex gap-2 text-md">
                 <span>
-                  {selectedMember.name}({selectedMember.studentId})
+                  {user.userName}({user.studentNumber})
                 </span>
                 <span>권한 설정</span>
               </FormLabel>
               <FormControl>
-                <GradeRadioBox onChange={field.onChange} />
+                <GradeRadioBox user={user} onChange={field.onChange} />
               </FormControl>
             </FormItem>
           )}
