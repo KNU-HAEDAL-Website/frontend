@@ -21,7 +21,7 @@ export const useUserUpgrade = () => {
     }
   }
 
-  const onClickExpelUser = async (member: UserInactive) => {
+  const onClickReject = async (member: UserInactive) => {
     if (!token) {
       toast({ title: '허용되지 않는 요청입니다.' })
       return { success: false }
@@ -37,5 +37,5 @@ export const useUserUpgrade = () => {
     }
   }
 
-  return { onClickApproveUser, onClickExpelUser }
+  return { onClickApproveUser, onClickReject }
 }

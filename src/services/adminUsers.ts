@@ -67,3 +67,23 @@ export const rejectUser = async (token: string, userId: string) => {
     return { success: false, message: '잘못된 접근입니다.' }
   }
 }
+
+export const expelUser = async (token: string, userId: string) => {
+  try {
+    const res = await authorizationApi.patch(`/admin/users/${userId}/expel`, {}, {
+      headers: { Authorization: token },
+    })
+
+    return { success: true, message: res.data.message }
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      const errorType = error.response?.status
+      if (errorType == 404) {
+        const errorContent = error.response?.data
+        return { sucess: false, error: errorContent.message }
+      }
+    }
+
+    return { success: false, message: '잘못된 접근입니다.' }
+  }
+}

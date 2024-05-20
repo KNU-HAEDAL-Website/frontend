@@ -108,7 +108,7 @@ export const UpgradeMemberSchema = z.object({
 })
 
 export const BanMemberSchema = z.object({
-  studentId: z.number(),
+  userId: z.string(),
 })
 
 export const AddSemesterSchema = z.object({

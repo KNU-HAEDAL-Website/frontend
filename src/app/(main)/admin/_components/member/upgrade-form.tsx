@@ -9,7 +9,7 @@ interface UpgradeButtonProps {
 }
 
 export const UpgradeForm = ({ member, onSuccess }: UpgradeButtonProps) => {
-  const { onClickApproveUser, onClickExpelUser } = useUserUpgrade()
+  const { onClickApproveUser, onClickReject } = useUserUpgrade()
 
   const handleApprove = async () => {
     await onClickApproveUser(member).then((result) => {
@@ -20,7 +20,7 @@ export const UpgradeForm = ({ member, onSuccess }: UpgradeButtonProps) => {
   }
 
   const handleExpel = async () => {
-    await onClickExpelUser(member).then((result) => {
+    await onClickReject(member).then((result) => {
       if (result.success) {
         onSuccess()
       }
