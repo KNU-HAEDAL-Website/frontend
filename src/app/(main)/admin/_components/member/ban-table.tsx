@@ -80,11 +80,8 @@ export const BanTable = () => {
       {!error && (
         <>
           {data === undefined && <SkeletonTable />}
-          {data !== undefined && data?.length > 0 && (
+          {data !== undefined && (
             <MemberTable data={data} columns={columns} />
-          )}
-          {data !== undefined && data.length === 0 && (
-            <div>회원 승인 요청이 없습니다.</div>
           )}
         </>
       )}
