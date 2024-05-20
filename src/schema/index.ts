@@ -99,8 +99,7 @@ export const CommentSchema = z.object({
 })
 
 export const GradeMemberSchema = z.object({
-  userId: z.number(),
-  role: z.enum(['해구르르', '팀장', '멤버']),
+  role: z.enum(['해구르르', '팀장', '일반']),
 })
 
 export const UpgradeMemberSchema = z.object({

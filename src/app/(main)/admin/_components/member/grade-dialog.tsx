@@ -5,9 +5,10 @@ import { GradeDialogForm } from './grade-dialog-form'
 
 interface GradeDialogProps {
   member: UserActive
+  onSuccess: () => void
 }
 
-export const GradeDialog = ({ member }: GradeDialogProps) => {
+export const GradeDialog = ({ member, onSuccess }: GradeDialogProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -16,7 +17,7 @@ export const GradeDialog = ({ member }: GradeDialogProps) => {
         </Button>
       </DialogTrigger>
       <DialogContent>
-        <GradeDialogForm user={member} />
+        <GradeDialogForm user={member} onSuccess={onSuccess} />
       </DialogContent>
     </Dialog>
   )

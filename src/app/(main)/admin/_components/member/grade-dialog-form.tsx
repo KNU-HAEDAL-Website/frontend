@@ -15,24 +15,33 @@ import {
 } from '@/components/ui/form'
 
 import { GradeRadioBox } from './grade-radio-box'
+import { useUserGrade } from '../../_hooks/grade-user'
 
 interface GradDialogFormProps {
   user: UserActive
+  onSuccess: () => void
 }
 
-export const GradeDialogForm = ({ user }: GradDialogFormProps) => {
-  const onSubmit = (data: z.infer<typeof GradeMemberSchema>) => {
-    console.log(data)
+export const GradeDialogForm = ({ user, onSuccess }: GradDialogFormProps) => {
+  const { onClickChagneUserRole } = useUserGrade()
+
+  const onSubmit = async (data: z.infer<typeof GradeMemberSchema>) => {
+    await onClickChagneUserRole(user, data.role).then((result) => {
+      if (result.success) {
+        onSuccess()
+      }
+    })
   }
 
   const onClick = () => {
-    form.register('userId')
-    form.setValue('userId', user.studentNumber)
     form.handleSubmit(onSubmit)()
   }
 
   const form = useForm<z.infer<typeof GradeMemberSchema>>({
     resolver: zodResolver(GradeMemberSchema),
+    defaultValues: {
+      role: user.role,
+    },
   })
 
   return (

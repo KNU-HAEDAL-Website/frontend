@@ -46,7 +46,7 @@ export const GradeTable = () => {
         const member = row.original
         return (
           <div className="flex justify-center">
-            <GradeDialog member={member} />
+            <GradeDialog member={member} onSuccess={loadActiveUsers}/>
           </div>
         )
       },
