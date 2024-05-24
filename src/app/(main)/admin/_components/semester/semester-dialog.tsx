@@ -1,3 +1,4 @@
+import { activityDB } from '@/lib/data'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -9,17 +10,23 @@ import {
 
 import { SemesterDialogForm } from './semester-dialog-form'
 
-export const SemesterDialog = ({ children }: { children: React.ReactNode }) => {
+interface SemesterDialogProps {
+  semester: string
+}
+export const SemesterDialog = ({ semester }: SemesterDialogProps) => {
+  //백엔드 연결 전 더미 데이터 사용
+  const activity = activityDB.find((cur) => cur.semester === semester)?.name
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="rounded-full">{children}</Button>
+        <Button className="rounded-full">{semester}</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{children} 활동 관리</DialogTitle>
+          <DialogTitle>{semester} 활동 관리</DialogTitle>
         </DialogHeader>
-        <SemesterDialogForm />
+        <SemesterDialogForm defaultActivity={activity} />
       </DialogContent>
     </Dialog>
   )

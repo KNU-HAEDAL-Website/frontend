@@ -13,7 +13,7 @@ export const SemesterManage = () => {
         </div>
         <div className="flex flex-row gap-1 overflow-x-auto">
           {semesterDB.map((semester) => (
-            <SemesterDialog key={semester}>{semester}</SemesterDialog>
+            <SemesterDialog key={semester} semester={semester} />
           ))}
         </div>
       </div>
