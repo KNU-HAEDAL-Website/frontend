@@ -2,7 +2,7 @@ import { semesterDB } from '@/lib/data'
 
 import { ItemLayout } from './item-layout'
 import { AddDialog } from './semester/add-dialog'
-import { SemesterBox } from './semester/semester-box'
+import { SemesterDialog } from './semester/semester-dialog'
 
 export const SemesterManage = () => {
   return (
@@ -11,11 +11,9 @@ export const SemesterManage = () => {
         <div className="w-9 h-9">
           <AddDialog />
         </div>
-        <div className="flex flex-row gap-1 overflow-scroll">
+        <div className="flex flex-row gap-1 overflow-x-auto">
           {semesterDB.map((semester) => (
-            <SemesterBox key={semester} className="select-none">
-              {semester}
-            </SemesterBox>
+            <SemesterDialog key={semester}>{semester}</SemesterDialog>
           ))}
         </div>
       </div>
