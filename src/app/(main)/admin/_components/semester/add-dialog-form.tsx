@@ -14,13 +14,9 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from '@/components/ui/input-otp'
 
 import { SelectTerm } from './select-term'
+import { Input } from '@/components/ui/input'
 
 export const AddDialogForm = () => {
   const form = useForm<z.infer<typeof AddSemesterSchema>>({
@@ -49,14 +45,7 @@ export const AddDialogForm = () => {
               <FormItem>
                 <FormLabel>연도를 입력해주세요.</FormLabel>
                 <FormControl>
-                  <InputOTP maxLength={4} {...field}>
-                    <InputOTPGroup>
-                      <InputOTPSlot index={0} />
-                      <InputOTPSlot index={1} />
-                      <InputOTPSlot index={2} />
-                      <InputOTPSlot index={3} />
-                    </InputOTPGroup>
-                  </InputOTP>
+                 <Input {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
