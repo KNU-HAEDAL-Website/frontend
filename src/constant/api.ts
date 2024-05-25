@@ -1,6 +1,5 @@
 import axios from 'axios'
-import { errorResponse } from '@/lib/error-reponse'
-import { successResponse } from '@/lib/sucssess-response'
+import errorInterceptor from '@/lib/error-interceptor'
 
 const backendApi = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
@@ -11,6 +10,11 @@ const authorizationApi = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   withCredentials: true,
 })
-authorizationApi.interceptors.response.use(successResponse, errorResponse)
+authorizationApi.interceptors.response.use(
+  response => {
+    return response
+  },
+  errorInterceptor
+)
 
 export { backendApi, authorizationApi }

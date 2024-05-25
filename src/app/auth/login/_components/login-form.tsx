@@ -2,23 +2,22 @@
 
 import { useEffect, useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
-
 import { useRouter } from 'next/navigation'
 
+import * as z from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+import { LoginSchema } from '@/schema'
+import { login } from '@/services/login'
 import { FormError } from '@/components/form-error'
 import { Button } from '@/components/ui/button'
 import { Form, FormField } from '@/components/ui/form'
-import { LoginSchema } from '@/schema'
-import { login } from '@/services/login'
-import { useUserStore } from '@/store/user'
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
 
 import { FormInput } from '../../_components/form-input'
 
 export const LoginForm = () => {
   const router = useRouter()
-  const setIsLoggedIn = useUserStore((value) => value.setIsLoggedIn)
+
   const [isPending, startTransition] = useTransition()
   const [success, setSuccess] = useState<string | undefined>('')
   const [error, setError] = useState<string | undefined>('')
@@ -34,9 +33,8 @@ export const LoginForm = () => {
   useEffect(() => {
     if (success) {
       router.push('/')
-      setIsLoggedIn(true)
     }
-  }, [success, router, setIsLoggedIn])
+  }, [success, router])
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setError('')
