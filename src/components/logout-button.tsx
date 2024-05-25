@@ -1,13 +1,11 @@
-import { MouseEvent, useEffect, useState } from 'react'
+import { MouseEvent, useState } from 'react'
 
 import { logout } from '@/services/logout'
 
 import { DialogMessage } from './dialog-message'
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog'
-import { useUserStore } from '@/store/user'
 
 export const LogoutButton = () => {
-  const setIsLoggedIn = useUserStore((value) => value.setIsLoggedIn)
   const [success, setSuccess] = useState<string | undefined>('')
   const [error, setError] = useState<string | undefined>('')
 
@@ -21,12 +19,6 @@ export const LogoutButton = () => {
       setSuccess(data?.success)
     })
   }
-
-  useEffect(() => {
-    if (success) {
-      setIsLoggedIn(false)
-    }
-  }, [success, setIsLoggedIn])
 
   return (
     <Dialog>

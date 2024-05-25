@@ -7,13 +7,11 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { EditProfileImageSchema } from '@/schema'
-import { useUserStore } from '@/store/user'
 import { Button } from '@/components/ui/button'
 import { Form, FormField, FormItem } from '@/components/ui/form'
 import { UserAvatar } from '@/components/user/user-avatar'
 
 export const ProfileImage = () => {
-  const { profileImage, setProfileImage } = useUserStore()
   const hiddenInputRef = useRef<HTMLInputElement | null>(null)
 
   const form = useForm<z.infer<typeof EditProfileImageSchema>>({
@@ -22,21 +20,21 @@ export const ProfileImage = () => {
 
   const uploadProfileImage = () => {
     console.log('이미지 업로드 api 보내기')
-    const userImage = form.getValues('image')
-    if (userImage) {
-      const userImageUrl = URL.createObjectURL(userImage)
-      setProfileImage(userImageUrl)
-    }
+    // const userImage = form.getValues('image')
+    // if (userImage) {
+    //   const userImageUrl = URL.createObjectURL(userImage)
+      // setProfileImage(userImageUrl)
+    // }
   }
 
   const deleteProfileImage = () => {
     console.log('삭제하기 api 보내기')
-    setProfileImage('')
+    // setProfileImage('')
   }
 
   return (
     <div className="flex flex-col gap-5">
-      <UserAvatar size="lg" userImage={profileImage} />
+      <UserAvatar size="lg" />
       <Form {...form}>
         <form className="w-fit flex flex-col gap-2">
           <FormField
