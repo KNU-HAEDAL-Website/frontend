@@ -13,6 +13,12 @@ class LocalStorage {
     }
     return null
   }
+
+  static clear() {
+    if (typeof window !== 'undefined') {
+      localStorage.clear()
+    }
+  }
 }
 
 export default LocalStorage
