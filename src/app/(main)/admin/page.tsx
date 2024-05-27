@@ -9,14 +9,17 @@ import { ItemSeperator } from './_components/item-seperator'
 import { MemberManage } from './_components/member-manage'
 import { SemesterManage } from './_components/semester-manage'
 import { SliderManage } from './_components/slider-manage'
+import { useRouter } from 'next/navigation'
 
 const AdminPage = () => {
   const [isAdmin, setIsAdmin] = useState<boolean>(false)
+  const router = useRouter()
 
   useEffect(() => {
     const checkAdmin = async () => {
       const token = LocalStorage.getItem('accessToken')
       if (!token) {
+        router.push('/')
         return
       }
 
@@ -27,6 +30,7 @@ const AdminPage = () => {
         setIsAdmin(true)
       } catch (error) {
         console.error(error)
+        router.push('/')
       }
     }
 
