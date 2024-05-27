@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/command'
 
 interface boardMemberProps {
-  onChange: (value: UserWithGrade[]) => void
+  onChange: (value: UserActive[]) => void
 }
 
 export const BoardMember = ({ onChange }: boardMemberProps) => {
@@ -65,9 +65,9 @@ export const BoardMember = ({ onChange }: boardMemberProps) => {
               <Badge
                 className="w-fit"
                 variant="secondary"
-                key={member.studentId}
+                key={member.studentNumber}
               >
-                {member.name}
+                {member.userName}
                 <Button
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
@@ -105,7 +105,7 @@ export const BoardMember = ({ onChange }: boardMemberProps) => {
               {selectAbles.map((member) => {
                 return (
                   <CommandItem
-                    key={member.studentId}
+                    key={member.studentNumber}
                     onMouseDown={(e) => {
                       e.preventDefault()
                       e.stopPropagation()
@@ -115,7 +115,7 @@ export const BoardMember = ({ onChange }: boardMemberProps) => {
                       addSelectedMemeber(member)
                     }}
                   >
-                    {member.studentId} {member.name}
+                    {member.studentNumber} {member.userName}
                   </CommandItem>
                 )
               })}

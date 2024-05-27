@@ -3,12 +3,12 @@ import { create } from 'zustand'
 
 interface boardMemberProps {
   loadBoardCreatorInfo: (boardId: number) => Promise<void>
-  selectedMembers: UserWithGrade[]
-  selectAbles: UserWithGrade[]
+  selectedMembers: UserActive[]
+  selectAbles: UserActive[]
   setSelectAbles: () => void
-  addSelectedMemeber: (cur: UserWithGrade) => void
+  addSelectedMemeber: (cur: UserActive) => void
   removeSelectedMember: () => void
-  unSelectedMember: (cur: UserWithGrade) => void
+  unSelectedMember: (cur: UserActive) => void
 }
 
 export const useBoardMemberStore = create<boardMemberProps>()((set, get) => ({
@@ -18,7 +18,7 @@ export const useBoardMemberStore = create<boardMemberProps>()((set, get) => ({
     // const createUser = await response.json().user
     const createUserName = boardDB[boardId].user
     const createUser = userDB.find(
-      (user) => user.name === createUserName
+      (user) => user.userName === createUserName
     )
     if (!createUser) {
       throw new Error(`${createUserName}을 찾을 수 없습니다.`)
@@ -33,10 +33,10 @@ export const useBoardMemberStore = create<boardMemberProps>()((set, get) => ({
   setSelectAbles: () => {
     set((value) => {
       const selectedMemberIds = value.selectedMembers.map(
-        (member) => member.studentId,
+        (member) => member.studentNumber,
       )
-      const selectAbleMembers: UserWithGrade[] = userDB
-        .filter((member) => !selectedMemberIds.includes(member.studentId))
+      const selectAbleMembers: UserActive[] = userDB
+        .filter((member) => !selectedMemberIds.includes(member.studentNumber))
 
       return { selectAbles: selectAbleMembers }
     })
@@ -63,7 +63,7 @@ export const useBoardMemberStore = create<boardMemberProps>()((set, get) => ({
   unSelectedMember: (cur) => {
     set((value) => {
       const unselectMembers = value.selectedMembers.filter(
-        (prev) => prev.studentId !== cur.studentId,
+        (prev) => prev.studentNumber !== cur.studentNumber,
       )
 
       return { selectedMembers: unselectMembers }
