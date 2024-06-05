@@ -40,8 +40,8 @@ export const RegisterForm = () => {
   useEffect(() => {
     if (success) {
       setTimeout(() => {
-        router.push('/')
-      }, 3000)
+        router.push('/auth/login')
+      }, 1500)
     }
   }, [success, router])
 
