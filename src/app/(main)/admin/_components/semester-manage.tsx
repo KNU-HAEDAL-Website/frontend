@@ -31,7 +31,7 @@ export const SemesterManage = () => {
     <ItemLayout title="학기 관리">
       <div className="flex flex-row gap-2">
         <div className="w-9 h-9">
-          <AddDialog />
+          <AddDialog onSuccess={loadSemesters} />
         </div>
         <div className="flex flex-row gap-1 overflow-x-auto">
           {semesters?.map((pre) => {

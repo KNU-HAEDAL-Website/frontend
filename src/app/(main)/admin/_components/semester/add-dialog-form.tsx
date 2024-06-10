@@ -14,17 +14,31 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-
-import { SelectTerm } from './select-term'
 import { Input } from '@/components/ui/input'
 
-export const AddDialogForm = () => {
+import { useSemester } from '../../_hooks/use-semester'
+import { SelectTerm } from './select-term'
+
+interface AddDialogFormProps {
+  onSuccess: () => void
+}
+
+export const AddDialogForm = ({ onSuccess }: AddDialogFormProps) => {
   const form = useForm<z.infer<typeof AddSemesterSchema>>({
     resolver: zodResolver(AddSemesterSchema),
+    defaultValues: {
+      year: '',
+    },
   })
+  const { onClickAddSemester } = useSemester()
 
-  const onSubmit = (values: z.infer<typeof AddSemesterSchema>) => {
-    console.log(values)
+  const onSubmit = async (values: z.infer<typeof AddSemesterSchema>) => {
+    const semester = values.year + values.term
+    await onClickAddSemester(semester).then((result) => {
+      if (result.success) {
+        onSuccess()
+      }
+    })
   }
 
   const onClick = () => {
@@ -45,7 +59,7 @@ export const AddDialogForm = () => {
               <FormItem>
                 <FormLabel>연도를 입력해주세요.</FormLabel>
                 <FormControl>
-                 <Input {...field} />
+                  <Input {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -58,7 +72,7 @@ export const AddDialogForm = () => {
               <FormItem>
                 <FormLabel>학기를 선택해주세요.</FormLabel>
                 <FormControl>
-                  <SelectTerm onChange={field.onChange}/>
+                  <SelectTerm onChange={field.onChange} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
