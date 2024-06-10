@@ -5,7 +5,7 @@ import { authorizationApi } from '@/constant/api'
 
 export const getInActiveUsers = async (token: string) => {
   try {
-    const response = await authorizationApi.get('/users/inactive', {
+    const response = await authorizationApi.get('/admin/users/inactive', {
       headers: { Authorization: token },
     })
     return { success: true, users: response.data }
@@ -16,7 +16,7 @@ export const getInActiveUsers = async (token: string) => {
 
 export const getActivUsers = async (token: string) => {
   try {
-    const response = await authorizationApi.get('/users/active', {
+    const response = await authorizationApi.get('/admin/users/active', {
       headers: { Authorization: token },
     })
     return { success: true, users: response.data }
