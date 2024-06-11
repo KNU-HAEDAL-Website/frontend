@@ -1,5 +1,5 @@
+import { addSemesters, deleteSemester } from '@/services/adminSemesters'
 import { useToast } from '@/components/ui/use-toast'
-import { addSemesters } from '@/services/adminSemesters'
 
 export const useSemester = () => {
   const { toast } = useToast()
@@ -21,5 +21,24 @@ export const useSemester = () => {
     }
   }
 
-  return { onClickAddSemester }
+  const onClickDeleteSemester = async (
+    semester: string,
+    semesterId: number,
+  ) => {
+    if (!token) {
+      toast({ title: '허용되지 않는 요청입니다.' })
+      return { success: false }
+    }
+
+    const data = await deleteSemester(token, semesterId)
+    if (data?.success) {
+      toast({ title: `${semester} ${data.message}` })
+      return { success: true }
+    } else {
+      toast({ title: data.message })
+      return { success: false }
+    }
+  }
+
+  return { onClickAddSemester, onClickDeleteSemester }
 }

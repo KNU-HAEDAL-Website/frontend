@@ -36,7 +36,14 @@ export const SemesterManage = () => {
         <div className="flex flex-row gap-1 overflow-x-auto">
           {semesters?.map((pre) => {
             const semester = parseSemester(pre.semesterName)
-            return <SemesterDialog key={pre.semesterId} semester={semester} />
+            return (
+              <SemesterDialog
+                key={pre.semesterId}
+                semester={semester}
+                semesterId={pre.semesterId}
+                onSuccess={loadSemesters}
+              />
+            )
           })}
         </div>
       </div>
