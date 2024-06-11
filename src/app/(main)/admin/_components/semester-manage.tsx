@@ -15,7 +15,8 @@ export const SemesterManage = () => {
     const res = await fetchSemester()
 
     if (res?.semesters) {
-      setSemesters(res.semesters)
+      const parsedSemesters = parseSemester(res.semesters)
+      setSemesters(parsedSemesters)
     }
     if (res?.error) {
       console.error(res.error)
@@ -34,13 +35,12 @@ export const SemesterManage = () => {
           <AddDialog onSuccess={loadSemesters} />
         </div>
         <div className="flex flex-row gap-1 overflow-x-auto">
-          {semesters?.map((pre) => {
-            const semester = parseSemester(pre.semesterName)
+          {semesters?.map((semester) => {
             return (
               <SemesterDialog
-                key={pre.semesterId}
-                semester={semester}
-                semesterId={pre.semesterId}
+                key={semester.semesterId}
+                semester={semester.semesterName}
+                semesterId={semester.semesterId}
                 onSuccess={loadSemesters}
               />
             )
