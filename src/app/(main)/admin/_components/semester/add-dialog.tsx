@@ -11,7 +11,11 @@ import {
 
 import { AddDialogForm } from './add-dialog-form'
 
-export const AddDialog = () => {
+interface AddDialogProps {
+  onSuccess: () => void
+}
+
+export const AddDialog = ({ onSuccess }: AddDialogProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -23,7 +27,7 @@ export const AddDialog = () => {
         <DialogHeader>
           <DialogTitle>학기 추가</DialogTitle>
         </DialogHeader>
-        <AddDialogForm />
+        <AddDialogForm onSuccess={onSuccess} />
       </DialogContent>
     </Dialog>
   )

@@ -21,6 +21,11 @@ type UserInactive = User & {
   regDate: Date
 }
 
+type Semester = {
+  semesterId: number,
+  semesterName: string
+}
+
 type Post = {
   id: number
   title: string
