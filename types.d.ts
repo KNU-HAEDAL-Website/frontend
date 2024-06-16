@@ -26,6 +26,12 @@ type Semester = {
   semesterName: string
 }
 
+type Activity = {
+  activityId: number,
+  activityName: string,
+  semesterId: number
+}
+
 type Post = {
   id: number
   title: string
