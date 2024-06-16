@@ -2,25 +2,30 @@
 
 import { useEffect } from 'react'
 
-import { useAdminActivityStore } from '@/store/admin-activity'
 import { Button } from '@/components/ui/button'
+import { useActivitiesFetch } from '@/services/fetchActivities'
+import { useAdminActivityStore } from '@/store/admin-activity'
 
 import { ActivityItems } from './activity-items'
 import { AddActivity } from './add-activity'
 
-interface SemesterDialogFormProps {
-  defaultActivity: string[] | undefined
-}
-
-export const SemesterDialogForm = ({
-  defaultActivity,
-}: SemesterDialogFormProps) => {
+export const SemesterDialogForm = () => {
   const { activities, setActivities } = useAdminActivityStore()
+  const { fetchActivities } = useActivitiesFetch()
+
+  const loadActivities = async () => {
+    const res = await fetchActivities()
+
+    if (res?.activities) {
+      setActivities(res.activities)
+    }
+    if (res?.error) {
+      console.error(res.error)
+    }
+  }
 
   useEffect(() => {
-    if (defaultActivity) {
-      setActivities(defaultActivity)
-    }
+    loadActivities()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
