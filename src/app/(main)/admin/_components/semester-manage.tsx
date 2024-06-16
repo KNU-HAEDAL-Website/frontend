@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import { useSemesterFetch } from '@/services/fetchSemesters'
+import { useAdminSemesterStore } from '@/store/admin-semester'
 
 import { parseSemester } from '../_utils/parseSemester'
 import { ItemLayout } from './item-layout'
@@ -9,9 +10,9 @@ import { SemesterDialog } from './semester/semester-dialog'
 
 export const SemesterManage = () => {
   const { fetchSemester } = useSemesterFetch()
-  const [semesters, setSemesters] = useState<Semester[]>()
+  const { semesters, setSemesters } = useAdminSemesterStore()
 
-  const loadSemesters = useCallback(async () => {
+  const loadSemesters = async () => {
     const res = await fetchSemester()
 
     if (res?.semesters) {
@@ -21,7 +22,7 @@ export const SemesterManage = () => {
     if (res?.error) {
       console.error(res.error)
     }
-  }, [fetchSemester])
+  }
 
   useEffect(() => {
     loadSemesters()
@@ -39,8 +40,7 @@ export const SemesterManage = () => {
             return (
               <SemesterDialog
                 key={semester.semesterId}
-                semester={semester.semesterName}
-                semesterId={semester.semesterId}
+                semester={semester}
                 onSuccess={loadSemesters}
               />
             )

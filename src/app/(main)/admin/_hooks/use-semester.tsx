@@ -21,18 +21,15 @@ export const useSemester = () => {
     }
   }
 
-  const onClickDeleteSemester = async (
-    semester: string,
-    semesterId: number,
-  ) => {
+  const onClickDeleteSemester = async (semester: Semester) => {
     if (!token) {
       toast({ title: '허용되지 않는 요청입니다.' })
       return { success: false }
     }
 
-    const data = await deleteSemester(token, semesterId)
+    const data = await deleteSemester(token, semester.semesterId)
     if (data?.success) {
-      toast({ title: `${semester} ${data.message}` })
+      toast({ title: `${semester.semesterName} ${data.message}` })
       return { success: true }
     } else {
       toast({ title: data.message })
