@@ -1,23 +1,31 @@
-// import { useAdminActivityStore } from '@/store/admin-activity'
-import { Button } from '@/components/ui/button'
 import { X } from 'lucide-react'
+
+import { useAdminSemesterStore } from '@/store/admin-semester'
+import { Button } from '@/components/ui/button'
+
+import { useActivity } from '../../_hooks/use-activity'
 
 interface ActivityItemsProps {
   activity: Activity
+  onSuccess: () => void
 }
 
-export const ActivityItems = ({ activity }: ActivityItemsProps) => {
-  // const { deleteActivity } = useAdminActivityStore()
+export const ActivityItems = ({ activity, onSuccess }: ActivityItemsProps) => {
+  const { selectedSemester } = useAdminSemesterStore()
+  const { onClickDeleteActivity } = useActivity()
 
-  const onClickDelte = () => {
-    // deleteActivity(activity.activityName)
+  const onClick = async () => {
+    const response = await onClickDeleteActivity(selectedSemester, activity)
+    if (response.success) {
+      onSuccess()
+    }
   }
 
   return (
     <div className="flex items-center bg-input px-4 py-1 rounded-full">
       {activity.activityName}
       <Button
-        onClick={onClickDelte}
+        onClick={onClick}
         variant="ring"
         className="rounded-full p-0 h-fit"
       >

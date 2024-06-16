@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-import { useAdminActivityStore } from '@/store/admin-activity'
+// import { useAdminActivityStore } from '@/store/admin-activity'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
 export const AddActivity = () => {
-  const { addActivity } = useAdminActivityStore()
+  // const { addActivity } = useAdminActivityStore()
   const [activityName, setActivityName] = useState<string | undefined>('')
   const onClickAdd = () => {
     const activity = activityName?.trim()
@@ -15,7 +15,7 @@ export const AddActivity = () => {
       return
     }
     // 유효성 검사 추가하기
-    addActivity(activity)
+    // addActivity(activity)
     setActivityName('')
   }
 
