@@ -15,6 +15,38 @@ export const getActivities = async (token: string, semesterId: number) => {
   }
 }
 
+export const addActivities = async (
+  token: string,
+  semesterId: number,
+  activityName: string,
+) => {
+  const activityData = {
+    activityName,
+  }
+
+  try {
+    const response = await authorizationApi.post(
+      `/admin/semesters/${semesterId}/activities`,
+      activityData,
+      {
+        headers: { Authorization: token },
+      },
+    )
+    const content = response.data
+    return { success: content.success, message: content.message }
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      const status = error.response?.status
+      const errorContent = error.response?.data
+      if (status === 404) {
+        return { success: errorContent.success, message: errorContent.message }
+      }
+    }
+
+    return { success: false, message: '잘못된 접근입니다.' }
+  }
+}
+
 export const deleteActivity = async (
   token: string,
   semesterId: number,
