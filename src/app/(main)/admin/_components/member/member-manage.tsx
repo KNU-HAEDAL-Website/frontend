@@ -5,10 +5,10 @@ import {
   TabsTrigger 
 } from '@/components/ui/tabs'
 
-import { ItemLayout } from './item-layout'
-import { BanTable } from './member/ban-table'
-import { GradeTable } from './member/grade-table'
-import { UpgradeTable } from './member/upgrade-table'
+import { ItemLayout } from '../ui/item/item-layout'
+import { BanTable } from './ban-table'
+import { GradeTable } from './grade-table'
+import { UpgradeTable } from './upgrade-table'
 
 export const MemberManage = () => {
   return (

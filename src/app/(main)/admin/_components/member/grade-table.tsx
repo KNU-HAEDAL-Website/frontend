@@ -6,7 +6,7 @@ import { ColumnDef } from '@tanstack/react-table'
 
 import { useUserFetch } from '@/services/fetchUsers'
 
-import { MemberTable } from '../member-table'
+import { MemberTable } from '../ui/table/member-table'
 import { GradeDialog } from './grade-dialog'
 import { SkeletonTable } from './skeleton-table'
 

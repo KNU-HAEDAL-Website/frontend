@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { ColumnDef } from '@tanstack/react-table'
 import { format } from 'date-fns'
 
-import { MemberTable } from '../member-table'
+import { MemberTable } from '../ui/table/member-table'
 import { SkeletonTable } from './skeleton-table'
 import { UpgradeForm } from './upgrade-form'
 import { useUserFetch } from '@/services/fetchUsers'
