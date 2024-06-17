@@ -1,7 +1,7 @@
 import { MemberManage } from './member/member-manage'
 import { SemesterManage } from './semester/semester-manage'
 import { SliderManage } from './slider/slider-manage'
-import { ItemSeperator } from './ui/item/item-seperator'
+import { ItemSeperator } from './ui/item-seperator'
 
 export const AdminPageContent = () => {
   return (

@@ -4,7 +4,7 @@ import { useSemesterFetch } from '@/services/fetchSemesters'
 import { useAdminSemesterStore } from '@/store/admin-semester'
 
 import { parseSemester } from '../../_utils/parseSemester'
-import { ItemLayout } from '../ui/item/item-layout'
+import { ItemLayout } from '../ui/item-layout'
 import { AddDialog } from './add-dialog'
 import { ActivityDialog } from '../activity/activity-dialog'
 

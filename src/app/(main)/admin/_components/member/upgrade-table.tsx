@@ -5,10 +5,11 @@ import { useCallback, useEffect, useState } from 'react'
 import { ColumnDef } from '@tanstack/react-table'
 import { format } from 'date-fns'
 
-import { MemberTable } from '../ui/table/member-table'
-import { SkeletonTable } from './skeleton-table'
+
 import { UpgradeForm } from './upgrade-form'
 import { useUserFetch } from '@/services/fetchUsers'
+import { SkeletonTable } from './_components/ui/table/skeleton-table'
+import { MemberTable } from './_components/ui/table/member-table'
 
 export const UpgradeTable = () => {
   const [data, setData] = useState<undefined | UserInactive[]>(undefined)

@@ -1,4 +1,4 @@
-import { ItemLayout } from '../ui/item/item-layout'
+import { ItemLayout } from '../ui/item-layout'
 
 export const SliderManage = () => {
   return (
