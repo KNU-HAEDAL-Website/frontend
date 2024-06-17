@@ -1,37 +1,15 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
-import { useRouter } from 'next/navigation'
-
 import { LoadingDots } from '@/components/ui/loading-dots'
-import { checkIsAdmin } from '@/services/checkIsAdmin'
 
 import { ItemSeperator } from './_components/item-seperator'
 import { MemberManage } from './_components/member-manage'
 import { SemesterManage } from './_components/semester-manage'
 import { SliderManage } from './_components/slider-manage'
+import { useAdminCheck } from './_hooks/use-admin-check'
 
 const AdminPage = () => {
-  const [isAdmin, setIsAdmin] = useState<boolean>(false)
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const router = useRouter()
-
-  useEffect(() => {
-    const checkAdmin = async () => {
-      setIsLoading(true)
-      const res = await checkIsAdmin()
-      if (res) {
-        setIsAdmin(true)
-      } else {
-        router.replace('/')
-      }
-      setIsLoading(false)
-    }
-
-    checkAdmin()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const { isLoading, isAdmin } = useAdminCheck()
 
   if (isLoading)
     return (
