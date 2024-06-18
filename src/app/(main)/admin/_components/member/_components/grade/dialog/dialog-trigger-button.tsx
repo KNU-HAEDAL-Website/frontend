@@ -1,3 +1,5 @@
+import { forwardRef } from 'react'
+
 import { useAdminUser } from '@/store/admin-user'
 import { Button } from '@/components/ui/button'
 
@@ -5,11 +7,15 @@ interface DialogTriggerButtonProps {
   member: UserActive
 }
 
-export const DialogTriggerButton = ({ member }: DialogTriggerButtonProps) => {
+const DialogTriggerButton = forwardRef<
+  HTMLButtonElement,
+  DialogTriggerButtonProps
+>(({ member }, ref) => {
   const { setSelectedUser } = useAdminUser()
 
   return (
     <Button
+      ref={ref}
       onClick={() => setSelectedUser(member)}
       variant="secondary"
       size="ssm"
@@ -17,4 +23,7 @@ export const DialogTriggerButton = ({ member }: DialogTriggerButtonProps) => {
       {member.role}
     </Button>
   )
-}
+})
+DialogTriggerButton.displayName = 'DialogTriggerButton'
+
+export { DialogTriggerButton }
