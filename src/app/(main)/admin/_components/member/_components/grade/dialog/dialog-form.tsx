@@ -1,4 +1,4 @@
-import { useAdminUser } from '@/store/admin-user'
+import { useAdminUserStore } from '@/store/admin-user'
 import { Form } from '@/components/ui/form'
 
 import { useGradeForm } from '../../../_hooks/useGradeForm'
@@ -6,7 +6,7 @@ import { GradeDialogFooter } from './dialog-footer'
 import { DialogFormItem } from './dialog-form-item'
 
 export const GradeDialogForm = () => {
-  const { selectedUser } = useAdminUser()
+  const { selectedUser } = useAdminUserStore()
   const { form, onSubmit } = useGradeForm(selectedUser)
 
   return (

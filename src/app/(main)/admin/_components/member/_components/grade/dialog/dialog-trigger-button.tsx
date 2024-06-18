@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-import { useAdminUser } from '@/store/admin-user'
+import { useAdminUserStore } from '@/store/admin-user'
 import { Button } from '@/components/ui/button'
 
 interface DialogTriggerButtonProps {
@@ -11,7 +11,7 @@ const DialogTriggerButton = forwardRef<
   HTMLButtonElement,
   DialogTriggerButtonProps
 >(({ member }, ref) => {
-  const { setSelectedUser } = useAdminUser()
+  const { setSelectedUser } = useAdminUserStore()
 
   return (
     <Button

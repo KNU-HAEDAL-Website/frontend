@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 
-import { useInactiveUserStore } from '@/store/inactive-user'
+import { useAdminUserStore } from '@/store/admin-user'
 
 import { useInactivieUsers } from '../../_hooks/useInactivieUsers'
 import { useUpgradeColumn } from '../../_hooks/useUpgradeColumn'
@@ -12,7 +12,7 @@ import { SkeletonTable } from '../ui/table/skeleton-table'
 export const UpgradeTable = () => {
   const { loadInactiveUsers } = useInactivieUsers()
   const { upgradeColumn } = useUpgradeColumn()
-  const { inactiveUser, error } = useInactiveUserStore()
+  const { inactiveUsers, error } = useAdminUserStore()
 
   useEffect(() => {
     loadInactiveUsers()
@@ -23,10 +23,10 @@ export const UpgradeTable = () => {
 
   return (
     <div>
-      {inactiveUser === undefined ? (
+      {inactiveUsers === undefined ? (
         <SkeletonTable />
       ) : (
-        <MemberTable data={inactiveUser} columns={upgradeColumn} />
+        <MemberTable data={inactiveUsers} columns={upgradeColumn} />
       )}
     </div>
   )

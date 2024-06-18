@@ -2,7 +2,7 @@ import { UseFormReturn } from 'react-hook-form'
 import { z } from 'zod'
 
 import { GradeMemberSchema } from '@/schema'
-import { useAdminUser } from '@/store/admin-user'
+import { useAdminUserStore } from '@/store/admin-user'
 import {
   FormControl,
   FormField,
@@ -17,7 +17,7 @@ interface DialogFormItemProps {
 }
 
 export const DialogFormItem = ({ form }: DialogFormItemProps) => {
-  const { selectedUser } = useAdminUser()
+  const { selectedUser } = useAdminUserStore()
 
   return (
     <FormField

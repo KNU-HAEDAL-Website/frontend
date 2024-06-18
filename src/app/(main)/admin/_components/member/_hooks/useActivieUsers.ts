@@ -1,8 +1,8 @@
 import { useUserFetch } from '@/services/fetchUsers'
-import { useActiveUserStore } from '@/store/active-user'
+import { useAdminUserStore } from '@/store/admin-user'
 
 export const useActivieUsers = () => {
-  const { setActiveUser, setError } = useActiveUserStore()
+  const { setActiveUsers, setError } = useAdminUserStore()
   const { fetchActiveUsers } = useUserFetch()
 
   const loadActiveUsers = async () => {
@@ -10,7 +10,7 @@ export const useActivieUsers = () => {
       const res = await fetchActiveUsers()
 
       if (res?.users) {
-        setActiveUser(res.users)
+        setActiveUsers(res.users)
       }
       if (res?.error) {
         setError(res.error)

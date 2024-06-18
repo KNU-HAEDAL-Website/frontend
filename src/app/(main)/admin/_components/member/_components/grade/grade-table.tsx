@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 
-import { useActiveUserStore } from '@/store/active-user'
+import { useAdminUserStore } from '@/store/admin-user'
 
 import { useActivieUsers } from '../../_hooks/useActivieUsers'
 import { useGradeColumn } from '../../_hooks/useGradeColumn'
@@ -12,7 +12,7 @@ import { SkeletonTable } from '../ui/table/skeleton-table'
 export const GradeTable = () => {
   const { loadActiveUsers } = useActivieUsers()
   const { gradeColumn } = useGradeColumn()
-  const { activeUser, error } = useActiveUserStore()
+  const { activeUsers, error } = useAdminUserStore()
 
   useEffect(() => {
     loadActiveUsers()
@@ -23,10 +23,10 @@ export const GradeTable = () => {
 
   return (
     <div>
-      {activeUser === undefined ? (
+      {activeUsers === undefined ? (
         <SkeletonTable />
       ) : (
-        <MemberTable data={activeUser} columns={gradeColumn} />
+        <MemberTable data={activeUsers} columns={gradeColumn} />
       )}
     </div>
   )
