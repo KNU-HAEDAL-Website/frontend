@@ -8,7 +8,7 @@ import { useActivitiesFetch } from '@/services/fetchActivities'
 import { ActivityItems } from './activity-items'
 import { AddActivity } from './add-activity'
 
-export const SemesterDialogForm = () => {
+export const ActivityDialogForm = () => {
   const { activities, setActivities } = useAdminActivityStore()
   const { fetchActivities } = useActivitiesFetch()
 
@@ -24,6 +24,7 @@ export const SemesterDialogForm = () => {
   }
 
   useEffect(() => {
+    setActivities([])
     loadActivities()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

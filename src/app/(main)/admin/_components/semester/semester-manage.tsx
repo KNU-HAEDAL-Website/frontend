@@ -3,10 +3,10 @@ import { useEffect } from 'react'
 import { useSemesterFetch } from '@/services/fetchSemesters'
 import { useAdminSemesterStore } from '@/store/admin-semester'
 
-import { parseSemester } from '../_utils/parseSemester'
-import { ItemLayout } from './item-layout'
-import { AddDialog } from './semester/add-dialog'
-import { SemesterDialog } from './semester/semester-dialog'
+import { parseSemester } from '../../_utils/parseSemester'
+import { ItemLayout } from '../ui/item-layout'
+import { AddDialog } from './add-dialog'
+import { ActivityDialog } from '../activity/activity-dialog'
 
 export const SemesterManage = () => {
   const { fetchSemester } = useSemesterFetch()
@@ -38,7 +38,7 @@ export const SemesterManage = () => {
         <div className="flex flex-row gap-1 overflow-x-auto">
           {semesters?.map((semester) => {
             return (
-              <SemesterDialog
+              <ActivityDialog
                 key={semester.semesterId}
                 semester={semester}
                 onSuccess={loadSemesters}

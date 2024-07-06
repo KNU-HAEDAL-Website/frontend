@@ -8,17 +8,17 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 
-import { DeleteDialog } from './delete-dialog'
-import { SemesterDialogForm } from './semester-dialog-form'
+import { DeleteDialog } from '../semester/delete-dialog'
+import { ActivityDialogForm } from './activity-dialog-form'
 
-interface SemesterDialogProps {
+interface ActivityDialogProps {
   semester: Semester
   onSuccess: () => void
 }
-export const SemesterDialog = ({
+export const ActivityDialog = ({
   semester,
   onSuccess,
-}: SemesterDialogProps) => {
+}: ActivityDialogProps) => {
   const { setSelectedSemester } = useAdminSemesterStore()
 
   return (
@@ -36,7 +36,7 @@ export const SemesterDialog = ({
         <DialogHeader>
           <DialogTitle>{semester.semesterName} 활동 관리</DialogTitle>
         </DialogHeader>
-        <SemesterDialogForm />
+        <ActivityDialogForm />
       </DialogContent>
     </Dialog>
   )

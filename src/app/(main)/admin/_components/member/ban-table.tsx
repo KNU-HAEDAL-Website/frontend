@@ -6,9 +6,11 @@ import { ColumnDef } from '@tanstack/react-table'
 
 import { useUserFetch } from '@/services/fetchUsers'
 
-import { MemberTable } from '../member-table'
+
 import { BanDialog } from './ban-dialog'
-import { SkeletonTable } from './skeleton-table'
+import { SkeletonTable } from './_components/ui/table/skeleton-table'
+import { MemberTable } from './_components/ui/table/member-table'
+
 
 export const BanTable = () => {
   const [data, setData] = useState<undefined | UserActive[]>()

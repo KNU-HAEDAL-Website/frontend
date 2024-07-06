@@ -1,14 +1,9 @@
-import { 
-  Tabs, 
-  TabsContent, 
-  TabsList, 
-  TabsTrigger 
-} from '@/components/ui/tabs'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
-import { ItemLayout } from './item-layout'
-import { BanTable } from './member/ban-table'
-import { GradeTable } from './member/grade-table'
-import { UpgradeTable } from './member/upgrade-table'
+import { ItemLayout } from '../ui/item-layout'
+import { GradeTable } from './_components/grade/grade-table'
+import { UpgradeTable } from './_components/upgrade_/upgrade-table'
+import { BanTable } from './ban-table'
 
 export const MemberManage = () => {
   return (
