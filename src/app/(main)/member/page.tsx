@@ -1,5 +1,5 @@
 const MemgerPage = () => {
-    return <div>member</div>
-  }
-  
-  export default MemgerPage
+  return <div>member</div>
+}
+
+export default MemgerPage

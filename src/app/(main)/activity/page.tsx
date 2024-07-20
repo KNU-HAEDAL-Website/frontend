@@ -1,5 +1,5 @@
 const ActivityPage = () => {
-    return <div>activity</div>
-  }
-  
-  export default ActivityPage
+  return <div>activity</div>
+}
+
+export default ActivityPage

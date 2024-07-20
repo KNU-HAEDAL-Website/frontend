@@ -1,5 +1,5 @@
 const NoticePage = () => {
-    return <div>notice</div>
-  }
-  
-  export default NoticePage
+  return <div>notice</div>
+}
+
+export default NoticePage
