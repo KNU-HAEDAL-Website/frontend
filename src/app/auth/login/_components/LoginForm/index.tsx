@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import LocalStorage from '@/lib/local-storage'
 
 import { LoginErrorMessage } from '~login/_components/LoginErrorMesage'
 import { useLoginForm } from '~login/_hooks/useLoginForm'
@@ -25,6 +26,7 @@ export const LoginForm = () => {
 
   useEffect(() => {
     if (result.data?.status === 200) {
+      LocalStorage.setItem('accessToken', result.data.token)
       router.push('/')
     }
   })
