@@ -1,33 +1,33 @@
 'use client'
 
-import { useForm } from 'react-hook-form'
+import { useEffect } from 'react'
 
+import { useLoginForm } from '@/app/auth/login/_hooks/useLoginForm'
+import { useRouter } from 'next/navigation'
+
+import { DisplayServerActionCallout } from '@/components/DisplayServerAction/Callout'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { LoginSchema } from '@/schema/auth'
 
 export const LoginForm = () => {
-  const { register, handleSubmit } = useForm({
-    defaultValues: {
-      userId: '',
-      password: '',
-    },
+  const router = useRouter()
+
+  const { handleSubmit, form, validationError, result, isExecuting } =
+    useLoginForm()
+
+  useEffect(() => {
+    if (result.data?.status === 200) {
+      router.push('/')
+    }
   })
 
-  const onSubmit = (values: LoginSchema) => {
-    console.log(values)
-  }
-
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex w-full flex-col gap-4"
-    >
+    <form onSubmit={handleSubmit} className="flex w-full flex-col gap-4">
       <div className="flex flex-col gap-2">
         <Label htmlFor="userId">아이디</Label>
         <Input
-          {...register('userId')}
+          {...form.register('userId')}
           name="userId"
           placeholder="아이디를 입력해주세요"
         />
@@ -35,13 +35,19 @@ export const LoginForm = () => {
       <div className="flex flex-col gap-2">
         <Label htmlFor="password">비밀번호</Label>
         <Input
-          {...register('password')}
+          {...form.register('password')}
           name="password"
           type="password"
           placeholder="비밀번호를 입력해주세요"
         />
-        <Button className="mt-4">로그인하기</Button>
+        <Button className="mt-4" disabled={isExecuting}>
+          로그인하기
+        </Button>
       </div>
+      <DisplayServerActionCallout
+        result={result}
+        validationError={validationError}
+      />
     </form>
   )
 }
