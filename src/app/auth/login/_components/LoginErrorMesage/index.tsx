@@ -1,8 +1,8 @@
-import { ServerAction } from '@/types/server'
+import { LoginDTO } from '@/types/server'
 
 import { ErrorMessageBox } from '@/components/MessageBox'
 
-interface LoginErrorMessageProps extends ServerAction {
+interface LoginErrorMessageProps extends LoginDTO {
   validationError: string
 }
 
@@ -20,7 +20,7 @@ export const LoginErrorMessage = ({
     return <ErrorMessageBox message={validationError} />
   }
 
-  if (data?.status != 200 && data?.message) {
+  if (data?.message) {
     return <ErrorMessageBox message={data.message} />
   }
 }

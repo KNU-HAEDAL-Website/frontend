@@ -1,20 +1,21 @@
 'use server'
 
-import { actionClient } from '@/lib/safe-action'
 import { AxiosError } from 'axios'
 
 import { API_ERROR_MESSAGES } from '@/constant/errorMessage'
+import { actionClient } from '@/lib/safe-action'
 import { LoginSchema } from '@/schema/Auth'
-
-import { BACKEND_API } from '../config'
+import { BACKEND_API } from '@/service/config'
 
 export const loginAction = actionClient
   .schema(LoginSchema)
   .action(async ({ parsedInput: { userId, password } }) => {
     try {
-      const result = await BACKEND_API.post('/login', { userId, password })
+      const res = await BACKEND_API.post('/login', { userId, password })
 
-      return { message: '로그인에 성공했습니다.', status: result.status }
+      const accessToken = res.headers['authorization']
+
+      return { status: res.status, token: accessToken }
     } catch (error) {
       if (error instanceof AxiosError) {
         const res = error.response
