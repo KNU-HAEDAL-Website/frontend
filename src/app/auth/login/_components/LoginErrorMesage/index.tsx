@@ -2,19 +2,15 @@ import { ServerAction } from '@/types/server'
 
 import { ErrorMessageBox } from '@/components/MessageBox'
 
-interface DisplayServerActionCalloutProps extends ServerAction {
+interface LoginErrorMessageProps extends ServerAction {
   validationError: string
 }
 
-export const DisplayServerActionCallout = ({
+export const LoginErrorMessage = ({
   result,
   validationError,
-}: DisplayServerActionCalloutProps) => {
+}: LoginErrorMessageProps) => {
   const { data, serverError } = result
-
-  if (data?.status != 200 && data?.message) {
-    return <ErrorMessageBox message={data.message} />
-  }
 
   if (serverError) {
     return <ErrorMessageBox message={serverError} />
@@ -22,5 +18,9 @@ export const DisplayServerActionCallout = ({
 
   if (validationError) {
     return <ErrorMessageBox message={validationError} />
+  }
+
+  if (data?.status != 200 && data?.message) {
+    return <ErrorMessageBox message={data.message} />
   }
 }

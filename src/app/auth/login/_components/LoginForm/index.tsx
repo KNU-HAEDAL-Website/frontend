@@ -2,19 +2,26 @@
 
 import { useEffect } from 'react'
 
-import { useLoginForm } from '@/app/auth/login/_hooks/useLoginForm'
 import { useRouter } from 'next/navigation'
 
-import { DisplayServerActionCallout } from '@/components/DisplayServerAction/Callout'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
+import { LoginErrorMessage } from '~login/_components/LoginErrorMesage'
+import { useLoginForm } from '~login/_hooks/useLoginForm'
+
 export const LoginForm = () => {
   const router = useRouter()
 
-  const { handleSubmit, form, validationError, result, isExecuting } =
-    useLoginForm()
+  const {
+    form,
+    handleSubmit,
+    result,
+    isExecuting,
+    validationError,
+    setValidationError,
+  } = useLoginForm()
 
   useEffect(() => {
     if (result.data?.status === 200) {
@@ -40,14 +47,16 @@ export const LoginForm = () => {
           type="password"
           placeholder="비밀번호를 입력해주세요"
         />
-        <Button className="mt-4" disabled={isExecuting}>
+        <Button
+          className="mt-4"
+          disabled={isExecuting}
+          type="submit"
+          onClick={() => setValidationError('')}
+        >
           로그인하기
         </Button>
       </div>
-      <DisplayServerActionCallout
-        result={result}
-        validationError={validationError}
-      />
+      <LoginErrorMessage result={result} validationError={validationError} />
     </form>
   )
 }

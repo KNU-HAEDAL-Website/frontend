@@ -21,15 +21,22 @@ export const useLoginForm = () => {
 
   const onSubmit = () => {
     execute(form.getValues())
-    setValidationError('')
+    form.reset(form.getValues())
   }
 
   const handleSubmit = form.handleSubmit(onSubmit, (errors) => {
-    const key = Object.keys(errors)[0] as keyof typeof errors
-    const errorMessages = errors[key]?.message || ''
+    const errorMessages =
+      Object.values(errors).flatMap((error) => error.message)[0] || ''
 
     setValidationError(errorMessages)
   })
 
-  return { handleSubmit, form, result, isExecuting, validationError }
+  return {
+    form,
+    handleSubmit,
+    validationError,
+    setValidationError,
+    result,
+    isExecuting,
+  }
 }
