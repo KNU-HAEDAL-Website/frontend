@@ -7,6 +7,7 @@
     "^react(.*)$",
     "<THIRD_PARTY_MODULES>",
     "^@/(components|constant|hook|schema|service|store)/(.*)$",
+    "^~(.*)$",
     "^[./]"
   ],
   "importOrderSeparation": true,
