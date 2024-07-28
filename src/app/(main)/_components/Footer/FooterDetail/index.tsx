@@ -29,7 +29,7 @@ const footerDetailData: FooterDetailData[] = [
     content: 'dkwls0234@gmail.com',
   },
   {
-    id: 0,
+    id: 2,
     label: 'Contact to',
     content: 'tfer2442@gmail.com',
   },
