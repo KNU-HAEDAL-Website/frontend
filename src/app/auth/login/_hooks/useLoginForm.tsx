@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -9,7 +8,6 @@ import { loginAction } from '@/service/server/login'
 
 export const useLoginForm = () => {
   const { execute, result, isExecuting } = useAction(loginAction)
-  const [validationError, setValidationError] = useState('')
 
   const form = useForm<Login>({
     resolver: zodResolver(LoginSchema),
@@ -24,18 +22,9 @@ export const useLoginForm = () => {
     form.reset(form.getValues())
   }
 
-  const handleSubmit = form.handleSubmit(onSubmit, (errors) => {
-    const errorMessages =
-      Object.values(errors).flatMap((error) => error.message)[0] || ''
-
-    setValidationError(errorMessages)
-  })
-
   return {
     form,
-    handleSubmit,
-    validationError,
-    setValidationError,
+    onSubmit,
     result,
     isExecuting,
   }

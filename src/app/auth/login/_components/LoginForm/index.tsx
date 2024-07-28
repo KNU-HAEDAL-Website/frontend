@@ -1,28 +1,40 @@
 'use client'
 
-import { useEffect } from 'react'
+import { FormEvent, useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 
+import { useAction } from 'next-safe-action/hooks'
 import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import LocalStorage from '@/lib/local-storage'
+import { loginAction } from '@/service/server/login'
 
 import { LoginErrorMessage } from '~login/_components/LoginErrorMesage'
-import { useLoginForm } from '~login/_hooks/useLoginForm'
+
+type LoginSchema = {
+  userId: string
+  password: string
+}
 
 export const LoginForm = () => {
   const router = useRouter()
+  const { execute, result, isExecuting } = useAction(loginAction)
 
-  const {
-    form,
-    handleSubmit,
-    result,
-    isExecuting,
-    validationError,
-    setValidationError,
-  } = useLoginForm()
+  const form = useForm<LoginSchema>({
+    defaultValues: {
+      userId: '',
+      password: '',
+    },
+  })
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    execute(form.getValues())
+    form.reset(form.getValues())
+  }
 
   useEffect(() => {
     if (result.data?.status === 200) {
@@ -32,33 +44,19 @@ export const LoginForm = () => {
   })
 
   return (
-    <form onSubmit={handleSubmit} className="flex w-full flex-col gap-4">
+    <form onSubmit={onSubmit} className="flex w-full flex-col gap-4">
       <div className="flex flex-col gap-2">
         <Label htmlFor="userId">아이디</Label>
-        <Input
-          {...form.register('userId')}
-          name="userId"
-          placeholder="아이디를 입력해주세요"
-        />
+        <Input {...form.register('userId')} name="userId" />
       </div>
       <div className="flex flex-col gap-2">
         <Label htmlFor="password">비밀번호</Label>
-        <Input
-          {...form.register('password')}
-          name="password"
-          type="password"
-          placeholder="비밀번호를 입력해주세요"
-        />
-        <Button
-          className="mt-4"
-          disabled={isExecuting}
-          type="submit"
-          onClick={() => setValidationError('')}
-        >
+        <Input {...form.register('password')} name="password" type="password" />
+        <Button className="mt-4" disabled={isExecuting} type="submit">
           로그인하기
         </Button>
       </div>
-      <LoginErrorMessage result={result} validationError={validationError} />
+      <LoginErrorMessage result={result} />
     </form>
   )
 }
