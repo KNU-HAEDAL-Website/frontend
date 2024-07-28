@@ -5,10 +5,12 @@ import { LoginForm } from './_components/LoginForm'
 
 const LoginPage = () => {
   return (
-    <AuthCard title="Sign in to HAEDAL">
-      <LoginForm />
-      <LinkButton backLink="/auth/signup" label="회원가입하기" />
-    </AuthCard>
+    <div className="flex w-full flex-col items-center gap-2">
+      <AuthCard title="Sign in to HAEDAL">
+        <LoginForm />
+      </AuthCard>
+      <LinkButton backLink="/auth/signup" label="회원가입" />
+    </div>
   )
 }
 

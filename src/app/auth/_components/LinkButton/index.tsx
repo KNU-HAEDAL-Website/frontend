@@ -9,9 +9,11 @@ type LinkButtonProps = {
 
 export const LinkButton = ({ label, backLink }: LinkButtonProps) => {
   return (
-    <div className="flex w-full justify-center">
+    <div className="flex w-fit justify-center">
       <Button variant="link" className="font-normal">
-        <Link href={backLink}>{label}</Link>
+        <Link href={backLink} className="text-white">
+          {label}
+        </Link>
       </Button>
     </div>
   )
