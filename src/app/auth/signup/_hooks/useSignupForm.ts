@@ -7,14 +7,17 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useAction } from 'next-safe-action/hooks'
 
 import { useToast } from '@/components/ui/use-toast'
-import { Signup, SignupSchema } from '@/schema/Auth'
+import { Signup, SignupSchema } from '@/schema/auth'
 import { signupAction } from '@/service/server/signup'
 
 import { useSignupCheckStore } from '~auth/signup/_stores/signup-check'
 
 export const useSignupForm = () => {
   const { execute, result, isExecuting } = useAction(signupAction)
-  const { isValidUserId, isValidStudentNumber } = useSignupCheckStore()
+  const isValidUserId = useSignupCheckStore((state) => state.isValidUserId)
+  const isValidStudentNumber = useSignupCheckStore(
+    (state) => state.isValidStudentNumber,
+  )
   const { toast } = useToast()
   const isSuccessSignup = result.data?.status === 201
 

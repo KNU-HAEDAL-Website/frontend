@@ -25,7 +25,9 @@ export const CheckUserIdButton = ({
 }: CheckButtonProps) => {
   const { error } = useFormField()
   const { execute, result, isExecuting } = useAction(checkUserIdAction)
-  const { setIsValidUserId } = useSignupCheckStore()
+  const setIsValidUserId = useSignupCheckStore(
+    (state) => state.setIsValidUserId,
+  )
 
   useEffect(() => {
     if (result.data) {
