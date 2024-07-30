@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { OverlayProvider } from 'overlay-kit'
 
 import { Toaster } from '@/components/ui/toaster'
 
@@ -21,10 +20,8 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={inter.className}>
-        <OverlayProvider>
-          <main>{children}</main>
-          <Toaster />
-        </OverlayProvider>
+        <main>{children}</main>
+        <Toaster />
       </body>
     </html>
   )
