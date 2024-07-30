@@ -52,7 +52,7 @@ export const LoginForm = () => {
       <div className="flex flex-col gap-2">
         <Label htmlFor="password">비밀번호</Label>
         <Input {...form.register('password')} name="password" type="password" />
-        <Button className="mt-4" disabled={isExecuting} type="submit">
+        <Button className="mt-8" disabled={isExecuting} type="submit">
           로그인하기
         </Button>
       </div>
