@@ -1,5 +1,5 @@
-import { AuthCard } from '@/app/auth/_components/AuthCard'
-import { LinkButton } from '@/app/auth/_components/LinkButton'
+import { AuthCard } from '~auth/_components/AuthCard'
+import { LinkButton } from '~auth/_components/LinkButton'
 
 import { LoginForm } from './_components/LoginForm'
 

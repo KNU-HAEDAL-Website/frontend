@@ -12,7 +12,7 @@ import { Label } from '@/components/ui/label'
 import LocalStorage from '@/lib/local-storage'
 import { loginAction } from '@/service/server/login'
 
-import { LoginErrorMessage } from '~login/_components/LoginErrorMesage'
+import { LoginErrorMessage } from '~auth/login/_components/LoginErrorMesage'
 
 type LoginSchema = {
   userId: string

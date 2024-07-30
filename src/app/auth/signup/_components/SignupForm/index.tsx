@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from 'react'
 
-import { useSignupForm } from '@/app/auth/signup/_hooks/useSignupForm'
-
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
 
-import { SignupSuccessDialog } from '../SignupSuccessDialog'
+import { SignupSuccessDialog } from '~auth/signup/_components/SignupSuccessDialog'
+import { useSignupForm } from '~auth/signup/_hooks/useSignupForm'
+
 import { SignupCheckboxField, SignupInputField } from './SignupField'
 
 export const SignupForm = () => {

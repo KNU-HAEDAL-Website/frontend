@@ -10,7 +10,7 @@ import { useToast } from '@/components/ui/use-toast'
 import { Signup, SignupSchema } from '@/schema/Auth'
 import { signupAction } from '@/service/server/signup'
 
-import { useSignupCheckStore } from '../_stores/signup-check'
+import { useSignupCheckStore } from '~auth/signup/_stores/signup-check'
 
 export const useSignupForm = () => {
   const { execute, result, isExecuting } = useAction(signupAction)

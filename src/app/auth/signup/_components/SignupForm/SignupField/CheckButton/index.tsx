@@ -2,7 +2,6 @@
 
 import { Dispatch, SetStateAction, useEffect } from 'react'
 
-import { useSignupCheckStore } from '@/app/auth/signup/_stores/signup-check'
 import { useAction } from 'next-safe-action/hooks'
 
 import { Button } from '@/components/ui/button'
@@ -12,6 +11,8 @@ import {
   checkStudentNumberAction,
   checkUserIdAction,
 } from '@/service/server/signup'
+
+import { useSignupCheckStore } from '~auth/signup/_stores/signup-check'
 
 interface CheckButtonProps {
   value: string
