@@ -1,14 +1,24 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 import { useSignupForm } from '@/app/auth/signup/_hooks/useSignupForm'
 
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
 
+import { SignupSuccessDialog } from '../SignupSuccessDialog'
 import { SignupCheckboxField, SignupInputField } from './SignupField'
 
 export const SignupForm = () => {
-  const { form, isExecuting, onSubmit } = useSignupForm()
+  const { form, isExecuting, onSubmit, isSuccessSignup } = useSignupForm()
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    if (isSuccessSignup && !open) {
+      setOpen(true)
+    }
+  }, [isSuccessSignup, open])
 
   return (
     <Form {...form}>
@@ -18,6 +28,7 @@ export const SignupForm = () => {
           formLabel="아이디"
           placeholder="hobanu"
           formDescription="- ID는 영어와 숫자를 포함해 6~12자리로 입력해주세요."
+          doubleCheck="userId"
         />
         <div className="space-y-1">
           <SignupInputField
@@ -40,6 +51,7 @@ export const SignupForm = () => {
             name="studentNumber"
             formLabel="학번"
             placeholder="2000123456"
+            doubleCheck="studentNumber"
           />
           <SignupInputField
             name="userName"
@@ -54,12 +66,13 @@ export const SignupForm = () => {
         <Button
           type="submit"
           className="w-full"
-          disabled={isExecuting}
+          disabled={isExecuting || !form.formState.isValid}
           onClick={onSubmit}
         >
           회원가입
         </Button>
       </form>
+      <SignupSuccessDialog open={open} setOpen={setOpen} />
     </Form>
   )
 }

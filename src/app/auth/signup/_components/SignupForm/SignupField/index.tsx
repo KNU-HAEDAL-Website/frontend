@@ -1,4 +1,9 @@
-import { ComponentPropsWithoutRef, InputHTMLAttributes } from 'react'
+import {
+  ComponentPropsWithoutRef,
+  InputHTMLAttributes,
+  useEffect,
+  useState,
+} from 'react'
 import { useFormContext } from 'react-hook-form'
 
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
@@ -13,12 +18,17 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { CheckRespose } from '@/service/server/signup'
+
+import { CheckStudentNumberButton, CheckUserIdButton } from './CheckButton'
+import { CheckResultMessage } from './CheckResultMessage'
 
 interface SignupInputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   formLabel: string
   placeholder?: string
   formDescription?: string
+  doubleCheck?: 'userId' | 'studentNumber'
 }
 
 export const SignupInputField = ({
@@ -27,8 +37,16 @@ export const SignupInputField = ({
   placeholder,
   formDescription,
   type = 'text',
+  doubleCheck,
 }: SignupInputFieldProps) => {
   const form = useFormContext()
+  const fieldValue = form.watch(name)
+  const [checkResult, setCheckResult] = useState<CheckRespose>()
+
+  useEffect(() => {
+    setCheckResult({ success: false, message: '' })
+  }, [fieldValue])
+
   return (
     <FormField
       control={form.control}
@@ -37,15 +55,30 @@ export const SignupInputField = ({
         <FormItem>
           <FormLabel>{formLabel}</FormLabel>
           <FormControl>
-            <Input
-              type={type}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder={placeholder}
-            />
+            <div className="flex gap-2">
+              <Input
+                type={type}
+                value={field.value}
+                onChange={field.onChange}
+                placeholder={placeholder}
+              />
+              {doubleCheck === 'userId' && (
+                <CheckUserIdButton
+                  value={field.value}
+                  setCheckResult={setCheckResult}
+                />
+              )}
+              {doubleCheck === 'studentNumber' && (
+                <CheckStudentNumberButton
+                  value={field.value}
+                  setCheckResult={setCheckResult}
+                />
+              )}
+            </div>
           </FormControl>
           <FormDescription className="pl-2">{formDescription}</FormDescription>
           <FormMessage className="pl-2" />
+          {checkResult && <CheckResultMessage checkResult={checkResult} />}
         </FormItem>
       )}
     />
@@ -63,6 +96,7 @@ export const SignupCheckboxField = ({
   formLabel,
 }: SignupCheckboxFieldProps) => {
   const form = useFormContext()
+
   return (
     <FormField
       control={form.control}
