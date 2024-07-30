@@ -14,6 +14,12 @@ class LocalStorage {
     return null
   }
 
+  static removeItem(key: string) {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem(key)
+    }
+  }
+
   static clear() {
     if (typeof window !== 'undefined') {
       localStorage.clear()

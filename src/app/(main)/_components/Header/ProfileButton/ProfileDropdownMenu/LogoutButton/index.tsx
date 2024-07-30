@@ -1,3 +1,17 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+
+import { useAuthStore } from '@/store/auth'
+
 export const LogoutButton = () => {
-  return <button>로그아웃</button>
+  const router = useRouter()
+  const clearAccessToken = useAuthStore((state) => state.clearAccessToken)
+
+  const onClick = () => {
+    clearAccessToken()
+    router.refresh()
+  }
+
+  return <button onClick={onClick}>로그아웃</button>
 }
