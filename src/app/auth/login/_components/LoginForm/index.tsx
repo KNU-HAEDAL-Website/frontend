@@ -9,8 +9,8 @@ import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import LocalStorage from '@/lib/local-storage'
 import { loginAction } from '@/service/server/login'
+import { useAuthStore } from '@/store/auth'
 
 import { LoginErrorMessage } from '~auth/login/_components/LoginErrorMesage'
 
@@ -22,6 +22,7 @@ type LoginSchema = {
 export const LoginForm = () => {
   const router = useRouter()
   const { execute, result, isExecuting } = useAction(loginAction)
+  const setAccessToken = useAuthStore((state) => state.setAccessToken)
 
   const form = useForm<LoginSchema>({
     defaultValues: {
@@ -38,7 +39,7 @@ export const LoginForm = () => {
 
   useEffect(() => {
     if (result.data?.status === 200) {
-      LocalStorage.setItem('accessToken', result.data.token)
+      setAccessToken(result.data.token)
       router.push('/')
     }
   })

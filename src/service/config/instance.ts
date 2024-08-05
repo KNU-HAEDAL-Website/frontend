@@ -6,7 +6,7 @@ export const initInstance = (config: AxiosRequestConfig): AxiosInstance => {
     ...config,
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/json',
+      ContentType: 'application/json',
       ...config.headers,
     },
   })

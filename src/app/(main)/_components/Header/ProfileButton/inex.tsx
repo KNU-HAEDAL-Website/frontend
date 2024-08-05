@@ -2,13 +2,15 @@
 
 import Link from 'next/link'
 
+import { useAuthStore } from '@/store/auth'
+
 import { ProfileDropdownMenu } from './ProfileDropdownMenu'
 import { UserAvatar } from './UserAvatar'
 
 export const ProfileButton = () => {
-  const isLoggedIn = true
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn)
 
-  if (!isLoggedIn) {
+  if (!isLoggedIn()) {
     return (
       <Link href="/auth/login">
         <UserAvatar />
