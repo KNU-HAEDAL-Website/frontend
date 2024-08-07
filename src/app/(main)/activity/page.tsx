@@ -6,6 +6,7 @@ import {
 
 import { getSemesters } from '@/service/server/semester'
 
+import { ActivitySection } from './_components/ActivitySection'
 import { SemesterSection } from './_components/SemesterSection'
 
 const ActivityPage = async () => {
@@ -20,6 +21,7 @@ const ActivityPage = async () => {
     <div>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <SemesterSection />
+        <ActivitySection />
       </HydrationBoundary>
     </div>
   )

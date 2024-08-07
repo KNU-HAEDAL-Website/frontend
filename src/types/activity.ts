@@ -3,3 +3,9 @@ export type Semester = {
   semesterId: number
   semesterName: string
 }
+
+export type Activity = {
+  activityId: number
+  activityName: string
+  semesterId: number
+}
