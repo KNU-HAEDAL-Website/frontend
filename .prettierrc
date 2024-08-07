@@ -6,7 +6,7 @@
   "importOrder": [
     "^react(.*)$",
     "<THIRD_PARTY_MODULES>",
-    "^@/(components|constant|hook|lib|schema|service|store)/(.*)$",
+    "^@/(components|constant|hook|lib|schema|service|store|types)/(.*)$",
     "^~(.*)$",
     "^[./]"
   ],
