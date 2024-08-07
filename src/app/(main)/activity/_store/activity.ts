@@ -4,7 +4,7 @@ import { Activity } from '@/types/activity'
 
 interface ActivityProps {
   currentActivity?: Activity
-  setCurrentActivity: (value: Activity) => void
+  setCurrentActivity: (value?: Activity) => void
 }
 
 export const useActivityStore = create<ActivityProps>((set) => ({

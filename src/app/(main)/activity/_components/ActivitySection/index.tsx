@@ -5,13 +5,9 @@ import { useSemesterStore } from '~activity/_store/semester'
 import { SelectActivity } from './SelectActivity'
 
 export const ActivitySection = () => {
-  const { currentSemester } = useSemesterStore()
+  const currentSemester = useSemesterStore((state) => state.currentSemester)
 
   if (!currentSemester) return <div>loading...</div>
 
-  return (
-    <div>
-      <SelectActivity semesterId={currentSemester.semesterId} />
-    </div>
-  )
+  return <SelectActivity semesterId={currentSemester.semesterId} />
 }
