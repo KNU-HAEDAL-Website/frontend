@@ -69,10 +69,10 @@ const PaginationPrevious = ({
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="Go to previous page"
-    className={cn(buttonVariants({ variant: 'ghost' }), 'p-3', className)}
+    className={cn('p-3 text-muted-foreground hover:text-primary', className)}
     {...props}
   >
-    <ChevronLeftIcon className="h-4 w-4" />
+    <ChevronLeftIcon className="h-5 w-5" />
   </PaginationLink>
 )
 PaginationPrevious.displayName = 'PaginationPrevious'
@@ -84,10 +84,10 @@ const PaginationNext = ({
   <PaginationLink
     aria-label="Go to next page"
     size="default"
-    className={cn(buttonVariants({ variant: 'ghost' }), 'p-3', className)}
+    className={cn('p-3 text-muted-foreground hover:text-primary', className)}
     {...props}
   >
-    <ChevronRightIcon className="h-4 w-4" />
+    <ChevronRightIcon className="h-5 w-5" />
   </PaginationLink>
 )
 PaginationNext.displayName = 'PaginationNext'
