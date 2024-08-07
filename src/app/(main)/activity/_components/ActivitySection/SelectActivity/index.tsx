@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 
+import { Seperator } from '@/components/ui/seperator'
 import { useGetActivities } from '@/service/data/activity'
 
 import { useActivityStore } from '~activity/_store/activity'
@@ -29,8 +30,9 @@ export const SelectActivity = ({ semesterId }: SelectActivityProps) => {
   if (!activities?.length) return <div>활동이 없습니다.</div>
 
   return (
-    <div className="flex flex-col gap-4 pb-40">
+    <div className="flex flex-col pb-40">
       <ActivityList activities={activities} />
+      <Seperator className="my-8" />
       <BoardSection />
     </div>
   )
