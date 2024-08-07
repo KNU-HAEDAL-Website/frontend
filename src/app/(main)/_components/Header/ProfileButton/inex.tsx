@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 import Link from 'next/link'
 
 import { useAuthStore } from '@/store/auth'
@@ -8,9 +10,14 @@ import { ProfileDropdownMenu } from './ProfileDropdownMenu'
 import { UserAvatar } from './UserAvatar'
 
 export const ProfileButton = () => {
-  const isLoggedIn = useAuthStore((state) => state.isLoggedIn)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const accessToken = useAuthStore((state) => state.accessToken)
 
-  if (!isLoggedIn()) {
+  useEffect(() => {
+    setIsLoggedIn(!!accessToken)
+  }, [accessToken])
+
+  if (!isLoggedIn) {
     return (
       <Link href="/auth/login">
         <UserAvatar />
