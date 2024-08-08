@@ -39,7 +39,11 @@ export const SemesterList = ({ semesters }: SemesterListProps) => {
     <Pagination className="pt-3">
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href="#" onClick={onClickPreviousButton} />
+          <PaginationPrevious
+            href="/activity"
+            onClick={onClickPreviousButton}
+            disabled={currentSemester?.index === 0}
+          />
         </PaginationItem>
         <PaginationItem>
           {visibleSemesters?.map((semester) => (
@@ -47,7 +51,11 @@ export const SemesterList = ({ semesters }: SemesterListProps) => {
           ))}
         </PaginationItem>
         <PaginationItem>
-          <PaginationNext href="#" onClick={onClickNextButton} />
+          <PaginationNext
+            href="/activity"
+            onClick={onClickNextButton}
+            disabled={currentSemester?.index === semesters.length - 1}
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

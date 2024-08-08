@@ -1,12 +1,14 @@
+'use client'
+
 import { useGetBoardsPaging } from '@/service/data/boards'
 
 import { BoardList } from './BoardList/indext'
 
-type ActivityBoardsProps = {
+type BoardSectionProps = {
   activityId: number
 }
 
-export const ActivityBoards = ({ activityId }: ActivityBoardsProps) => {
+export const BoardSection = ({ activityId }: BoardSectionProps) => {
   const { boards, status } = useGetBoardsPaging({ activityId })
 
   if (status === 'pending') return <div>loading...</div>

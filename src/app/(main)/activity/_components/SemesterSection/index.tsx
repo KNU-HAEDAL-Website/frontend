@@ -10,13 +10,13 @@ import { SemesterList } from './SemesterList'
 
 export const SemesterSection = () => {
   const { semesters, status } = useGetSemesters()
-  const { setCurrentSemester } = useSemesterStore()
+  const { currentSemester, setCurrentSemester } = useSemesterStore()
 
   useEffect(() => {
-    if (status === 'success' && semesters) {
+    if (status === 'success' && !currentSemester) {
       setCurrentSemester(semesters[semesters.length - 1])
     }
-  }, [status, setCurrentSemester])
+  }, [status, currentSemester, setCurrentSemester])
 
   return <SemesterList semesters={semesters} />
 }

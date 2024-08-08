@@ -14,7 +14,7 @@ export const SemesterButton = ({ semester }: SemesterButtonProps) => {
 
   return (
     <PaginationLink
-      href="#"
+      href="/activity"
       isActive={isActive}
       onClick={() => setCurrentSemester(semester)}
       className={cn(!isActive && 'text-primary/60')}
