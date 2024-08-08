@@ -10,7 +10,7 @@ type BoardListProps = {
 
 export const BoardList = ({ boards }: BoardListProps) => {
   return (
-    <div className="grid w-screen grid-cols-1 place-items-center gap-10 px-12 sm:grid-cols-2 sm:px-20 md:max-w-screen-lg md:grid-cols-1">
+    <div className="grid w-full grid-cols-1 place-items-center gap-10 sm:grid-cols-2 md:grid-cols-1">
       {boards.map((board) => (
         <Card
           key={board.boardId}

@@ -2,36 +2,32 @@
 
 import { useEffect } from 'react'
 
+import { usePathname, useRouter } from 'next/navigation'
+
 import { useGetActivities } from '@/service/data/activity'
 
-import { useActivityStore } from '~activity/_store/activity'
-
 import { ActivityList } from './ActivityList'
-import { BoardSection } from './BoardSection'
 
 type SelectActivityProps = {
   semesterId: number
 }
 
 export const SelectActivity = ({ semesterId }: SelectActivityProps) => {
+  const router = useRouter()
+  const pathName = usePathname()
   const { data: activities, status } = useGetActivities(semesterId)
-  const setCurrentActivity = useActivityStore(
-    (state) => state.setCurrentActivity,
-  )
 
   useEffect(() => {
-    if (status === 'success' && activities.length) {
-      setCurrentActivity(activities[0])
+    if (status === 'success' && activities?.length > 0) {
+      if (pathName === '/activity') {
+        const firstActivityId = activities[0].activityId
+        router.push(`/activity/${firstActivityId}`)
+      }
     }
-  }, [status, setCurrentActivity])
+  }, [status, activities, router, pathName])
 
   if (status === 'pending') return <div>loading...</div>
   if (!activities?.length) return <div>활동이 없습니다.</div>
 
-  return (
-    <div className="flex flex-col gap-10 pb-40">
-      <ActivityList activities={activities} />
-      <BoardSection />
-    </div>
-  )
+  return <ActivityList activities={activities} />
 }
